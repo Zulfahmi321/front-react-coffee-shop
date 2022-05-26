@@ -1,0 +1,16 @@
+.button-login{
+    color: #0B132A;
+    font-weight: bold;
+}
+
+.button-signup{
+    width: 120px;
+    height: auto;
+    background-color:#FFBA33;
+    border: none;
+    border-radius: 20px;
+    text-align: center;
+    margin: 0 30px;
+    color: #6A4029;
+    font-weight: bold;
+}

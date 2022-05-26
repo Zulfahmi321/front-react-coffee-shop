@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif;
+}
+
+.flex-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+
+}
+
+.aside-image {
+    background-image: url(/src/assets/img/background-3.png);
+    background-size: cover;
+    background-position: 50%;
+    flex: 1;
+}
+
+.main {
+    flex: 1;
+}
+
+.top-content {
+    display: flex;
+    margin: 50px;
+    /* background-color: blue; */
+}
+
+.top-content img {
+    width: 30px;
+    height: 33px;
+}
+
+.top-content a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;   
+    margin-right: 500px;
+}
+
+.top-content p {
+    font-size: 35px;
+    font-weight: bolder;
+    color: rgb(59, 29, 7);
+    
+}
+
+.form-text a{
+    text-decoration: none;
+    color: #6A4029;
+    font-weight: bold;
+}
+
+.has-account {
+    display: flex;
+    align-items: center;
+    
+}
+
+.has-account-text {
+    flex: 2;
+    padding-top: 3px;
+    font-size: 12px;
+    text-align: center;
+    color: darkgray;
+    margin: 0 -200px;
+}
+
+.underline {
+    flex: 1;
+    border-bottom: 2px solid darkgrey;
+    margin: 0 100px;
+}
+
+.login-here a.button {
+    background-color: #6A4029;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    height: 35px;
+    padding-top: 5px;
+    margin: 0 97px;
+}
+
+.login-here a.button:hover {
+    background-color: #905536;
+}
+
+.footer-login {
+    width: 100%;
+    height: auto;
+    background-color: #F8F8F8;
+}
+
+.coffee-shop {
+    display: flex;
+    margin: 20px;
+}
+
+.coffee {
+    flex: 1;
+    margin: 20px;
+}
+
+.coffee strong {
+    font-size: 20px;
+}
+
+.coffee p {
+    color: #4F5665;
+}
+
+.coffee img {
+    width: 30px;
+    height: 33px;
+}
+
+.sosmed img {
+    background-color: #6A4029;
+    border-radius: 100%;
+    width: 30px;
+    height: auto;
+    margin-right: 8px;
+}
+
+.copyright {
+    color: #AFB5C0;
+}
+
+.product-engage {
+    flex: 1;
+}
+
+.product {
+    display: flex;
+}
+
+.engage {
+    display: flex;
+}
+
+.product-one a,
+.product-two a {
+    margin: 15px;
+}
+
+.product-two a {
+    padding-left: 40px;
+}
+
+.engage-one a,
+.engage-two a {
+    margin: 15px;
+}
+
+.product a,
+.engage a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    font: 18px;
+}
+
+.product a:hover,
+.engage a:hover {
+    color: rgb(114, 112, 112);
+}
+
+@media(max-width:834px) {
+    .flex-container {
+        width: 100%;
+        height: 1500px;
+        display: flex;
+        flex-direction: column;
+    }
+    .top-content a {
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+        font-weight: bold;
+        margin-right: 400px;
+    }
+
+    .main {
+        flex: 2;
+    }
+
+    .aside-image {
+        height: 100px;
+        flex: 1;
+    }
+
+    .footer-login {
+        width: 100%;
+        height: auto;
+        background-color: #F8F8F8;
+    }
+
+}
+
+@media(max-width:428px) {
+    .flex-container {
+        width: 100%;
+        height: 1500px;
+        flex-direction: column;
+    }
+
+    .main {
+        flex: 2;
+    }
+
+    .top-content img,
+    .coffee img {
+        width: 20px;
+        height: 23px;
+    }
+
+    .top-content a {
+        margin-right: 140px;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .top-content p {
+        font-size: 15px;
+        font-weight: bolder;
+        color: rgb(59, 29, 7);
+    }
+
+    .has-account-text {
+        margin: 0 -80px;
+    }
+    
+    .underline {
+        margin: 0 97px;
+    }
+    
+    .login-here a.button {
+        margin: 0 97px;
+    }
+
+    .footer-login {
+        width: 100%;
+        height: 600px;
+        background-color: #F8F8F8;
+    }
+
+    .coffee {
+        margin: 20px;
+    }
+
+    .product {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .product-two a {
+        margin-top: 0px;
+        padding-left: 0px;
+    }
+
+    .engage-two a {
+        margin-top: 0px;
+        padding-left: 0px;
+    }
+
+    .engage {
+        display: flex;
+        flex-direction: column;
+        margin-right: 20px;
+    }
+
+}

@@ -1,0 +1,45 @@
+
+.footer-bottom {
+    height: 500px;
+    background-color: #F8F8F8;
+}
+
+.left-content p {
+    color:#4F5665;
+}
+
+.left-content img {
+    width: 30px;
+    height: 33px;
+}
+
+.sosmed img {
+    background-color: #6A4029;
+    border-radius: 100%;
+    width: 30px;
+    height: auto;
+    margin-right: 8px;
+}
+
+.copyright {
+    color: #AFB5C0;
+}
+
+.product,
+.engage {
+    margin: 20px;
+}
+
+.product a,
+.engage a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    font: 18px;
+    margin-top: 15px;
+}
+
+.product a:hover,
+.engage a:hover {
+    color: rgb(114, 112, 112);
+}

@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif;
+}
+
+.chat-icon span {
+    width: 20px;
+    height: 20px;
+    padding: 1px;
+    object-fit: cover;
+    border-radius: 50%;
+    object-position: 0 0;
+    background-color: #6A4029;
+    color: white;
+    text-align: center;
+    position: absolute;
+    margin-top: -15px;
+    margin-left: -8px;
+    z-index: 2;
+}
+
+.nav-profil-img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    object-position: 0 0;
+    border-radius: 50%;
+    margin-top: -10px;
+    border: 3px solid #6A4029;
+}
+
+.main-content-profil {
+    height: 1200px;
+    background-image: url(../../assets/img/background-2.png);
+    background-size: cover;
+    background-position: 0 -500px;
+
+}
+
+.card {
+    border: none;
+}
+
+.card-body-profil,
+.card-body-contact {
+    position: relative;
+    height: 300px;
+}
+
+.card-body-detail {
+    height: 350px;
+}
+
+.card-body p {
+    font-size: small;
+}
+
+.card-profil-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 0 0;
+}
+
+.pencil {
+    width: 25px;
+    height: 25px;
+    padding: 7px;
+    background-color: #6A4029;
+    object-fit: cover;
+    border-radius: 50%;
+    position: absolute;
+    margin-left: 20px;
+    margin-top: 80px;
+    z-index: 1;
+}
+
+.card-footer {
+    background-color: #6A4029;
+}
+
+.card-pencil-img {
+    width: 25px;
+    height: 25px;
+    padding: 7px;
+    background-color: #6A4029;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 300px;
+}
+
+.card-body input,
+.card-body textarea {
+    border: none;
+    border-bottom: 2px solid black;
+    width: 250px;
+}
+
+.button-save {
+    background-color: #6A4029;
+    color: white;
+    font-weight: bold;
+    font-size: medium;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 10px;
+    height: 50px;
+}
+
+.button-cancel {
+    background-color: #FFBA33;
+    color: #6A4029;
+    font-weight: bold;
+    font-size: medium;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 10px;
+    height: 50px;
+}
+
+.button-edit,
+.button-logout {
+    color: #6A4029;
+    text-align: center;
+    font-weight: bold;
+    font-size: medium;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+}
+
+.button-save:hover {
+    background-color: #5c3723;
+}
+
+.button-edit:hover,
+.button-logout:hover {
+    background-color: #6A4029;
+    color: white;
+}
+
+.container-radio {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+    left: 30px;
+}
+
+.container-radio label {
+    color: #9F9F9F;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.container-radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    border: 5px solid #9F9F9F;
+    border-radius: 50%;
+}
+
+.container-radio:hover input~.checkmark {
+    background-color: #FFBA33;
+}
+
+.container-radio label:checked {
+    color: #6A4029;
+}
+
+.container-radio input:checked~.checkmark {
+    background-color: #FFBA33;
+    border: 5px solid #6A4029;
+}
+
+/* main bottom */
+.main-bottom {
+    height: 400px;
+    background-color: #F8F8F8;
+}
+
+.left-content p {
+    color: #4F5665;
+}
+
+.left-content img {
+    width: 30px;
+    height: 33px;
+}
+
+.sosmed img {
+    background-color: #6A4029;
+    border-radius: 100%;
+    width: 30px;
+    height: auto;
+    margin-right: 8px;
+}
+
+.copyright {
+    color: #AFB5C0;
+}
+
+.product,
+.engage {
+    margin: 20px;
+}
+
+.product a,
+.engage a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    font: 18px;
+    margin-top: 15px;
+}
+
+.product a:hover,
+.engage a:hover {
+    color: rgb(114, 112, 112);
+}
+
+@media(max-width: 834px) {
+    .main-content {
+        height: 1850px;
+    }
+
+    .card-body-profil {
+        position: relative;
+        height: 300px;
+    }
+
+    .card-body-contact {
+        position: relative;
+        height: 400px;
+    }
+
+    .card-body-detail {
+        height: 550px;
+    }
+
+    .card-pencil-img {
+        margin-left: 250px;
+        
+    }
+
+    .main-bottom {
+        height: 600px;
+        background-color: #F8F8F8;
+    }
+}
+
+@media(max-width: 428px) {
+    .main-content {
+        height: 1850px;
+    }
+
+    .card-body-profil {
+        position: relative;
+        height: 300px;
+    }
+
+    .card-body-contact {
+        position: relative;
+        height: 400px;
+    }
+
+    .card-body-detail {
+        height: 550px;
+    }
+
+    .card-pencil-img {
+        margin-left: 300px;
+        margin-top: -70px;
+    }
+
+    .main-bottom {
+        height: 850px;
+        background-color: #F8F8F8;
+    }
+}
