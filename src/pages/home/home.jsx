@@ -21,7 +21,7 @@ import Right from '../../assets/img/icons/right.png'
 import './home.css'
 
 
-class home extends Component {
+class Home extends Component {
     render() {
         return (
             <div>
@@ -116,7 +116,7 @@ class home extends Component {
                             <p>Let’s choose and have a bit taste of poeple’s favorite. It might be yours too!</p>
                             <div className="row py-4">
                                 <div className="col-lg-4 col-md-12">
-                                    <div className="card card-custom w-75">
+                                    <div className="card card-custom-four w-75">
                                         <div className="card-body text-center my-5">
                                             <img src={Hazelnut} className="card-img-hazelnut" alt="" />
                                             <h3 className="card-title-custom">Hazelnut Latte</h3>
@@ -134,7 +134,7 @@ class home extends Component {
                                     </div>
                                 </div>
                                 <div className="col-lg-4 col-md-12">
-                                    <div className="card card-custom w-75">
+                                    <div className="card card-custom-four w-75">
                                         <div className="card-body text-center my-5">
                                             <img src={Pinky} className="card-img-pingky" alt="" />
                                             <h3 className="card-title-custom">Pinky Promise</h3>
@@ -153,7 +153,7 @@ class home extends Component {
                                     </div>
                                 </div>
                                 <div className="col-lg-4 col-md-12">
-                                    <div className="card card-custom w-75">
+                                    <div className="card card-custom-four w-75">
                                         <div className="card-body text-center my-5">
                                             <img src={Chicken} className="card-img-chicken" alt="" />
                                             <h3 className="card-title-custom">Chicken Wings</h3>
@@ -266,4 +266,4 @@ class home extends Component {
     }
 }
 
-export default home;
+export default Home;

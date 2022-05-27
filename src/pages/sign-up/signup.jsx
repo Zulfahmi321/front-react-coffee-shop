@@ -6,7 +6,7 @@ import Ig from '../../assets/img/icons/ig-vector.png'
 import Google from '../../assets/img/icons/google-icon.png'
 import './signup.css'
 
-class signup extends Component {
+class Signup extends Component {
     render() {
         return (
             <div class="flex-container">
@@ -105,4 +105,4 @@ class signup extends Component {
     }
 }
 
-export default signup;
+export default Signup;

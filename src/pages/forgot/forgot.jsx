@@ -3,52 +3,39 @@ import CoffeeIcon from '../../assets/img/icons/coffee-icon.png'
 import Fb from '../../assets/img/icons/fb-vektor.png'
 import Twitter from '../../assets/img/icons/twitter-vector.png'
 import Ig from '../../assets/img/icons/ig-vector.png'
-import Google from '../../assets/img/icons/google-icon.png'
-import './login.css'
+import './forgot.css'
 
-class Login extends Component {
+class Forgot extends Component {
     render() {
         return (
             <div className="flex-container">
                 <aside className="aside-image"></aside>
                 <main className="main">
-                    <section className="top-content">
+                    <section className="top-content-forgot">
                         <img src={CoffeeIcon} alt="coffee-icon" />
                         <a href="sdfasd">Coffee Shop</a>
-                        <p className="sign-up">Login</p>
+                    </section>
+                    <section className="forgot-text">
+                        <h1>Forgot your password?</h1>
+                        <p>Don’t worry, we got your back!</p>
                     </section>
                     <section className="main-content">
                         <form action="" className="mx-5 px-5">
                             <div className="mb-3">
-                                <label for="" className="form-label fw-bold">Email Addres:</label>
                                 <input type="email" name="email" className="form-control fs-6"
-                                    placeholder="Enter your email address" />
-                            </div>
-                            <div className="mb-3">
-                                <label for="" className="form-label fw-bold">Password:</label>
-                                <input type="password" name="password" className="form-control" placeholder="Enter your password" />
-                            </div>
-                            <div className="form-text">
-                                <a href="asd">Forgot Password?</a>
+                                    placeholder="Enter your email address to get link" />
                             </div>
                             <div className="d-grid pt-3">
-                                <button className="btn btn-warning fw-bold">Login</button>
-                            </div>
-                            <div className="d-grid pt-3">
-                                <a className="btn btn-light" href="asd">
-                                    <img src={Google} alt="google-icon" width="20px" />
-                                    Sign up with Google
-                                </a>
+                                <button className="btn-lg btn-warning fw-bold">Send</button>
                             </div>
                         </form>
                     </section>
-                    <section className="has-account pt-3">
-                        <div className="underline"></div>
-                        <p className="has-account-text">Don't have an account?</p>
-                        <div className="underline"></div>
+                    <section className="forgot-click pt-3">
+                        <p>Click here if you didn't recieve any link in 2 minutes</p>
+                        <strong>01:52</strong>
                     </section>
-                    <section className="login-here d-grid py-3 mb-5">
-                        <a href="asd" className="button fw-bold text-white text-sm">Sign up here</a>
+                    <section className="resend-link d-grid py-3 mb-5">
+                        <a href="asd" className="button fw-bold text-white text-sm">Resend Link</a>
                     </section>
                     <section className="footer-login text-start py-3">
                         <div className="coffee-shop">
@@ -102,4 +89,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default Forgot;

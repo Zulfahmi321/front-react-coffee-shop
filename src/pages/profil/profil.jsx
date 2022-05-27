@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import './profil.css'
 
 import Pencil from '../../assets/img/icons/pencil-icon.svg'
-import Profil from '../../assets/img/profil.png'
+import Profilimg from '../../assets/img/profil.png'
 import Header from '../../components/navbar/Header'
 import Footer from '../../components/footer/Footer'
 
-class profil extends Component {
+class Profil extends Component {
     render() {
         return (
             <div>
@@ -24,7 +24,7 @@ class profil extends Component {
                                     <div className="card text-center">
                                         <div className="card-body card-body-profil">
                                             <a href=""><img className="pencil" src={Pencil} alt="" /></a>
-                                            <a href=""><img src={Profil}
+                                            <a href=""><img src={Profilimg}
                                                 className="card-profil-img card-img-top mx-auto d-block" alt="" /></a>
                                             <p className="card-title fs-5 fw-bold">Zulaikha</p>
                                             <p className="card-text">zulaikha17@gmail.com</p>
@@ -168,4 +168,4 @@ class profil extends Component {
     }
 }
 
-export default profil;
+export default Profil;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Logo from '../../assets/img/icons/coffee-icon.png'
+import { Link } from 'react-router-dom'
 import './header.css';
 
 class Header extends Component {
@@ -9,9 +10,8 @@ class Header extends Component {
                 <nav className="navbar navbar-expand-lg navbar-light bg-light shadow py-4">
                     <div className="container">
                         <div className="logo">
-                            <a className="navbar-brand fw-bold" href="">
-                                <img src={Logo} alt="logo"
-                                    width="30px" />Coffee Shop</a>
+                            <Link className='navbar-brand' to='/'><img src={Logo} alt="logo"
+                                width="30px" />Coffee Shop</Link>
                         </div>
                         <button className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#kolep">
                             <span className="navbar-toggler-icon"></span>
@@ -20,34 +20,26 @@ class Header extends Component {
                             <div className="col-lg-4 col-md-4 offset-lg-2">
                                 <ul className="navbar-nav fw-bold">
                                     <li className="nav-item">
-                                        <a className="nav-link" href="/">
-                                            Home
-                                        </a>
+                                        <Link className='nav-link' to='/'>Home</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="">
-                                            Product
-                                        </a>
+                                        <Link className='nav-link' to='/product'>Product</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="">
-                                            Your Cart
-                                        </a>
+                                        <Link className='nav-link' to='/cart'>You Cart</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="">
-                                            History
-                                        </a>
+                                        <Link className="nav-link" to="/history">History</Link>
                                     </li>
                                 </ul>
                             </div>
                             <div className="col-lg-4 col-md-4 offset-lg-2">
                                 <ul className="navbar-nav">
                                     <li className="nav-item position-relative chat-icon">
-                                        <a className="nav-link button-login" href="/login">Login</a>
+                                        <Link className="nav-link button-login" to="/login">Login</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link button-signup" href="/signup">Sign Up</a>
+                                        <Link className="nav-link button-signup" to="/signup">Sign Up</Link>
                                     </li>
                                 </ul>
                             </div>

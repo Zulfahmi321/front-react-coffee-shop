@@ -8,7 +8,7 @@ import VektorSatu from '../../assets/img/vektor-satu.png'
 
 import Header from '../../components/navbar/Header'
 import Footer from '../../components/footer/Footer'
-class product extends Component {
+class Product extends Component {
     render() {
         return (
             <div>
@@ -141,4 +141,4 @@ class product extends Component {
     }
 }
 
-export default product;
+export default Product;
