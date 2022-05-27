@@ -10,7 +10,7 @@ export class Footer extends Component {
     render() {
         return (
             <footer>
-                <section className="footer-bottom py-5 text-start">
+                <section className="footer-bottom py-5">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-6 col-md-12">
@@ -32,10 +32,10 @@ export class Footer extends Component {
                                 </div >
                             </div >
                             <div className="col-lg-6 col-md-6" >
-                                <div className="right-content" >
+                                <div className="home-right-content" >
                                     <div className="row" >
                                         <div className="col-lg-6 col-md-6" >
-                                            <div className="product" >
+                                            <div className="home-product-footer" >
                                                 <strong>Product</strong>
                                                 <a href="">Download</a>
                                                 <a href="">Locations</a>
@@ -45,7 +45,7 @@ export class Footer extends Component {
                                             </div >
                                         </div >
                                         <div className="col-lg-6 col-md-6" >
-                                            <div className="engage" >
+                                            <div className="home-engage-footer" >
                                                 <strong>Engage</strong>
                                                 <a href="">Coffee Shop ?</a>
                                                 <a href="">FAQ</a>

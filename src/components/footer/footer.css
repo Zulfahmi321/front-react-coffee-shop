@@ -25,13 +25,13 @@
     color: #AFB5C0;
 }
 
-.product,
-.engage {
+.home-product-footer,
+.home-engage-footer {
     margin: 20px;
 }
 
-.product a,
-.engage a {
+.home-product-footer a,
+.home-engage-footer a {
     display: block;
     text-decoration: none;
     color: black;
@@ -39,7 +39,7 @@
     margin-top: 15px;
 }
 
-.product a:hover,
-.engage a:hover {
+.home-product-footer a:hover,
+.home-engage-footer a:hover {
     color: rgb(114, 112, 112);
 }

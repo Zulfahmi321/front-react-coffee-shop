@@ -86,13 +86,13 @@ class home extends Component {
                             </div>
                         </div>
                     </section>
-                    <section className="main-content-three">
+                    <section className="home-main-content-three">
                         <div className="row row-content-three">
                             <div className="col-lg-6 col-md-12">
                                 <img src={Teamwork} alt="" />
                             </div>
                             <div className="col-lg-6 col-md-12">
-                                <div className="right-custom">
+                                <div className="home-right-custom">
                                     <h3>We Provide Good Coffee and Healthy Meals</h3>
                                     <p>You can explore the menu that we provide with fun and have their own taste and
                                         make
@@ -176,7 +176,7 @@ class home extends Component {
                                 <p>See our store in every city on the spot and spen your good day there. See you soon!</p>
                                 <img className="map" src={Map} alt="" />
                                 <div className="container">
-                                    <div classNameName="row custom-review">
+                                    <div className="row custom-review">
                                         <div className="col-lg-4 col-md-12 custom-review-card-selected">
                                             <div className="row custom-review-identity">
                                                 <div className="col-lg-4 custom-review-profpict">
@@ -203,7 +203,7 @@ class home extends Component {
                                                     <div className="custom-review-from">Shanxi, China</div>
                                                 </div>
                                                 <div className="col-lg-4 custom-review-rating">4.5 <img
-                                                    src="assets/img/icons/vector-star.png" alt="" />
+                                                    src={Star} alt="" />
                                                 </div>
                                             </div>
                                             <div className="custom-review-testimony">"I like it because I like to travel far and still can
@@ -220,7 +220,7 @@ class home extends Component {
                                                     <div className="custom-review-from">Seoul, South Korea</div>
                                                 </div>
                                                 <div className="col-lg-4 custom-review-rating">4.5 <img
-                                                    src="assets/img/icons/vector-star.png" alt="" />
+                                                    src={Star} alt="" />
                                                 </div>
                                             </div>
                                             <div className="custom-review-testimony">"This is very unusual for my taste, I haven't liked

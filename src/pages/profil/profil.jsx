@@ -19,7 +19,7 @@ class profil extends Component {
                             </div>
                         </section>
                         <section className="container">
-                            <div classNameName="row">
+                            <div className="row">
                                 <div className="col-lg-3 col-sm-12 col-xs-12">
                                     <div className="card text-center">
                                         <div className="card-body card-body-profil">
