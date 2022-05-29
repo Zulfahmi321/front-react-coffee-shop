@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif;
+}
+
+.background-payment{
+    background-image: url(https://s3-alpha-sig.figma.com/img/0c77/3b4e/13c3507aae6dd22ab12f949706660279?Expires=1654473600&Signature=I6QMKKWdZnoBcveGk4Jw5p16~1skUYdQa3bYmyQaScQmofpraJy9-cfCrDQLsOOA76W6TpIQXj9x1ScIbrR21oOg8qRiXa4sDMrruwo6XQxJDbd7gwS-hbbaow5f5mHAFtWoFYyal3pxREjKL9ernhOcTP954JK4EDptizpcUzd2qRGieGFiTDU4CsTEc4gLp3qAX0XbUpvpBKx5zeR0tU~S7w66Q1FQsZQ-Om-IoYtk7sTUbzNmO5KhExSfY~MzJQqSip5TvHRAHNdJqpVAav10LtstLwizwGLL-sf9-IxS0fiFU9zmx5OHYOMsl4~H6QVRrfIbfftcUUsoWWVLGw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA);
+    background-size: cover;
+    background-position: 0 60%;
+    height: auto;
+    padding: 20px;
+}
+
+.left-payment-title{
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    margin:50px 20px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.8);
+}
+
+.card-payment{
+    width: 500px;
+    height: auto;
+    border: none;
+    border-radius: 20px;
+    background-color: white;
+    padding: 50px 30px;
+}
+
+.card-title{
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    margin: 50px 0;
+}
+
+.pay-product1{
+    height: 82px;
+    width: 82px;
+    object-fit: cover;
+    object-position: -5 0;
+    border-radius: 20px;
+}
+
+.payment-price{
+    padding-top: 20px;
+}
+
+.underline-payment{
+    padding-top: 30px;
+    border-bottom: 1px solid grey;
+    opacity: 30%;
+}
+
+.detail-payment{
+    margin-top: 20px;
+    font-weight: 400;
+    font-size: 22px;
+}
+
+.payment-total{
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.container-delivery-all{
+    margin: 140px 0;
+}
+
+.container-right-delivery{
+    margin: 30px 0;
+}
+
+.right-payment-title{
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.card-payment-delivery{
+    width: 500px;
+    height: auto;
+    border: none;
+    border-radius: 20px;
+    background-color: white;
+    padding: 50px 70px;
+    font-size: 20px;
+}
+
+.container-radio-payment {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+    left: 30px;
+    border-bottom: 1px solid black;
+}
+
+.container-radio-payment label {
+    color: black;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.container-radio-payment input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.img-card{
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #F47B0A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img-bank{
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #6A4029;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img-cod{
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #FFBA33;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkmark-payment {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    border: 2px solid black;
+    border-radius: 50%;
+}
+
+.container-radio-payment:hover input~.checkmark-payment {
+    background-color: #cd8e69;
+}
+
+.container-radio-payment label:checked {
+    color: #6A4029;
+}
+
+.container-radio-payment input:checked~.checkmark-payment {
+    background-color: #6A4029;
+    border: 5px solid #6A4029;
+}
+
+.button-confirm-pay button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    height: 80px;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: #6A4029;
+    border: none;
+}
+
+@media(max-width:834px) {
+    .background-payment{
+        padding:5% 20%
+    }
+
+    .container-delivery-all{
+        margin: 0 0;
+    }
+
+}
+
+@media(max-width:428px) {
+    .background-payment{
+        padding:5% 0%;
+    }
+    .card-payment,
+    .card-payment-delivery,
+    .button-confirm-pay button {
+        width: 100%;
+    }
+}

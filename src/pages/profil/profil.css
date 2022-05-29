@@ -39,18 +39,14 @@
 
 }
 
-.card {
-    border: none;
-}
-
 .card-body-profil,
 .card-body-contact {
     position: relative;
-    height: 300px;
+    height: auto;
 }
 
 .card-body-detail {
-    height: 350px;
+    height: auto;
 }
 
 .card-body p {
@@ -237,7 +233,7 @@
 }
 
 @media(max-width: 834px) {
-    .main-content {
+    .main-content-profil {
         height: 1850px;
     }
 
@@ -267,7 +263,7 @@
 }
 
 @media(max-width: 428px) {
-    .main-content {
+    .main-content-profil {
         height: 1850px;
     }
 

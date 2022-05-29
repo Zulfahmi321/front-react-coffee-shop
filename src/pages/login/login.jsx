@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import CoffeeIcon from '../../assets/img/icons/coffee-icon.png'
 import Fb from '../../assets/img/icons/fb-vektor.png'
 import Twitter from '../../assets/img/icons/twitter-vector.png'
@@ -29,7 +30,7 @@ class Login extends Component {
                                 <input type="password" name="password" className="form-control" placeholder="Enter your password" />
                             </div>
                             <div className="form-text">
-                                <a href="asd">Forgot Password?</a>
+                                <Link to='/forgot'>Forgot Password?</Link>
                             </div>
                             <div className="d-grid pt-3">
                                 <button className="btn btn-warning fw-bold">Login</button>
@@ -65,7 +66,7 @@ class Login extends Component {
                                     <a href="asd"><img src={Ig} alt="ig-vector" /></a>
                                 </div>
                                 <div className="copyright mt-5">
-                                    <p>&copy2022CoffeeStore</p>
+                                    <p>{'&'}copy2022CoffeeStore</p>
                                 </div>
                             </div>
                             <div className="product-engage">

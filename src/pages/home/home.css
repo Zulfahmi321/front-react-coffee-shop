@@ -275,9 +275,16 @@
     .row-content-three img{
         margin-left: 100px;
     }
+    .home-right-custom img{
+        width: 30px;
+        height: 30px; 
+    }
     .card-custom-four {
         margin-left: 100px;
         border-radius: 10px;
+    }
+    .map{
+        margin-left: 0%;
     }
     .custom-review {
         margin-bottom: 10px;
@@ -311,7 +318,6 @@
     .main-content-one{
         height: 650px;
     }
-    
     .card-content-two{
         width: 100%;
         height: auto;
@@ -327,6 +333,14 @@
         width: 300px;
         height: auto;
         margin-left: 40px;
+    }
+    .card-custom-four{
+        margin-left: 15%;
+    }
+    .home-right-custom img{
+        width: 30px;
+        height: 30px; 
+        margin-left: -10px;
     }
     .right-custom{
         text-align: start;

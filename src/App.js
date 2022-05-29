@@ -9,6 +9,8 @@ import Profil from './pages/profil/profil'
 import Product from './pages/product/product'
 import Forgot from './pages/forgot/forgot'
 import Productdetail from './pages/productdetail/productdetail';
+import Payment from './pages/payment/payment';
+import History from './pages/history/history';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path='/product' element={<Product/>}/>
           <Route path='/forgot' element={<Forgot/>}/>
           <Route path='/product/detail'element={<Productdetail/>}/>
+          <Route path='/payment' element={<Payment/>}/>
+          <Route path='/history' element={<History/>}/>
         </Routes>
       </Router>
     </div>

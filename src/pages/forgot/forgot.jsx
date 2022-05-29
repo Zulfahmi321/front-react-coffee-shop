@@ -9,7 +9,7 @@ class Forgot extends Component {
     render() {
         return (
             <div className="flex-container">
-                <aside className="aside-image"></aside>
+                <aside className="aside-image-forgot"></aside>
                 <main className="main">
                     <section className="top-content-forgot">
                         <img src={CoffeeIcon} alt="coffee-icon" />

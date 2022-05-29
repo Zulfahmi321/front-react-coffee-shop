@@ -8,7 +8,27 @@ import VektorSatu from '../../assets/img/vektor-satu.png'
 
 import Header from '../../components/navbar/Header'
 import Footer from '../../components/footer/Footer'
+import axios from 'axios';
 class Product extends Component {
+    constructor() {
+        super();
+        this.state = {
+            product: [],
+        };
+    }
+    componentDidMount() {
+        axios
+            .get('http://localhost:8080/product/')
+            .then((result) => {
+                this.setState({
+                    product: result.data.data,
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
     render() {
         return (
             <div>
@@ -66,7 +86,7 @@ class Product extends Component {
                                         </div>
                                     </div>
                                     <div className="apply-coupon">
-                                        <p>Apply Coupon</p>
+                                        <button>Apply Coupon</button>
                                     </div>
                                     <div className="footer-aside">
                                         <p><strong>Terms and Condition</strong><br />1. You can only apply 1 coupon per day<br />2.
@@ -98,35 +118,18 @@ class Product extends Component {
                                     </div>
                                     <div className="main-product">
                                         <div className="row">
-                                            <div className="col-lg-3 col-md-4 col-sm-12">
-                                                <div className="card card-custom">
-                                                    <div className="card-body text-center">
-                                                        <img src="assets/img-products/product-7.png" className="card-img-top"
-                                                            alt="product-7" />
-                                                        <p className="card-title-custom">Veggie tomato mix</p>
-                                                        <p className="card-text-custom">IDR 34.000</p>
+                                            {this.state.product.map((product) => (
+                                                <div className="col-lg-3 col-md-4">
+                                                    <div className="card card-custom-product">
+                                                        <div className="card-body text-center">
+                                                            <img key={product.photo} src={`http://localhost:8080${product.photo}`} className="card-img-top"
+                                                                alt="photo-product" />
+                                                            <p className="card-title-custom" key={product.name}>{product.name}</p>
+                                                            <p className="card-text-custom" key={product.price}>{product.price}</p>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div className="col-lg-3 col-md-4 col-sm-12">
-                                                <div className="card card-custom">
-                                                    <div className="card-body text-center">
-                                                        <img src="assets/img-products/product-6.png" className="card-img-top"
-                                                            alt="product-6" />
-                                                        <p className="card-title-custom">Hazelnut Latte</p>
-                                                        <p className="card-text-custom">IDR 25.000</p>
-                                                    </div>
-                                                </div>
-                                            </div><div className="col-lg-3 col-md-4 col-sm-12">
-                                                <div className="card card-custom">
-                                                    <div className="card-body text-center">
-                                                        <img src="assets/img-products/product-6.png" className="card-img-top"
-                                                            alt="product-6" />
-                                                        <p className="card-title-custom">Hazelnut Latte</p>
-                                                        <p className="card-text-custom">IDR 25.000</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            ))}
                                         </div>
                                         <p>*the price has been cutted by discount appears</p>
                                     </div>

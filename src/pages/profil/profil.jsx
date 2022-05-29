@@ -26,7 +26,7 @@ class Profil extends Component {
                                             <a href=""><img className="pencil" src={Pencil} alt="" /></a>
                                             <a href=""><img src={Profilimg}
                                                 className="card-profil-img card-img-top mx-auto d-block" alt="" /></a>
-                                            <p className="card-title fs-5 fw-bold">Zulaikha</p>
+                                            <p className="card-title-name fs-5 fw-bold">Zulaikha</p>
                                             <p className="card-text">zulaikha17@gmail.com</p>
                                             <p className="card-text py-4">Has been ordered 15 products</p>
                                         </div>
@@ -40,7 +40,7 @@ class Profil extends Component {
                                             <div className="card-body card-body-contact">
                                                 <div className="row">
                                                     <div className="col-lg-6 col-sm-6 col-xs-12">
-                                                        <p className="card-title fs-5 fw-bold">Contacts</p>
+                                                        <p className="card-title-contact fs-5 fw-bold">Contacts</p>
                                                     </div>
                                                     <div className="col-lg-6 col-sm-6 col-xs-12">
                                                         <img className="card-pencil-img" src={Pencil} alt="" />
@@ -87,7 +87,7 @@ class Profil extends Component {
                                                 <div className="card-body card-body-detail">
                                                     <div className="row">
                                                         <div className="col-lg-6 col-sm-6">
-                                                            <p className="card-title fs-5 fw-bold">Details</p>
+                                                            <p className="card-title-details fs-5 fw-bold">Details</p>
                                                         </div>
                                                         <div className="col-lg-6 col-sm-6">
                                                             <img className="card-pencil-img" src={Pencil}
@@ -140,7 +140,7 @@ class Profil extends Component {
                                     </div>
                                     <div className="col-lg-3 col-md-12">
                                         <div className="card-body text-white text-center fs-5">
-                                            <div className="card-title">
+                                            <div className="card-title-button">
                                                 <strong>Do you want to save the change?</strong>
                                             </div>
                                             <div className="d-grid pt-4">
