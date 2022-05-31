@@ -35,6 +35,3 @@
 <img src="./src/assets/page/login.png" style="width: 200px height: 400px">
 <img src="./src/assets/page/profil.png" style="width: 200px height: 400px">
 </div>
-
-## BACKEND
-[coffee-shop](https://github.com/Zulfahmi321/coffee-shop.git)
