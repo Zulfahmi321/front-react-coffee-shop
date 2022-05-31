@@ -35,7 +35,7 @@ class Header extends Component {
                                         <Link className='nav-link' to='/product'>Product</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className='nav-link' to='/cart'>You Cart</Link>
+                                        <Link className='nav-link' to='/payment'>You Cart</Link>
                                     </li>
                                     <li className="nav-item">
                                         <Link className="nav-link" to="/history">History</Link>

@@ -145,6 +145,11 @@
     /* color: #9F9F9F; */
 }
 
+.nav-product-nav button{
+    border: none;
+    border-radius: 20px;
+}
+
 .card-custom-product {
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;

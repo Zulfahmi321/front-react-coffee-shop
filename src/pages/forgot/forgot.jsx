@@ -4,6 +4,7 @@ import Fb from '../../assets/img/icons/fb-vektor.png'
 import Twitter from '../../assets/img/icons/twitter-vector.png'
 import Ig from '../../assets/img/icons/ig-vector.png'
 import './forgot.css'
+import { Link } from 'react-router-dom';
 
 class Forgot extends Component {
     render() {
@@ -13,7 +14,7 @@ class Forgot extends Component {
                 <main className="main">
                     <section className="top-content-forgot">
                         <img src={CoffeeIcon} alt="coffee-icon" />
-                        <a href="sdfasd">Coffee Shop</a>
+                        <Link to="/">Coffee Shop</Link>
                     </section>
                     <section className="forgot-text">
                         <h1>Forgot your password?</h1>

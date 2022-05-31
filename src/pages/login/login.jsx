@@ -51,7 +51,7 @@ class Login extends Component {
                 <main className="main">
                     <section className="top-content">
                         <img src={CoffeeIcon} alt="coffee-icon" />
-                        <a href="sdfasd">Coffee Shop</a>
+                        <Link to="/">Coffee Shop</Link>
                         <p className="sign-up">Login</p>
                     </section>
                     <section className="main-content">

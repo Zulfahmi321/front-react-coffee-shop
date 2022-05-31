@@ -6,7 +6,7 @@ import Ig from '../../assets/img/icons/ig-vector.png'
 import Google from '../../assets/img/icons/google-icon.png'
 import './signup.css'
 import axios from 'axios';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 class Signup extends Component {
     constructor() {
@@ -42,7 +42,7 @@ class Signup extends Component {
     }
     render() {
         if (this.state.isSuccess === true) {
-            return <Navigate to="/" />
+            return <Navigate to="/login" />
         }
         return (
             <div class="flex-container">
@@ -92,7 +92,7 @@ class Signup extends Component {
                         <div class="underline"></div>
                     </section>
                     <section class="login-here d-grid py-3 mb-5">
-                        <a href="" class="button fw-bold text-white text-sm">Login here</a>
+                        <Link to="/login" class="button fw-bold text-white text-sm">Login here</Link>
                     </section>
                     <section class="footer-signup py-5 text-start">
                         <div class="coffee-shop">

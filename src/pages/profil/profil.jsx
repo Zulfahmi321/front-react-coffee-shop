@@ -28,7 +28,7 @@ class Profil extends Component {
         axios
             .get('http://localhost:8080/user', config)
             .then((result) => {
-                console.log(result.data.data.data[0])
+                console.log(result.data.data.data[0].gender)
                 this.setState({
                     username: result.data.data.data[0].username,
                     first_name: result.data.data.data[0].first_name,
@@ -101,6 +101,7 @@ class Profil extends Component {
                                                                 <input type="email" name="email"
                                                                     value={email}
                                                                     onChange={this.handlerChange}
+                                                                    checked={this.handlerChange}
                                                                 />
                                                             </div>
                                                             <div className="p-3 text-secondary">
@@ -131,7 +132,7 @@ class Profil extends Component {
                                     </div>
                                 </div>
                             </div>
-                        </section>
+                        </section >
                         <section className="bottom-content my-5 pb-5">
                             <div className="container">
                                 <div className="row">
@@ -184,7 +185,7 @@ class Profil extends Component {
                                                                 <div className="container-radio">
                                                                     <label className="label-radio">Male
                                                                         <input type="radio" name="gender"
-                                                                            onChange={this.handlerChange}
+                                                                            value="male" onChange={this.handlerChange}
                                                                         />
                                                                         <span className="checkmark"></span>
                                                                     </label>
@@ -192,7 +193,7 @@ class Profil extends Component {
                                                                 <div className="container-radio">
                                                                     <label className="label-radio">Female
                                                                         <input type="radio" name="gender"
-                                                                            onChange={this.handlerChange}
+                                                                            value='female' onChange={this.handlerChange}
                                                                         />
                                                                         <span className="checkmark"></span>
                                                                     </label>
@@ -248,10 +249,10 @@ class Profil extends Component {
                                 </div>
                             </div>
                         </section>
-                    </div>
+                    </div >
                 </main >
                 <Footer />
-            </div>
+            </div >
         );
     }
 }

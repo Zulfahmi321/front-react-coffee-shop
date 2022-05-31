@@ -14,6 +14,11 @@ class Product extends Component {
         super();
         this.state = {
             product: [],
+            isFavorite: false,
+            isCoffee: false,
+            isNonCoffee: false,
+            isFood: false,
+            isAll: false,
         };
     }
     componentDidMount() {
@@ -27,6 +32,73 @@ class Product extends Component {
             .catch((error) => {
                 console.log(error);
             })
+    }
+
+    componentDidUpdate() {
+        if (this.state.isAll) {
+            let url = "http://localhost:8080/product"
+            axios
+                .get(url)
+                .then(result => {
+                    this.setState({
+                        product: result.data.data,
+                    });
+                }).catch(error => {
+                    console.log(error)
+                })
+
+            this.setState({
+                isAll: false
+            })
+        }
+        if (this.state.isFood) {
+            let url = "http://localhost:8080/product?category_name=food"
+            axios
+                .get(url)
+                .then(result => {
+                    this.setState({
+                        product: result.data.data,
+                    });
+                }).catch(error => {
+                    console.log(error)
+                })
+
+            this.setState({
+                isFood: false
+            })
+        }
+        if (this.state.isCoffee) {
+            let url = "http://localhost:8080/product?category_name=coffee"
+            axios
+                .get(url)
+                .then(result => {
+                    this.setState({
+                        product: result.data.data,
+                    });
+                }).catch(error => {
+                    console.log(error)
+                })
+
+            this.setState({
+                isCoffee: false
+            })
+        }
+        if (this.state.isNonCoffee) {
+            let url = "http://localhost:8080/product?category_name=tea"
+            axios
+                .get(url)
+                .then(result => {
+                    this.setState({
+                        product: result.data.data,
+                    });
+                }).catch(error => {
+                    console.log(error)
+                })
+
+            this.setState({
+                isNonCoffee: false
+            })
+        }
     }
 
     render() {
@@ -100,19 +172,49 @@ class Product extends Component {
                                     <div className="navbar navbar-expand-lg">
                                         <ul className="navbar-nav nav-product-nav">
                                             <li className="nav-item mx-2">
-                                                <a href="as" className="nav-link text-secondary">Favorite & promo</a>
+                                                <button className="nav-link text-secondary"
+                                                    onClick={() => {
+                                                        this.setState({
+                                                            isFavorite: true,
+                                                        })
+                                                    }}
+                                                >Favorite {'&'} promo</button>
                                             </li>
                                             <li className="nav-item mx-2">
-                                                <a href="as" className="nav-link text-secondary">Coffee</a>
+                                                <button className="nav-link text-secondary"
+                                                    onClick={() => {
+                                                        this.setState({
+                                                            isCoffee: true,
+                                                        })
+                                                    }}
+                                                >Coffee</button>
                                             </li>
                                             <li className="nav-item mx-2">
-                                                <a href="as" className="nav-link text-secondary">Non Coffee</a>
+                                                <button className="nav-link text-secondary"
+                                                    onClick={() => {
+                                                        this.setState({
+                                                            isNonCoffee: true,
+                                                        })
+                                                    }}
+                                                >Non Coffee</button>
                                             </li>
                                             <li className="nav-item mx-2">
-                                                <a href="as" className="nav-link text-secondary">Foods</a>
+                                                <button className="nav-link text-secondary"
+                                                    onClick={() => {
+                                                        this.setState({
+                                                            isFood: true,
+                                                        })
+                                                    }}
+                                                >Foods</button>
                                             </li>
                                             <li className="nav-item mx-2">
-                                                <a href="as" className="nav-link text-secondary">Add-on</a>
+                                                <button className="nav-link text-secondary"
+                                                    onClick={() => {
+                                                        this.setState({
+                                                            isAll: true,
+                                                        })
+                                                    }}
+                                                >All</button>
                                             </li>
                                         </ul>
                                     </div>
