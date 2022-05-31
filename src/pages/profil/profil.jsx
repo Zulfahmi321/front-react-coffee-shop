@@ -5,9 +5,56 @@ import Pencil from '../../assets/img/icons/pencil-icon.svg'
 import Profilimg from '../../assets/img/profil.png'
 import Header from '../../components/navbar/Header'
 import Footer from '../../components/footer/Footer'
+import { Link, Navigate } from 'react-router-dom';
+import axios from 'axios';
 
 class Profil extends Component {
+    constructor() {
+        super()
+        this.state = {
+            isLoggedin: localStorage.getItem("user-info") ? true : false,
+            username: '',
+            first_name: '',
+            last_name: '',
+            email: '',
+            mobile_number: '',
+            date_of_birth: '',
+            gender: ''
+        }
+    }
+    componentDidMount() {
+        const { token } = JSON.parse(localStorage.getItem('user-info'))
+        const config = { headers: { Authorization: `Bearer ${token}` } }
+        axios
+            .get('http://localhost:8080/user', config)
+            .then((result) => {
+                console.log(result.data.data.data[0])
+                this.setState({
+                    username: result.data.data.data[0].username,
+                    first_name: result.data.data.data[0].first_name,
+                    last_name: result.data.data.data[0].last_name,
+                    email: result.data.data.data[0].email,
+                    mobile_number: result.data.data.data[0].mobile_number,
+                    date_of_birth: result.data.data.data[0].date_of_birth,
+                    gender: result.data.data.data[0].gender,
+                    address: result.data.data.data[0].address
+                })
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+    handlerChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+
     render() {
+        const { isLoggedin, username, mobile_number, address, first_name, last_name, gender, date_of_birth, email } = this.state
+        // const { } = this.state.profilData
+
+        if (isLoggedin === false) {
+            return <Navigate to="/" />
+        }
         return (
             <div>
                 <Header />
@@ -26,8 +73,8 @@ class Profil extends Component {
                                             <a href=""><img className="pencil" src={Pencil} alt="" /></a>
                                             <a href=""><img src={Profilimg}
                                                 className="card-profil-img card-img-top mx-auto d-block" alt="" /></a>
-                                            <p className="card-title-name fs-5 fw-bold">Zulaikha</p>
-                                            <p className="card-text">zulaikha17@gmail.com</p>
+                                            <p className="card-title-name fs-5 fw-bold">{username}</p>
+                                            <p className="card-text">{email}</p>
                                             <p className="card-text py-4">Has been ordered 15 products</p>
                                         </div>
                                         <div className="card-footer">
@@ -51,12 +98,17 @@ class Profil extends Component {
                                                         <form action="">
                                                             <div className="p-3 text-secondary">
                                                                 <label for="" className="form-label">Email address:</label><br />
-                                                                <input type="email" name="email" value="zulaikha17@gmail.com" />
+                                                                <input type="email" name="email"
+                                                                    value={email}
+                                                                    onChange={this.handlerChange}
+                                                                />
                                                             </div>
                                                             <div className="p-3 text-secondary">
                                                                 <label for="" className="form-label">Delivery Address:</label><br />
                                                                 <textarea name="address"
-                                                                    id="">Iskandar Street no. 67 Block A Near Bus Stop</textarea>
+                                                                    id="" value={address}
+                                                                    onChange={this.handlerChange}
+                                                                ></textarea>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -64,8 +116,10 @@ class Profil extends Component {
                                                         <form action="">
                                                             <div className="p-3 text-secondary">
                                                                 <label for="" className="form-label">Mobile number:</label><br />
-                                                                <input type="text" pattern="[0-9]+" name="phone"
-                                                                    value="(+62)813456782" />
+                                                                <input type="text" pattern="[0-9]+" name="mobile_number"
+                                                                    value={mobile_number}
+                                                                    onChange={this.handlerChange}
+                                                                />
                                                             </div>
                                                         </form>
                                                     </div>
@@ -99,33 +153,47 @@ class Profil extends Component {
                                                             <form action="">
                                                                 <div className="p-3 text-secondary">
                                                                     <label for="" className="form-label">Display name:</label><br />
-                                                                    <input type="text" name="displayName" value="Zulaikha" />
+                                                                    <input type="text" name="username"
+                                                                        placeholder={username}
+                                                                        value={this.state.username}
+                                                                        onChange={this.handlerChange}
+                                                                    />
                                                                 </div>
                                                                 <div className="p-3 text-secondary">
                                                                     <label for="" className="form-label">First name:</label><br />
-                                                                    <input type="text" name="firstName" value="Zulaikha" />
+                                                                    <input type="text" name="first_name" value={first_name}
+                                                                        onChange={this.handlerChange}
+                                                                    />
                                                                 </div>
                                                                 <div className="p-3 text-secondary">
                                                                     <label for="" className="form-label">Last name:</label><br />
-                                                                    <input type="text" name="lastName" value="Zulaikha" />
+                                                                    <input type="text" name="last_name" value={last_name}
+                                                                        onChange={this.handlerChange}
+                                                                    />
                                                                 </div>
                                                             </form>
                                                         </div>
                                                         <div className="col-lg-6 col-sm-6">
                                                             <form action="">
                                                                 <div className="p-3 text-secondary">
-                                                                    <label for="" className="form-label">DD/MM/YY</label><br />
-                                                                    <input type="date" name="date" value="03/04/90" />
+                                                                    <label for="" className="form-label">DD/MM/YYYY</label><br />
+                                                                    <input type="date" name="date_of_birth" value={date_of_birth}
+                                                                        onChange={this.handlerChange}
+                                                                    />
                                                                 </div>
                                                                 <div className="container-radio">
                                                                     <label className="label-radio">Male
-                                                                        <input type="radio" name="male" />
+                                                                        <input type="radio" name="gender"
+                                                                            onChange={this.handlerChange}
+                                                                        />
                                                                         <span className="checkmark"></span>
                                                                     </label>
                                                                 </div>
                                                                 <div className="container-radio">
                                                                     <label className="label-radio">Female
-                                                                        <input type="radio" name="female" checked />
+                                                                        <input type="radio" name="gender"
+                                                                            onChange={this.handlerChange}
+                                                                        />
                                                                         <span className="checkmark"></span>
                                                                     </label>
                                                                 </div>
@@ -144,7 +212,23 @@ class Profil extends Component {
                                                 <strong>Do you want to save the change?</strong>
                                             </div>
                                             <div className="d-grid pt-4">
-                                                <button className=" button-save">Save Change</button>
+                                                <button className=" button-save"
+                                                    onClick={() => {
+                                                        const { username, first_name, last_name, date_of_birth, email, mobile_number, address, gender } = this.state;
+                                                        const body = { username, first_name, last_name, date_of_birth, email, mobile_number, address, gender };
+                                                        const { token } = JSON.parse(localStorage.getItem("user-info"))
+                                                        const config = { headers: { Authorization: `Bearer ${token}` } }
+                                                        axios
+                                                            .patch('http://localhost:8080/user', body, config)
+                                                            .then(() => {
+                                                                // console.log(result.data.data.msg);
+                                                                alert("Update Success")
+                                                            })
+                                                            .catch((error) => {
+                                                                console.log(error);
+                                                            })
+                                                    }}
+                                                >Save Change</button>
                                             </div>
                                             <div className="d-grid pt-4 ">
                                                 <button className="button-cancel">Cancel</button>
@@ -153,7 +237,11 @@ class Profil extends Component {
                                                 <button className="button-edit">Edit Password</button>
                                             </div>
                                             <div className="d-grid pt-4 ">
-                                                <button className="button-logout">Logout</button>
+                                                <Link to="/" onClick={() => {
+                                                    localStorage.removeItem("user-info")
+                                                }}>
+                                                    <button className="button-logout">Logout</button>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>

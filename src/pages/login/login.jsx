@@ -1,14 +1,50 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import CoffeeIcon from '../../assets/img/icons/coffee-icon.png'
 import Fb from '../../assets/img/icons/fb-vektor.png'
 import Twitter from '../../assets/img/icons/twitter-vector.png'
 import Ig from '../../assets/img/icons/ig-vector.png'
 import Google from '../../assets/img/icons/google-icon.png'
 import './login.css'
+import axios from 'axios';
 
 class Login extends Component {
+    constructor() {
+        super()
+        this.state = {
+            email: '',
+            password: '',
+            isSuccess: false,
+            isLoggedin: false
+        }
+    }
+    handlerChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+    handlerSubmit = async (e) => {
+        e.preventDefault()
+        const { email, password } = this.state;
+        const body = { email, password };
+        await axios
+            .post("http://localhost:8080/auth", body)
+            .then(result => {
+                console.log(result.data);
+                localStorage.setItem("user-info", JSON.stringify(result.data.data));
+                this.setState({
+                    isSuccess: true
+                })
+                alert(result.data.data.msg);
+            })
+            .catch(error => {
+                console.log(error);
+                alert(error.response.data.err.msg);
+            })
+    }
+
     render() {
+        if (this.state.isSuccess === true) {
+            return <Navigate to="/" />
+        }
         return (
             <div className="flex-container">
                 <aside className="aside-image"></aside>
@@ -19,15 +55,19 @@ class Login extends Component {
                         <p className="sign-up">Login</p>
                     </section>
                     <section className="main-content">
-                        <form action="" className="mx-5 px-5">
+                        <form action="" className="mx-5 px-5" onSubmit={this.handlerSubmit}>
                             <div className="mb-3">
                                 <label for="" className="form-label fw-bold">Email Addres:</label>
                                 <input type="email" name="email" className="form-control fs-6"
-                                    placeholder="Enter your email address" />
+                                    placeholder="Enter your email address"
+                                    onChange={this.handlerChange}
+                                />
                             </div>
                             <div className="mb-3">
                                 <label for="" className="form-label fw-bold">Password:</label>
-                                <input type="password" name="password" className="form-control" placeholder="Enter your password" />
+                                <input type="password" name="password" className="form-control" placeholder="Enter your password"
+                                    onChange={this.handlerChange}
+                                />
                             </div>
                             <div className="form-text">
                                 <Link to='/forgot'>Forgot Password?</Link>
@@ -49,7 +89,7 @@ class Login extends Component {
                         <div className="underline"></div>
                     </section>
                     <section className="login-here d-grid py-3 mb-5">
-                        <a href="asd" className="button fw-bold text-white text-sm">Sign up here</a>
+                        <Link className="button fw-bold text-white text-sm" to='/signup'>Sign up here</Link>
                     </section>
                     <section className="footer-login text-start py-3">
                         <div className="coffee-shop">
