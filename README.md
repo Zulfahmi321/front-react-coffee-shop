@@ -31,9 +31,9 @@
 
 ## PREVIEW
 <div style="display:flex">
-<img src="./src/assets/page/home.png" style="width: 200px">
-<img src="./src/assets/page/login.png" style="width: 200px">
-<img src="./src/assets/page/profil.png" style="width: 200px">
+<img src="./src/assets/page/home.png" style="width: 400px height: 400px">
+<img src="./src/assets/page/login.png" style="width: 200px height: 400px">
+<img src="./src/assets/page/profil.png" style="width: 200px height: 400px">
 </div>
 
 ## BACKEND
