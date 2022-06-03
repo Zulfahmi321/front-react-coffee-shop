@@ -60,14 +60,14 @@ class Login extends Component {
                     <section className="main-content">
                         <form action="" className="mx-5 px-5" onSubmit={this.handlerSubmit}>
                             <div className="mb-3">
-                                <label for="" className="form-label fw-bold">Email Addres:</label>
+                                <label htmlFor="" className="form-label fw-bold">Email Addres:</label>
                                 <input type="email" name="email" className="form-control fs-6"
                                     placeholder="Enter your email address"
                                     onChange={this.handlerChange}
                                 />
                             </div>
                             <div className="mb-3">
-                                <label for="" className="form-label fw-bold">Password:</label>
+                                <label htmlFor="" className="form-label fw-bold">Password:</label>
                                 <div className='input-group'>
                                     <input type={this.state.showPassword ? 'text' : 'password'} name="password" className="form-control" placeholder="Enter your password"
                                         onChange={this.handlerChange}

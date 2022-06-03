@@ -152,7 +152,7 @@ class Profil extends Component {
                                                         <div className="col-lg-6 col-sm-6">
                                                             <form action="">
                                                                 <div className="p-3 text-secondary">
-                                                                    <label for="" className="form-label">Display name:</label><br />
+                                                                    <label htmlFor="" className="form-label">Display name:</label><br />
                                                                     <input type="text" name="username"
                                                                         placeholder={username}
                                                                         value={this.state.username}
@@ -160,13 +160,13 @@ class Profil extends Component {
                                                                     />
                                                                 </div>
                                                                 <div className="p-3 text-secondary">
-                                                                    <label for="" className="form-label">First name:</label><br />
+                                                                    <label htmlFor="" className="form-label">First name:</label><br />
                                                                     <input type="text" name="first_name" value={first_name}
                                                                         onChange={this.handlerChange}
                                                                     />
                                                                 </div>
                                                                 <div className="p-3 text-secondary">
-                                                                    <label for="" className="form-label">Last name:</label><br />
+                                                                    <label htmlFor="" className="form-label">Last name:</label><br />
                                                                     <input type="text" name="last_name" value={last_name}
                                                                         onChange={this.handlerChange}
                                                                     />
@@ -176,7 +176,7 @@ class Profil extends Component {
                                                         <div className="col-lg-6 col-sm-6">
                                                             <form action="">
                                                                 <div className="p-3 text-secondary">
-                                                                    <label for="" className="form-label">DD/MM/YYYY</label><br />
+                                                                    <label htmlFor="" className="form-label">DD/MM/YYYY</label><br />
                                                                     <input type="date" name="date_of_birth" value={date_of_birth}
                                                                         onChange={this.handlerChange}
                                                                     />

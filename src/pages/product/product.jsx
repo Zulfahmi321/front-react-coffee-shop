@@ -8,6 +8,7 @@ import VektorSatu from '../../assets/img/vektor-satu.png'
 import Header from '../../components/navbar/Header'
 import Footer from '../../components/footer/Footer'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 class Product extends Component {
     constructor() {
         super();
@@ -221,14 +222,16 @@ class Product extends Component {
                                         <div className="row">
                                             {this.state.product.map((product) => (
                                                 <div className="col-lg-3 col-md-4">
-                                                    <div className="card card-custom-product">
-                                                        <div className="card-body text-center">
-                                                            <img src={`http://localhost:8080${product.photo}`} className="card-img-top"
-                                                                alt="product" />
-                                                            <p className="card-title-custom">{product.name}</p>
-                                                            <p className="card-text-custom">{product.price}</p>
+                                                    <Link to={`/product/${product.id}`}>
+                                                        <div className="card card-custom-product">
+                                                            <div className="card-body text-center">
+                                                                <img src={`http://localhost:8080${product.photo}`} className="card-img-top"
+                                                                    alt="product" />
+                                                                <p className="card-title-custom">{product.name}</p>
+                                                                <p className="card-text-custom">{product.price}</p>
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    </Link>
                                                 </div>
                                             ))}
                                         </div>
@@ -240,7 +243,7 @@ class Product extends Component {
                     </section>
                 </main>
                 <Footer />
-            </React.Fragment>
+            </React.Fragment >
         );
     }
 }

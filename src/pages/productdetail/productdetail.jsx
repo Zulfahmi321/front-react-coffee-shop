@@ -2,13 +2,34 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../components/navbar/Header'
 import Footer from '../../components/footer/Footer';
-import ColdBrew from '../../assets/img-products/Cold Brew.png';
-
+import withParams from '../../helper/withparams';
+import axios from 'axios';
 
 import './productdetail.css'
 
 class Productdetail extends Component {
+    constructor() {
+        super()
+        this.state = {
+            product: []
+        }
+    }
+    componentDidMount() {
+        const { params } = this.props;
+        axios
+            .get(`http://localhost:8080/product/${params.id}`)
+            .then((result) => {
+                this.setState({
+                    product: result.data.data.data[0],
+                });
+                console.log(result);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
     render() {
+
         return (
             <React.Fragment>
                 <Header />
@@ -16,10 +37,10 @@ class Productdetail extends Component {
                     <section className='container'>
                         <div className="row">
                             <div className="col-lg-6 left-product">
-                                <p>Favorite {'&'} Promo {'>'} Cold Brew</p>
-                                <img src={ColdBrew} alt="coldbrew" />
-                                <h1>COLD BREW</h1>
-                                <h5>IDR 30.000</h5>
+                                <p>Favorite {'&'} Promo {'>'} {this.state.product.name}</p>
+                                <img src={`http://localhost:8080${this.state.product.photo}`} alt="product" />
+                                <h1>{this.state.product.name}</h1>
+                                <h5>{this.state.product.price}</h5>
                                 <div className='cart-button'>
                                     <Link to='' className='button-cart' >Add to Cart</Link><br />
                                 </div>
@@ -68,11 +89,11 @@ class Productdetail extends Component {
                                     <div className="card-body card-product-cart">
                                         <div className="row">
                                             <div className="col-lg-2">
-                                                <img src={ColdBrew} alt="coldbrew" className='product-cart-detail' />
+                                                <img src={`http://localhost:8080${this.state.product.photo}`} alt="product" className='product-cart-detail' />
                                             </div>
                                             <div className="col-lg-3">
                                                 <div className='card-product-info'>
-                                                    <strong>COLD BREW</strong>
+                                                    <strong>{this.state.product.name}</strong>
                                                     <p>x1 (Large)</p>
                                                     <p>x1 (Regular)</p>
                                                 </div>
@@ -100,4 +121,4 @@ class Productdetail extends Component {
     }
 }
 
-export default Productdetail;
+export default withParams(Productdetail);
