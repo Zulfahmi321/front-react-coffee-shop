@@ -9,6 +9,7 @@
 }
 .left-product{
     text-align: center;
+    margin: 5% 0;
 }
 .left-product h1,
 .left-product h5{
@@ -56,31 +57,29 @@
     text-decoration: none;
     font-weight: bold;
 }
-
+.right-product{
+    margin: 5% 0;
+}
 .card-product-custom{
     background-color: #EDEDED;
+    border-radius: 5%;
 }
 .card-product-details{
-    width: 400px;
-    height: auto;
     margin: 0 auto;
     border: #EDEDED;
-    border-radius: 20px;
-    padding: 70px;
+    border-radius: 5%;
     background-color: white;
     color: #6A4029;
+    padding: 15%;
 }
-
 .size{
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 .container-size{
     display: flex;
 }
-
 .choose-size{
     width: 50px;
     height: 50px;
@@ -93,21 +92,18 @@
     display: flex;
     margin: 20px 20px;
 }
-
 .delivery{
     justify-content: center;
     text-align: center;
     display: flex;
     margin: 20px 0;
 }
-
 .choose-delivery{
     display: flex;
     text-align: center;
     justify-content: center;
     margin: 20px;
 }
-
 .dine-in{
     width: 110px;
     height: 40px;
@@ -118,7 +114,6 @@
     color: white;
     
 }
-
 .door-delivery,
 .pick-up{
     width: 110px;
@@ -129,44 +124,38 @@
     padding-top: 5px;
     color: #9F9F9F;
 }
-
 .set-time{
     display: flex;
     align-items: center;
     justify-content: center;   
 }
-
 .set-time input{
     width: 220px;
     border: none;
     background-color: #EDEDED;
     border-bottom: 1px solid #9F9F9F;
 }
-
-.container-cart{
-    margin: 30px 20% -30px 20%;
+.card-custom-cart{
+    border-radius: 20px;
+    width: 120%;
+    height: 100%;
 }
-
 .card-product-cart{
-    padding: 30px 20px;
     background-color: white;
     border-radius: 20px;
     box-shadow: 1px 2px 5px grey;
 }
-
 .product-cart-detail{
     width: 80px;
     height: 80px;
 }
-
 .quantity{
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
-    margin-left: 70px;
+    /* margin-left: 70px; */
 }
-
 .quantity button{
     margin: 0 30px;
     width: 40px;
@@ -180,14 +169,14 @@
     align-items: center;
     border: none;
 }
-
-.quantity strong{
-    font-size: 40px;
+.quantity p{
+    font-size: 30px;
+    font-weight: bold;
 }
-
 .checkout{
-    width: 200px;
-    height: 160px;
+    margin: 0 20%;
+    width: 50%;
+    height: 100%;
     font-weight: bold;
     font-size: large;
     background-color: #FFBA33;

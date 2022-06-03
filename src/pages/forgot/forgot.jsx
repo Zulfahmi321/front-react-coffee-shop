@@ -36,7 +36,7 @@ class Forgot extends Component {
                         <strong>01:52</strong>
                     </section>
                     <section className="resend-link d-grid py-3 mb-5">
-                        <a href="asd" className="button fw-bold text-white text-sm">Resend Link</a>
+                        <Link to="asd" className="button fw-bold text-white text-sm">Resend Link</Link>
                     </section>
                     <section className="footer-login text-start py-3">
                         <div className="coffee-shop">
@@ -48,9 +48,9 @@ class Forgot extends Component {
                                     high quality
                                     beans</p>
                                 <div className="sosmed my-5">
-                                    <a href="asd"><img src={Fb} alt="fb-vektor" /></a>
-                                    <a href="asd"><img src={Twitter} alt="twitter-vector" /></a>
-                                    <a href="asd"><img src={Ig} alt="ig-vector" /></a>
+                                    <Link to="asd"><img src={Fb} alt="fb-vektor" /></Link>
+                                    <Link to="asd"><img src={Twitter} alt="twitter-vector" /></Link>
+                                    <Link to="asd"><img src={Ig} alt="ig-vector" /></Link>
                                 </div>
                                 <div className="copyright mt-5">
                                     <p>&copy2022CoffeeStore</p>
@@ -60,25 +60,25 @@ class Forgot extends Component {
                                 <strong>Product</strong>
                                 <div className="product">
                                     <div className="product-one">
-                                        <a href="asd">Download</a>
-                                        <a href="asd">Locations</a>
-                                        <a href="asd">Blog</a>
+                                        <Link to="asd">Download</Link>
+                                        <Link to="asd">Locations</Link>
+                                        <Link to="asd">Blog</Link>
                                     </div>
                                     <div className="product-two">
-                                        <a href="asd">Pricing</a>
-                                        <a href="ads">Countries</a>
+                                        <Link to="asd">Pricing</Link>
+                                        <Link to="ads">Countries</Link>
                                     </div>
                                 </div>
                                 <strong>Engage</strong>
                                 <div className="engage">
                                     <div className="engage-one">
-                                        <a href="sdf">Coffee Shop ?</a>
-                                        <a href="sdf">FAQ</a>
-                                        <a href="sdf">Terms of Services</a>
+                                        <Link to="sdf">Coffee Shop ?</Link>
+                                        <Link to="sdf">FAQ</Link>
+                                        <Link to="sdf">Terms of Services</Link>
                                     </div>
                                     <div className="engage-two">
-                                        <a href="sdf">About Us</a>
-                                        <a href="sdf">Privacy Policy</a>
+                                        <Link to="sdf">About Us</Link>
+                                        <Link to="sdf">Privacy Policy</Link>
                                     </div>
                                 </div>
                             </div>

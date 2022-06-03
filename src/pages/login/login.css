@@ -54,7 +54,14 @@
     color: #6A4029;
     font-weight: bold;
 }
-
+.show{
+    width: 40px;
+    height: 20px;
+}
+.hide{
+    width: 40px;
+    height: 20px;
+}
 .has-account {
     display: flex;
     align-items: center;

@@ -119,15 +119,26 @@
     height: 50px;
 }
 
-.button-edit,
-.button-logout {
+.button-edit{
     color: #6A4029;
-    text-align: center;
     font-weight: bold;
     font-size: medium;
-    height: 50px;
-    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
     border: none;
+    border-radius: 10px;
+    height: 50px;
+}
+
+.button-logout {
+    color: #6A4029;
+    font-weight: bold;
+    font-size: medium;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 10px;
+    height: 50px;
     width: 270px;
 }
 
@@ -248,6 +259,10 @@
         height: 400px;
     }
 
+    .button-logout {
+        width: 660px;
+    }
+
     .card-body-detail {
         height: 550px;
     }
@@ -276,6 +291,10 @@
     .card-body-contact {
         position: relative;
         height: 400px;
+    }
+
+    .button-logout {
+        width: 370px;
     }
 
     .card-body-detail {

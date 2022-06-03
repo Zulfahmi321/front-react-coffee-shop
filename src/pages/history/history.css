@@ -26,8 +26,8 @@
 }
 
 .card-history-product{
-    width: 400px;
-    height: 150px;
+    width: 100%;
+    height: 200px;
     background-color: #FFFFFF;
     border-radius: 20px;
     padding: 20px;
@@ -36,8 +36,8 @@
 }
 
 .product-history{
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     object-fit: cover;
     object-position: 47% 0;
     border-radius: 50%;
@@ -49,8 +49,7 @@
 
 @media(max-width:834px) {
     .card-history-product {
-        width: 80%;
-        margin-left: 10%;  
+        width: 100%;
     }
     .history-info{
         margin: 10px;

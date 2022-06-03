@@ -5,7 +5,6 @@ import VektorTiga from '../../assets/img/vektor-tiga.png'
 import VektorDua from '../../assets/img/vektor-dua.png'
 import VektorSatu from '../../assets/img/vektor-satu.png'
 
-
 import Header from '../../components/navbar/Header'
 import Footer from '../../components/footer/Footer'
 import axios from 'axios';
@@ -23,7 +22,7 @@ class Product extends Component {
     }
     componentDidMount() {
         axios
-            .get('http://localhost:8080/product/')
+            .get('http://localhost:8080/product')
             .then((result) => {
                 this.setState({
                     product: result.data.data,
@@ -103,21 +102,21 @@ class Product extends Component {
 
     render() {
         return (
-            <div>
+            <React.Fragment>
                 <Header />
                 <main>
                     <section className='container'>
                         <div className="row">
-                            <div className="col-lg-4 col-md-12 container-left px-1">
+                            <div className="col-lg-4 container-left ">
                                 <h3 className="">Promo Today</h3>
                                 <p>Coupons will be updated every weeks. Check them out! </p>
                                 <div className="aside-content">
                                     <div className="promo-one">
                                         <div className="row">
-                                            <div className="col-lg-4">
+                                            <div className="col-lg-4 col-sm-4">
                                                 <img src={VektorTiga} alt="vektortiga" />
                                             </div>
-                                            <div className="col-lg-8">
+                                            <div className="col-lg-8 col-sm-8">
                                                 <p><strong>HAPPY MOTHER’S DAY!</strong><br />Get one of our favorite menu for
                                                     free!
                                                 </p>
@@ -126,10 +125,10 @@ class Product extends Component {
                                     </div>
                                     <div className="promo-two">
                                         <div className="row">
-                                            <div className="col-lg-4">
+                                            <div className="col-lg-4 col-sm-4">
                                                 <img src={VektorDua} alt="vektordua" />
                                             </div>
-                                            <div className="col-lg-8">
+                                            <div className="col-lg-8 col-sm-8">
                                                 <p><strong>Get a cup of coffee for free on sunday morning</strong><br />Only at 7
                                                     to 9 AM</p>
                                             </div>
@@ -137,10 +136,10 @@ class Product extends Component {
                                     </div>
                                     <div className="promo-three">
                                         <div className="row">
-                                            <div className="col-lg-4">
+                                            <div className="col-lg-4 col-sm-4">
                                                 <img src={VektorTiga} alt="vektortiga" />
                                             </div>
-                                            <div className="col-lg-8">
+                                            <div className="col-lg-8 col-sm-8">
                                                 <p><strong>HAPPY MOTHER’S DAY!</strong><br />Get one of our favorite menu for
                                                     free!</p>
                                             </div>
@@ -148,10 +147,10 @@ class Product extends Component {
                                     </div>
                                     <div className="promo-four">
                                         <div className="row">
-                                            <div className="col-lg-4">
+                                            <div className="col-lg-4 col-sm-4">
                                                 <img src={VektorSatu} alt="vektorsatu" />
                                             </div>
-                                            <div className="col-lg-8">
+                                            <div className="col-lg-8 col-sm-8">
                                                 <p><strong>HAPPY HALLOWEEN!</strong><br />Do you like chicken wings? Get 1 free
                                                     only if you buy pinky promise</p>
                                             </div>
@@ -167,7 +166,7 @@ class Product extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-8 col-md-12">
+                            <div className="col-lg-8">
                                 <div className="product-container-right">
                                     <div className="navbar navbar-expand-lg">
                                         <ul className="navbar-nav nav-product-nav">
@@ -224,10 +223,10 @@ class Product extends Component {
                                                 <div className="col-lg-3 col-md-4">
                                                     <div className="card card-custom-product">
                                                         <div className="card-body text-center">
-                                                            <img key={product.photo} src={`http://localhost:8080${product.photo}`} className="card-img-top"
-                                                                alt="photo-product" />
-                                                            <p className="card-title-custom" key={product.name}>{product.name}</p>
-                                                            <p className="card-text-custom" key={product.price}>{product.price}</p>
+                                                            <img src={`http://localhost:8080${product.photo}`} className="card-img-top"
+                                                                alt="product" />
+                                                            <p className="card-title-custom">{product.name}</p>
+                                                            <p className="card-text-custom">{product.price}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -241,7 +240,7 @@ class Product extends Component {
                     </section>
                 </main>
                 <Footer />
-            </div>
+            </React.Fragment>
         );
     }
 }

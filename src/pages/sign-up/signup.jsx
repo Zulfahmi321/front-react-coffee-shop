@@ -50,7 +50,7 @@ class Signup extends Component {
                 <main class="main">
                     <section class="top-content">
                         <img src={CoffeeIcon} alt="coffee-icon" />
-                        <a href="">Coffee Shop</a>
+                        <Link to="">Coffee Shop</Link>
                         <p class="sign-up">Sign Up</p>
                     </section>
                     <section class="main-content">
@@ -79,10 +79,10 @@ class Signup extends Component {
                                 <button class="btn btn-warning fw-bold">Sign Up</button>
                             </div>
                             <div class="d-grid pt-3 ">
-                                <a href="" class="btn btn-light fw-bold">
+                                <Link to="" class="btn btn-light fw-bold">
                                     <img src={Google} alt="google-icon" width="20px" />
                                     Sign up with Google
-                                </a>
+                                </Link>
                             </div>
                         </form>
                     </section>
@@ -105,9 +105,9 @@ class Signup extends Component {
                                     high quality
                                     beans</p>
                                 <div class="sosmed my-5">
-                                    <a href=""><img src={Fb} alt="fb-vektor" /></a>
-                                    <a href=""><img src={Twitter} alt="twitter-vector" /></a>
-                                    <a href=""><img src={Ig} alt="ig-vector" /></a>
+                                    <Link to=""><img src={Fb} alt="fb-vektor" /></Link>
+                                    <Link to=""><img src={Twitter} alt="twitter-vector" /></Link>
+                                    <Link to=""><img src={Ig} alt="ig-vector" /></Link>
                                 </div>
                                 <div class="copyright mt-5">
                                     <p>{'&'}copy2022CoffeeStore</p>
@@ -117,25 +117,25 @@ class Signup extends Component {
                                 <strong>Product</strong>
                                 <div class="product">
                                     <div class="product-one">
-                                        <a href="">Download</a>
-                                        <a href="">Locations</a>
-                                        <a href="">Blog</a>
+                                        <Link to="">Download</Link>
+                                        <Link to="">Locations</Link>
+                                        <Link to="">Blog</Link>
                                     </div>
                                     <div class="product-two">
-                                        <a href="">Pricing</a>
-                                        <a href="">Countries</a>
+                                        <Link to="">Pricing</Link>
+                                        <Link to="">Countries</Link>
                                     </div>
                                 </div>
                                 <strong>Engage</strong>
                                 <div class="engage">
                                     <div class="engage-one">
-                                        <a href="">Coffee Shop ?</a>
-                                        <a href="">FAQ</a>
-                                        <a href="">Terms of Services</a>
+                                        <Link to="">Coffee Shop ?</Link>
+                                        <Link to="">FAQ</Link>
+                                        <Link to="">Terms of Services</Link>
                                     </div>
                                     <div class="engage-two">
-                                        <a href="">About Us</a>
-                                        <a href="">Privacy Policy</a>
+                                        <Link to="">About Us</Link>
+                                        <Link to="">Privacy Policy</Link>
                                     </div>
                                 </div>
                             </div>

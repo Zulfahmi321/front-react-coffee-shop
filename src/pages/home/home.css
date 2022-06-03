@@ -10,11 +10,12 @@
     background-size: cover;
     background-position: 0px -980px;
     text-align: start;
+    padding: 0 20%;
 }
 
 .top-content-custom{
-    margin: 100px;
     color: white;
+    margin-top: 70px;
 }
 
 .top-content-custom h1{
@@ -34,6 +35,16 @@
     border-radius: 5px;
 }
 
+.top-content-search{
+    width: 250px;
+    height: auto;
+    background-color: #EFEEEE;
+    border-radius: 20px;
+    text-align: start;
+    margin-left: 30%;
+    margin-top: 20px;
+    padding: 10px;
+}
 .top-content-search a{
     text-decoration: none;
     color: black;
@@ -45,34 +56,21 @@
     height: 20px;
 }
 
-.top-content-search{
-    width: 250px;
-    height: auto;
-    background-color: #EFEEEE;
-    border-radius: 20px;
-    text-align: start;
-    margin: 10px 100px;
-    padding: 10px;
-}
-
 .main-content-two{
-    width: 100%;
-    margin-top: -50px;
+    margin: -5%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 1%;
 }
 
 .card-content-two{
-    width: 1200px;
+    width: 100%;
     height: 150px;
-    margin: 0 20%;
 }
 
 .card-body-content-two{
-    margin: 35px 70px;
+    margin: 4% 4%;
     padding: 0 50px;
-}
-
-.custom-vector-container{
-    margin-right: -80px;
 }
 
 .custom-store-info-text{
@@ -80,7 +78,7 @@
 }
 
 .home-main-content-three{
-    margin: 0 120px;
+    margin: 0 10px;
     text-align: start;
 }
 
@@ -132,7 +130,7 @@
 }
 
 .order-now{
-    padding: 10px 40px;
+    padding: 10px 10px;
     text-decoration: none;
     color: black;
     font-weight: bold;
@@ -146,7 +144,7 @@
 }
 
 .select{
-    padding: 10px 55px;
+    padding: 10px 20px;
     text-decoration: none;
     background-color: #FFBA33;
     color: #EFEEEE;
@@ -161,9 +159,9 @@
 }
 
 .map{
-    width: 700px;
+    width: 80%;
     height: auto;
-    margin: 0 300px;
+    margin: 0 10%;
 }
 
 .partner-img img{
@@ -257,14 +255,29 @@
 }
 
 
-@media(max-width:834px) {
+@media(max-width:768px) {
     .main-content-one{
         height: 500px;
     }
+    .main-content-two{
+        margin: -5%;
+        margin-left: 15%;
+        margin-right: 15%;
+        margin-bottom: 1%;
+    }
+    
     .card-content-two{
-        height: 300px;
-        margin-top: 50px;
-        margin-left: 0px;
+        width: 100%;
+        height: auto;
+    }
+    
+    .card-body-content-two{
+        margin: 4% 0%;
+        padding: 0 5%;
+    }
+    
+    .top-content-search{
+        margin-left: 0%;
     }
     .custom-store-info-text{
         border-right:none;   
@@ -275,6 +288,9 @@
     .row-content-three img{
         margin-left: 100px;
     }
+    .card-content-two {
+        width: 100%;
+    }
     .home-right-custom img{
         width: 30px;
         height: 30px; 
@@ -282,9 +298,6 @@
     .card-custom-four {
         margin-left: 100px;
         border-radius: 10px;
-    }
-    .map{
-        margin-left: 0%;
     }
     .custom-review {
         margin-bottom: 10px;
@@ -355,10 +368,6 @@
     }
     .card-custom {
         margin-left: 50px;
-    }
-    .map{
-        width: 300px;
-        height: auto;
     }
     .card-see-promo{
         padding: 0 0;

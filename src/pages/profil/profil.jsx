@@ -28,7 +28,7 @@ class Profil extends Component {
         axios
             .get('http://localhost:8080/user', config)
             .then((result) => {
-                console.log(result.data.data.data[0].gender)
+                console.log(result.data.data.data[0])
                 this.setState({
                     username: result.data.data.data[0].username,
                     first_name: result.data.data.data[0].first_name,
@@ -70,9 +70,9 @@ class Profil extends Component {
                                 <div className="col-lg-3 col-sm-12 col-xs-12">
                                     <div className="card text-center">
                                         <div className="card-body card-body-profil">
-                                            <a href=""><img className="pencil" src={Pencil} alt="" /></a>
-                                            <a href=""><img src={Profilimg}
-                                                className="card-profil-img card-img-top mx-auto d-block" alt="" /></a>
+                                            <Link to=""><img className="pencil" src={Pencil} alt="" /></Link>
+                                            <Link to=""><img src={Profilimg}
+                                                className="card-profil-img card-img-top mx-auto d-block" alt="" /></Link>
                                             <p className="card-title-name fs-5 fw-bold">{username}</p>
                                             <p className="card-text">{email}</p>
                                             <p className="card-text py-4">Has been ordered 15 products</p>
@@ -101,7 +101,6 @@ class Profil extends Component {
                                                                 <input type="email" name="email"
                                                                     value={email}
                                                                     onChange={this.handlerChange}
-                                                                    checked={this.handlerChange}
                                                                 />
                                                             </div>
                                                             <div className="p-3 text-secondary">

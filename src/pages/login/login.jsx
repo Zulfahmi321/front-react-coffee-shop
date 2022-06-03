@@ -5,6 +5,8 @@ import Fb from '../../assets/img/icons/fb-vektor.png'
 import Twitter from '../../assets/img/icons/twitter-vector.png'
 import Ig from '../../assets/img/icons/ig-vector.png'
 import Google from '../../assets/img/icons/google-icon.png'
+import ShowPass from '../../assets/img/icons/showpass.png'
+import ShowPassOff from '../../assets/img/icons/showoffpass.png'
 import './login.css'
 import axios from 'axios';
 
@@ -15,7 +17,8 @@ class Login extends Component {
             email: '',
             password: '',
             isSuccess: false,
-            isLoggedin: false
+            isLoggedin: false,
+            showPassword: false
         }
     }
     handlerChange = (e) => {
@@ -65,9 +68,15 @@ class Login extends Component {
                             </div>
                             <div className="mb-3">
                                 <label for="" className="form-label fw-bold">Password:</label>
-                                <input type="password" name="password" className="form-control" placeholder="Enter your password"
-                                    onChange={this.handlerChange}
-                                />
+                                <div className='input-group'>
+                                    <input type={this.state.showPassword ? 'text' : 'password'} name="password" className="form-control" placeholder="Enter your password"
+                                        onChange={this.handlerChange}
+                                    />
+                                    <div
+                                        className='input-group-text' onClick={() => this.setState({ showPassword: !this.state.showPassword })}>
+                                        {this.state.showPassword ? <img src={ShowPassOff} alt="show" className='show' /> : <img src={ShowPass} alt="hide" className='hide' />}
+                                    </div>
+                                </div>
                             </div>
                             <div className="form-text">
                                 <Link to='/forgot'>Forgot Password?</Link>
@@ -76,10 +85,10 @@ class Login extends Component {
                                 <button className="btn btn-warning fw-bold">Login</button>
                             </div>
                             <div className="d-grid pt-3">
-                                <a className="btn btn-light" href="asd">
+                                <Link className="btn btn-light" to="asd">
                                     <img src={Google} alt="google-icon" width="20px" />
                                     Sign up with Google
-                                </a>
+                                </Link>
                             </div>
                         </form>
                     </section>
@@ -101,9 +110,9 @@ class Login extends Component {
                                     high quality
                                     beans</p>
                                 <div className="sosmed my-5">
-                                    <a href="asd"><img src={Fb} alt="fb-vektor" /></a>
-                                    <a href="asd"><img src={Twitter} alt="twitter-vector" /></a>
-                                    <a href="asd"><img src={Ig} alt="ig-vector" /></a>
+                                    <Link to="asd"><img src={Fb} alt="fb-vektor" /></Link>
+                                    <Link to="asd"><img src={Twitter} alt="twitter-vector" /></Link>
+                                    <Link to="asd"><img src={Ig} alt="ig-vector" /></Link>
                                 </div>
                                 <div className="copyright mt-5">
                                     <p>{'&'}copy2022CoffeeStore</p>
@@ -113,25 +122,25 @@ class Login extends Component {
                                 <strong>Product</strong>
                                 <div className="product">
                                     <div className="product-one">
-                                        <a href="asd">Download</a>
-                                        <a href="asd">Locations</a>
-                                        <a href="asd">Blog</a>
+                                        <Link to="asd">Download</Link>
+                                        <Link to="asd">Locations</Link>
+                                        <Link to="asd">Blog</Link>
                                     </div>
                                     <div className="product-two">
-                                        <a href="asd">Pricing</a>
-                                        <a href="ads">Countries</a>
+                                        <Link to="asd">Pricing</Link>
+                                        <Link to="ads">Countries</Link>
                                     </div>
                                 </div>
                                 <strong>Engage</strong>
                                 <div className="engage">
                                     <div className="engage-one">
-                                        <a href="sdf">Coffee Shop ?</a>
-                                        <a href="sdf">FAQ</a>
-                                        <a href="sdf">Terms of Services</a>
+                                        <Link to="sdf">Coffee Shop ?</Link>
+                                        <Link to="sdf">FAQ</Link>
+                                        <Link to="sdf">Terms of Services</Link>
                                     </div>
                                     <div className="engage-two">
-                                        <a href="sdf">About Us</a>
-                                        <a href="sdf">Privacy Policy</a>
+                                        <Link to="sdf">About Us</Link>
+                                        <Link to="sdf">Privacy Policy</Link>
                                     </div>
                                 </div>
                             </div>

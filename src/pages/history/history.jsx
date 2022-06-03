@@ -16,13 +16,13 @@ class History extends Component {
                                 <p>Long press to delete item</p></h4>
                         </div>
                         <div className="row">
-                            <div className="col-lg-4">
+                            <div className="col-lg-4 col-sm-6">
                                 <div className="card-history-product">
                                     <div className="row">
-                                        <div className="col-4">
+                                        <div className="col-4 col-md-4 col-sm-4">
                                             <img src={Product} alt="producthistory" className='product-history' />
                                         </div>
-                                        <div className="col-8">
+                                        <div className="col-8 col-md-8">
                                             <div className="history-info">
                                                 <h4>Veggie tomato mix</h4>
                                                 <p>IDR 34.000</p>
@@ -32,13 +32,13 @@ class History extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-4">
+                            <div className="col-lg-4 col-sm-6">
                                 <div className="card-history-product">
                                     <div className="row">
-                                        <div className="col-4">
+                                        <div className="col-4 col-md-4 col-sm-4">
                                             <img src={Product} alt="producthistory" className='product-history' />
                                         </div>
-                                        <div className="col-8">
+                                        <div className="col-8 col-md-8 col-sm-8">
                                             <div className="history-info">
                                                 <h4>Veggie tomato mix</h4>
                                                 <p>IDR 34.000</p>
@@ -48,13 +48,13 @@ class History extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-4">
+                            <div className="col-lg-4 col-sm-6">
                                 <div className="card-history-product">
                                     <div className="row">
-                                        <div className="col-4">
+                                        <div className="col-4 col-md-4 col-sm-4">
                                             <img src={Product} alt="producthistory" className='product-history' />
                                         </div>
-                                        <div className="col-8">
+                                        <div className="col-8 col-md-8 col-sm-8">
                                             <div className="history-info">
                                                 <h4>Veggie tomato mix</h4>
                                                 <p>IDR 34.000</p>
@@ -64,13 +64,13 @@ class History extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-4">
+                            <div className="col-lg-4 col-sm-6 ">
                                 <div className="card-history-product">
                                     <div className="row">
-                                        <div className="col-4">
+                                        <div className="col-4 col-md-4 col-sm-4">
                                             <img src={Product} alt="producthistory" className='product-history' />
                                         </div>
-                                        <div className="col-8">
+                                        <div className="col-8 col-md-8 col-sm-8">
                                             <div className="history-info">
                                                 <h4>Veggie tomato mix</h4>
                                                 <p>IDR 34.000</p>

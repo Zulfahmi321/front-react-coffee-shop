@@ -19,6 +19,7 @@ import Star from '../../assets/img/icons/vector-star.png'
 import Left from '../../assets/img/icons/left.png'
 import Right from '../../assets/img/icons/right.png'
 import './home.css'
+import { Link } from 'react-router-dom';
 
 
 class Home extends Component {
@@ -35,12 +36,12 @@ class Home extends Component {
                                     <p>We provide high quality beans, good taste, and healthy meals made by love just for you.
                                         Start
                                         your day with us for a bigger smile!</p>
-                                    <a href="asd" className="nav-link button-get">Get Started</a>
+                                    <Link to="" className="nav-link button-get">Get Started</Link>
                                 </div>
                             </div>
                             <div className="col-lg-6 col-md-12">
                                 <div className="top-content-search">
-                                    <a href="sad"><img src={Search} alt="search" />Search</a>
+                                    <Link to=""><img src={Search} alt="search" />Search</Link>
                                 </div>
                             </div>
                         </div>
@@ -116,8 +117,8 @@ class Home extends Component {
                             <p>Let’s choose and have a bit taste of poeple’s favorite. It might be yours too!</p>
                             <div className="row py-4">
                                 <div className="col-lg-4 col-md-12">
-                                    <div className="card card-custom-four w-75">
-                                        <div className="card-body text-center my-5">
+                                    <div className="card card-custom-four">
+                                        <div className="card-body text-center">
                                             <img src={Hazelnut} className="card-img-hazelnut" alt="" />
                                             <h3 className="card-title-custom">Hazelnut Latte</h3>
                                             <div className="text-start">
@@ -128,14 +129,14 @@ class Home extends Component {
                                             </div>
                                             <div className="container">
                                                 <h2 className="card-text-custom fw-bold">IDR 25.000</h2>
-                                                <a href="adsd" className="order-now">Order Now</a>
+                                                <Link to="" className="order-now">Order Now</Link>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col-lg-4 col-md-12">
-                                    <div className="card card-custom-four w-75">
-                                        <div className="card-body text-center my-5">
+                                    <div className="card card-custom-four">
+                                        <div className="card-body text-center">
                                             <img src={Pinky} className="card-img-pingky" alt="" />
                                             <h3 className="card-title-custom">Pinky Promise</h3>
                                             <div className="text-start">
@@ -147,14 +148,14 @@ class Home extends Component {
                                             </div>
                                             <div className="container">
                                                 <h2 className="card-text-custom fw-bold">IDR 30.000</h2>
-                                                <a href="ads" className="order-now">Order Now</a>
+                                                <Link to="" className="order-now">Order Now</Link>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col-lg-4 col-md-12">
-                                    <div className="card card-custom-four w-75">
-                                        <div className="card-body text-center my-5">
+                                    <div className="card card-custom-four">
+                                        <div className="card-body text-center">
                                             <img src={Chicken} className="card-img-chicken" alt="" />
                                             <h3 className="card-title-custom">Chicken Wings</h3>
                                             <div className="text-start">
@@ -167,7 +168,7 @@ class Home extends Component {
                                             </div>
                                             <div className="container">
                                                 <h2 className="card-text-custom fw-bold">IDR 40.000</h2>
-                                                <a href="asd" className="select">Select</a>
+                                                <Link to="" className="select">Select</Link>
                                             </div>
                                         </div>
                                     </div>
@@ -249,8 +250,8 @@ class Home extends Component {
                                                     </div>
                                                 </div>
                                                 <div className="col-lg-6 col-md-12 button-promo">
-                                                    <a href="ads" className="btn btn-warning btn-lg">See
-                                                        Promo</a>
+                                                    <Link to="" className="btn btn-warning btn-lg">See
+                                                        Promo</Link>
                                                 </div>
                                             </div>
                                         </div>

@@ -16,7 +16,7 @@ class Header extends Component {
     render() {
         return (
             <header>
-                <nav className="navbar navbar-expand-lg navbar-light bg-light shadow py-4">
+                <nav className="navbar navbar-expand-lg navbar-light bg-light py-4">
                     <div className="container">
                         <div className="logo">
                             <Link className='navbar-brand' to='/'><img src={Logo} alt="logo"
@@ -35,7 +35,7 @@ class Header extends Component {
                                         <Link className='nav-link' to='/product'>Product</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className='nav-link' to='/payment'>You Cart</Link>
+                                        <Link className='nav-link' to='/payment'>Cart</Link>
                                     </li>
                                     <li className="nav-item">
                                         <Link className="nav-link" to="/history">History</Link>
@@ -43,18 +43,18 @@ class Header extends Component {
                                 </ul>
                             </div>
                             {this.state.isLoggedin ?
-                                <div className="col-lg-4 col-md-4 offset-lg-3">
+                                <div className="col-lg-4 col-md-4 offset-lg-2">
                                     <ul className="navbar-nav">
                                         <li className="nav-item px-2">
-                                            <a className="nav-link" href="">
+                                            <Link className="nav-link" to="">
                                                 <img src={searchIcon} alt="" />
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li className="nav-item px-2 position-relative chat-icon">
-                                            <a className="nav-link" href="">
+                                            <Link className="nav-link" to="">
                                                 <span>1</span>
                                                 <img src={chatIcon} alt="" />
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li className="nav-item px-2">
                                             <Link className="nav-link" to="/profil">

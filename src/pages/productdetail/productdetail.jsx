@@ -15,7 +15,7 @@ class Productdetail extends Component {
                 <main className='container-product-details'>
                     <section className='container'>
                         <div className="row">
-                            <div className="col-lg-4 left-product py-5">
+                            <div className="col-lg-6 left-product">
                                 <p>Favorite {'&'} Promo {'>'} Cold Brew</p>
                                 <img src={ColdBrew} alt="coldbrew" />
                                 <h1>COLD BREW</h1>
@@ -27,7 +27,7 @@ class Productdetail extends Component {
                                     <Link to='' className='button-staff'>Ask to Staff</Link>
                                 </div>
                             </div>
-                            <div className="col-lg-8 right-product py-5">
+                            <div className="col-lg-6 right-product">
                                 <div className="card card-product-custom">
                                     <div className='card-product-details'>
                                         <p className='card-title'>Delivery only on <strong>Monday to friday at  1 - 7 pm</strong></p>
@@ -61,11 +61,11 @@ class Productdetail extends Component {
                             </div>
                         </div>
                     </section>
-                    <section className='container-cart'>
+                    <section className='container'>
                         <div className="row">
-                            <div className="col-lg-8 col-md-8">
-                                <div className="card">
-                                    <div className="card-product-cart">
+                            <div className="col-lg-6 col-md-6">
+                                <div className="card card-custom-cart">
+                                    <div className="card-body card-product-cart">
                                         <div className="row">
                                             <div className="col-lg-2">
                                                 <img src={ColdBrew} alt="coldbrew" className='product-cart-detail' />
@@ -80,7 +80,7 @@ class Productdetail extends Component {
                                             <div className="col-lg-7">
                                                 <div className='quantity'>
                                                     <button>-</button>
-                                                    <strong>2</strong>
+                                                    <p>2</p>
                                                     <button>+</button>
                                                 </div>
                                             </div>
@@ -88,7 +88,7 @@ class Productdetail extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-4 col-md-4">
+                            <div className="col-lg-6 col-md-6">
                                 <button className='checkout'>CHECKOUT</button>
                             </div>
                         </div>

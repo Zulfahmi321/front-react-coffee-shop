@@ -23,7 +23,7 @@ function App() {
           <Route path='/profil' element={<Profil/>}/>
           <Route path='/product' element={<Product/>}/>
           <Route path='/forgot' element={<Forgot/>}/>
-          <Route path='/productdetail'element={<Productdetail/>}/>
+          <Route path='/product/:id'element={<Productdetail/>}/>
           <Route path='/payment' element={<Payment/>}/>
           <Route path='/history' element={<History/>}/>
         </Routes>
