@@ -19,7 +19,8 @@ class Profil extends Component {
             email: '',
             mobile_number: '',
             date_of_birth: '',
-            gender: ''
+            gender: '',
+            address: ''
         }
     }
     componentDidMount() {
@@ -97,14 +98,14 @@ class Profil extends Component {
                                                     <div className="col-lg-6 col-sm-6 ">
                                                         <form action="">
                                                             <div className="p-3 text-secondary">
-                                                                <label for="" className="form-label">Email address:</label><br />
+                                                                <label htmlFor="" className="form-label">Email address:</label><br />
                                                                 <input type="email" name="email"
                                                                     value={email}
                                                                     onChange={this.handlerChange}
                                                                 />
                                                             </div>
                                                             <div className="p-3 text-secondary">
-                                                                <label for="" className="form-label">Delivery Address:</label><br />
+                                                                <label htmlFor="" className="form-label">Delivery Address:</label><br />
                                                                 <textarea name="address"
                                                                     id="" value={address}
                                                                     onChange={this.handlerChange}
@@ -115,7 +116,7 @@ class Profil extends Component {
                                                     <div className="col-lg-6 col-sm-6">
                                                         <form action="">
                                                             <div className="p-3 text-secondary">
-                                                                <label for="" className="form-label">Mobile number:</label><br />
+                                                                <label htmlFor="" className="form-label">Mobile number:</label><br />
                                                                 <input type="text" pattern="[0-9]+" name="mobile_number"
                                                                     value={mobile_number}
                                                                     onChange={this.handlerChange}
@@ -237,11 +238,7 @@ class Profil extends Component {
                                                 <button className="button-edit">Edit Password</button>
                                             </div>
                                             <div className="d-grid pt-4 ">
-                                                <Link to="/" onClick={() => {
-                                                    localStorage.removeItem("user-info")
-                                                }}>
-                                                    <button className="button-logout">Logout</button>
-                                                </Link>
+                                                <button className="button-logout" data-bs-toggle="modal" data-bs-target="#exampleModal">Logout</button>
                                             </div>
                                         </div>
                                     </div>
@@ -251,6 +248,25 @@ class Profil extends Component {
                     </div >
                 </main >
                 <Footer />
+                <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">Are You Sure?</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <Link to="/"
+                                    onClick={() => {
+                                        localStorage.removeItem("user-info")
+                                    }}>
+                                    <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Yes</button>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div >
         );
     }

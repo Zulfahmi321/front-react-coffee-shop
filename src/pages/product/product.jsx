@@ -19,11 +19,13 @@ class Product extends Component {
             isNonCoffee: false,
             isFood: false,
             isAll: false,
+            sort: '',
+            order: ''
         };
     }
     componentDidMount() {
         axios
-            .get('http://localhost:8080/product')
+            .get('http://localhost:8080/product/')
             .then((result) => {
                 this.setState({
                     product: result.data.data,
@@ -35,6 +37,70 @@ class Product extends Component {
     }
 
     componentDidUpdate() {
+        if (this.state.sort === 'name') {
+            let url = "http://localhost:8080/product/?sort=name"
+            axios
+                .get(url)
+                .then(result => {
+                    console.log(result);
+                    console.log(this.state.sort);
+                    this.setState({
+                        product: result.data.data,
+                        sort: ''
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+        if (this.state.sort === 'price') {
+            let url = "http://localhost:8080/product/?sort=price"
+            axios
+                .get(url)
+                .then(result => {
+                    console.log(result);
+                    console.log(this.state.sort);
+                    this.setState({
+                        product: result.data.data,
+                        sort: ''
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+        if (this.state.order === 'asc') {
+            let url = "http://localhost:8080/product/?order=asc"
+            axios
+                .get(url)
+                .then(result => {
+                    console.log(result);
+                    console.log(this.state.order);
+                    this.setState({
+                        product: result.data.data,
+                        order: ''
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+        if (this.state.order === 'desc') {
+            let url = "http://localhost:8080/product/?order=desc"
+            axios
+                .get(url)
+                .then(result => {
+                    console.log(result);
+                    console.log(this.state.order);
+                    this.setState({
+                        product: result.data.data,
+                        order: ''
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
         if (this.state.isAll) {
             let url = "http://localhost:8080/product"
             axios
@@ -217,6 +283,51 @@ class Product extends Component {
                                                 >All</button>
                                             </li>
                                         </ul>
+                                        <div>
+                                            <div>
+                                                <ul>
+                                                    <p>Sort By</p>
+                                                    <li>
+                                                        <button
+                                                            onClick={() => {
+                                                                this.setState({
+                                                                    sort: 'name',
+                                                                })
+                                                            }}
+                                                        >
+                                                            Name</button>
+                                                    </li>
+                                                    <li>
+                                                        <button
+                                                            onClick={() => {
+                                                                this.setState({
+                                                                    sort: 'price',
+                                                                })
+                                                            }}
+                                                        >Price</button>
+                                                    </li>
+                                                    <p>Order By</p>
+                                                    <li>
+                                                        <button
+                                                            onClick={() => {
+                                                                this.setState({
+                                                                    order: 'asc',
+                                                                })
+                                                            }}
+                                                        >Asc</button>
+                                                    </li>
+                                                    <li>
+                                                        <button
+                                                            onClick={() => {
+                                                                this.setState({
+                                                                    order: 'desc',
+                                                                })
+                                                            }}
+                                                        >Desc</button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div className="main-product">
                                         <div className="row">
@@ -228,6 +339,7 @@ class Product extends Component {
                                                                 <img src={`http://localhost:8080${product.photo}`} className="card-img-top"
                                                                     alt="product" />
                                                                 <p className="card-title-custom">{product.name}</p>
+                                                                <p className='card-title-custom'>{product.category_name}</p>
                                                                 <p className="card-text-custom">{product.price}</p>
                                                             </div>
                                                         </div>

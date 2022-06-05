@@ -162,13 +162,13 @@ class Signup extends Component {
                         </section>
                     </main>
                 </div>
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
+                <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content">
                             <div className="modal-body">
                                 {this.state.isSuccess ? <p>{this.state.successMsg}</p> : <p>{this.state.errorMsg}</p>}
                             </div>
-                            <div class="modal-footer">
+                            <div className="modal-footer">
                                 {this.state.isSuccess ?
                                     <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
                                         onClick={() => {
