@@ -54,11 +54,11 @@
     color: #6A4029;
     font-weight: bold;
 }
-.show{
+.showpass-login{
     width: 40px;
     height: 20px;
 }
-.hide{
+.hidepass-login{
     width: 40px;
     height: 20px;
 }

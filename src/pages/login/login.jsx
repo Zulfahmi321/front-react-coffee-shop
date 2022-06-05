@@ -36,6 +36,7 @@ class Login extends Component {
                 this.setState({
                     isSuccess: true
                 })
+                console.log(result);
                 alert(result.data.data.msg);
             })
             .catch(error => {
@@ -74,7 +75,7 @@ class Login extends Component {
                                     />
                                     <div
                                         className='input-group-text' onClick={() => this.setState({ showPassword: !this.state.showPassword })}>
-                                        {this.state.showPassword ? <img src={ShowPassOff} alt="show" className='show' /> : <img src={ShowPass} alt="hide" className='hide' />}
+                                        {this.state.showPassword ? <img src={ShowPassOff} alt="show" className='showpass-login' /> : <img src={ShowPass} alt="hide" className='hidepass-login' />}
                                     </div>
                                 </div>
                             </div>

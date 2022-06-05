@@ -47,6 +47,15 @@
     color: rgb(59, 29, 7);
 }
 
+.showpass-signup{
+    width: 40px;
+    height: 20px;
+}
+.hidepass-signup{
+    width: 40px;
+    height: 20px;
+}
+
 .has-account {
     display: flex;
     align-items: center;
