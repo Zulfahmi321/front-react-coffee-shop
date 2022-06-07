@@ -20,7 +20,8 @@ class Profil extends Component {
             mobile_number: '',
             date_of_birth: '',
             gender: '',
-            address: ''
+            address: '',
+            isSuccess: false
         }
     }
     componentDidMount() {
@@ -50,7 +51,7 @@ class Profil extends Component {
     }
 
     render() {
-        const { isLoggedin, username, mobile_number, address, first_name, last_name, gender, date_of_birth, email } = this.state
+        const { isLoggedin, username, mobile_number, address, first_name, last_name, date_of_birth, email } = this.state
         // const { } = this.state.profilData
 
         if (isLoggedin === false) {
@@ -71,7 +72,7 @@ class Profil extends Component {
                                 <div className="col-lg-3 col-sm-12 col-xs-12">
                                     <div className="card text-center">
                                         <div className="card-body card-body-profil">
-                                            <Link to=""><img className="pencil" src={Pencil} alt="" /></Link>
+                                            <div><img className="pencil" src={Pencil} alt="" /></div>
                                             <Link to=""><img src={Profilimg}
                                                 className="card-profil-img card-img-top mx-auto d-block" alt="" /></Link>
                                             <p className="card-title-name fs-5 fw-bold">{username}</p>
@@ -177,7 +178,7 @@ class Profil extends Component {
                                                         <div className="col-lg-6 col-sm-6">
                                                             <form action="">
                                                                 <div className="p-3 text-secondary">
-                                                                    <label htmlFor="" className="form-label">DD/MM/YYYY</label><br />
+                                                                    <label htmlFor="" className="form-label">Birthday</label><br />
                                                                     <input type="date" name="date_of_birth" value={date_of_birth}
                                                                         onChange={this.handlerChange}
                                                                     />
@@ -213,7 +214,7 @@ class Profil extends Component {
                                                 <strong>Do you want to save the change?</strong>
                                             </div>
                                             <div className="d-grid pt-4">
-                                                <button className=" button-save"
+                                                <button className=" button-save" data-bs-toggle="modal" data-bs-target="#exampleModal"
                                                     onClick={() => {
                                                         const { username, first_name, last_name, date_of_birth, email, mobile_number, address, gender } = this.state;
                                                         const body = { username, first_name, last_name, date_of_birth, email, mobile_number, address, gender };
@@ -222,8 +223,9 @@ class Profil extends Component {
                                                         axios
                                                             .patch('http://localhost:8080/user', body, config)
                                                             .then(() => {
-                                                                // console.log(result.data.data.msg);
-                                                                alert("Update Success")
+                                                                this.setState({
+                                                                    isSuccess: true
+                                                                })
                                                             })
                                                             .catch((error) => {
                                                                 console.log(error);
@@ -238,7 +240,7 @@ class Profil extends Component {
                                                 <button className="button-edit">Edit Password</button>
                                             </div>
                                             <div className="d-grid pt-4 ">
-                                                <button className="button-logout" data-bs-toggle="modal" data-bs-target="#exampleModal">Logout</button>
+                                                <button className="button-logout" data-bs-toggle="modal" data-bs-target="#Modallogout">Logout</button>
                                             </div>
                                         </div>
                                     </div>
@@ -248,7 +250,8 @@ class Profil extends Component {
                     </div >
                 </main >
                 <Footer />
-                <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                {/* modal logout */}
+                <div className="modal fade" id="Modallogout" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
@@ -263,6 +266,20 @@ class Profil extends Component {
                                     }}>
                                     <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Yes</button>
                                 </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {/* modal Update success */}
+                <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content">
+                            <div className="modal-body">
+                                {this.state.isSuccess ?
+                                    <h5>Update Success</h5>
+                                    :
+                                    <h5>Update Failed</h5>
+                                }
                             </div>
                         </div>
                     </div>

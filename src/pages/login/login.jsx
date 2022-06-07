@@ -33,7 +33,7 @@ class Login extends Component {
             .then(result => {
                 console.log(result.data);
                 localStorage.setItem("user-info", JSON.stringify(result.data.data));
-                console.log(result);
+                console.log(result.data.data.msg);
                 this.setState({
                     isSuccess: true,
                     successMsg: `${result.data.data.msg}`
@@ -50,7 +50,7 @@ class Login extends Component {
     }
 
     render() {
-        if (this.state.isSuccess === true) {
+        if (this.state.isLoggedin === true) {
             return <Navigate to="/" />
         }
         return (
@@ -168,7 +168,7 @@ class Login extends Component {
                                                 isLoggedin: true
                                             })
                                         }}
-                                    >Go Login</button>
+                                    >Go Home</button>
                                     :
                                     <></>
                                 }

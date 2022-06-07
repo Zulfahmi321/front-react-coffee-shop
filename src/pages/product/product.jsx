@@ -20,7 +20,7 @@ class Product extends Component {
             isFood: false,
             isAll: false,
             sort: '',
-            order: ''
+            order: '',
         };
     }
     componentDidMount() {
@@ -283,57 +283,57 @@ class Product extends Component {
                                                 >All</button>
                                             </li>
                                         </ul>
-                                        <div>
-                                            <div>
-                                                <ul>
-                                                    <p>Sort By</p>
-                                                    <li>
-                                                        <button
-                                                            onClick={() => {
-                                                                this.setState({
-                                                                    sort: 'name',
-                                                                })
-                                                            }}
-                                                        >
-                                                            Name</button>
-                                                    </li>
-                                                    <li>
-                                                        <button
-                                                            onClick={() => {
-                                                                this.setState({
-                                                                    sort: 'price',
-                                                                })
-                                                            }}
-                                                        >Price</button>
-                                                    </li>
-                                                    <p>Order By</p>
-                                                    <li>
-                                                        <button
-                                                            onClick={() => {
-                                                                this.setState({
-                                                                    order: 'asc',
-                                                                })
-                                                            }}
-                                                        >Asc</button>
-                                                    </li>
-                                                    <li>
-                                                        <button
-                                                            onClick={() => {
-                                                                this.setState({
-                                                                    order: 'desc',
-                                                                })
-                                                            }}
-                                                        >Desc</button>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                    </div>
+                                    <div>
+                                        <div className='navbar navbar-expand-lg'>
+                                            <ul className='navbar-nav'>
+                                                <p>Sort By</p>
+                                                <li className='nav-item mx-1'>
+                                                    <button className='nav-item btn btn-outline-secondary'
+                                                        onClick={() => {
+                                                            this.setState({
+                                                                sort: 'name',
+                                                            })
+                                                        }}
+                                                    >
+                                                        Name</button>
+                                                </li>
+                                                <li className='nav-item mx-1'>
+                                                    <button className='nav-item btn btn-outline-secondary'
+                                                        onClick={() => {
+                                                            this.setState({
+                                                                sort: 'price',
+                                                            })
+                                                        }}
+                                                    >Price</button>
+                                                </li>
+                                                <p>Order By</p>
+                                                <li className='nav-item mx-1'>
+                                                    <button className='nav-item btn btn-outline-secondary'
+                                                        onClick={() => {
+                                                            this.setState({
+                                                                order: 'asc',
+                                                            })
+                                                        }}
+                                                    >Asc</button>
+                                                </li>
+                                                <li className='nav-item mx-1'>
+                                                    <button className='nav-item btn btn-outline-secondary'
+                                                        onClick={() => {
+                                                            this.setState({
+                                                                order: 'desc',
+                                                            })
+                                                        }}
+                                                    >Desc</button>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                     <div className="main-product">
                                         <div className="row">
                                             {this.state.product.map((product) => (
                                                 <div className="col-lg-3 col-md-4">
-                                                    <Link to={`/product/${product.id}`}>
+                                                    <Link to={`/product/${product.id}`} className='nav-link'>
                                                         <div className="card card-custom-product">
                                                             <div className="card-body text-center">
                                                                 <img src={`http://localhost:8080${product.photo}`} className="card-img-top"
@@ -346,6 +346,11 @@ class Product extends Component {
                                                     </Link>
                                                 </div>
                                             ))}
+                                        </div>
+                                        <div className="pagination-button">
+                                            <button className='btn btn-success'>Previous</button>
+                                            <p>1/3</p>
+                                            <button className='btn btn-success'>Next</button>
                                         </div>
                                         <p>*the price has been cutted by discount appears</p>
                                     </div>

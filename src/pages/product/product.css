@@ -161,6 +161,8 @@
     height: 200px;
     border: none;
     box-shadow: 1px 1px 10px rgb(231, 228, 228);
+    color: #4F5665;
+    
 }
 
 .card-title-custom {
