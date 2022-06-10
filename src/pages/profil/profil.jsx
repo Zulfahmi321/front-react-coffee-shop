@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './profil.css'
 
 import Pencil from '../../assets/img/icons/pencil-icon.svg'
-import Profilimg from '../../assets/img/profil.png'
 import Header from '../../components/navbar/Header'
 import Footer from '../../components/footer/Footer'
 import { Link, Navigate } from 'react-router-dom';
