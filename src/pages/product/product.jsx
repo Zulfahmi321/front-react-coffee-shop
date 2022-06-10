@@ -8,19 +8,21 @@ import VektorSatu from '../../assets/img/vektor-satu.png'
 import Header from '../../components/navbar/Header'
 import Footer from '../../components/footer/Footer'
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import Cardproduct from './cardproduct';
 class Product extends Component {
     constructor() {
         super();
         this.state = {
             product: [],
-            isFavorite: false,
-            isCoffee: false,
-            isNonCoffee: false,
-            isFood: false,
-            isAll: false,
-            sort: '',
-            order: '',
+            // isFavorite: false,
+            // isCoffee: false,
+            // isNonCoffee: false,
+            // isFood: false,
+            // isAll: false,
+            filter: false,
+            iscategory: 'all',
+            sort: 'name',
+            order: 'asc',
         };
     }
     componentDidMount() {
@@ -37,134 +39,166 @@ class Product extends Component {
     }
 
     componentDidUpdate() {
-        if (this.state.sort === 'name') {
-            let url = "http://localhost:8080/product/?sort=name"
-            axios
-                .get(url)
-                .then(result => {
-                    console.log(result);
-                    console.log(this.state.sort);
-                    this.setState({
-                        product: result.data.data,
-                        sort: ''
-                    });
-                })
-                .catch(error => {
-                    console.log(error);
-                })
-        }
-        if (this.state.sort === 'price') {
-            let url = "http://localhost:8080/product/?sort=price"
-            axios
-                .get(url)
-                .then(result => {
-                    console.log(result);
-                    console.log(this.state.sort);
-                    this.setState({
-                        product: result.data.data,
-                        sort: ''
-                    });
-                })
-                .catch(error => {
-                    console.log(error);
-                })
-        }
-        if (this.state.order === 'asc') {
-            let url = "http://localhost:8080/product/?order=asc"
-            axios
-                .get(url)
-                .then(result => {
-                    console.log(result);
-                    console.log(this.state.order);
-                    this.setState({
-                        product: result.data.data,
-                        order: ''
-                    });
-                })
-                .catch(error => {
-                    console.log(error);
-                })
-        }
-        if (this.state.order === 'desc') {
-            let url = "http://localhost:8080/product/?order=desc"
-            axios
-                .get(url)
-                .then(result => {
-                    console.log(result);
-                    console.log(this.state.order);
-                    this.setState({
-                        product: result.data.data,
-                        order: ''
-                    });
-                })
-                .catch(error => {
-                    console.log(error);
-                })
-        }
-        if (this.state.isAll) {
+        if (this.state.filter) {
             let url = "http://localhost:8080/product"
+            if (this.state.iscategory === 'all') {
+                url += '?'
+            }
+            // if (this.state.iscategory === 'favorite') {
+            //     url += '/favorite?'
+            // }
+            if (this.state.iscategory !== 'all' && this.state.iscategory !== 'favorite') {
+                url += `?category_name=${this.state.iscategory}&`
+            }
+            url += `sort=${this.state.sort}&order=${this.state.order}`
+
+
             axios
                 .get(url)
                 .then(result => {
+                    console.log(result);
+                    console.log(this.state.order);
                     this.setState({
                         product: result.data.data,
+                        order: ''
                     });
-                }).catch(error => {
-                    console.log(error)
                 })
-
+                .catch(error => {
+                    console.log(error);
+                })
             this.setState({
-                isAll: false
+                filter: false
             })
         }
-        if (this.state.isFood) {
-            let url = "http://localhost:8080/product?category_name=food"
-            axios
-                .get(url)
-                .then(result => {
-                    this.setState({
-                        product: result.data.data,
-                    });
-                }).catch(error => {
-                    console.log(error)
-                })
 
-            this.setState({
-                isFood: false
-            })
-        }
-        if (this.state.isCoffee) {
-            let url = "http://localhost:8080/product?category_name=coffee"
-            axios
-                .get(url)
-                .then(result => {
-                    this.setState({
-                        product: result.data.data,
-                    });
-                }).catch(error => {
-                    console.log(error)
-                })
+        // if (this.state.sort === 'name') {
+        //     let url = "http://localhost:8080/product/?sort=name"
+        //     axios
+        //         .get(url)
+        //         .then(result => {
+        //             console.log(result);
+        //             console.log(this.state.sort);
+        //             this.setState({
+        //                 product: result.data.data,
+        //                 sort: ''
+        //             });
+        //         })
+        //         .catch(error => {
+        //             console.log(error);
+        //         })
+        // }
+        // if (this.state.sort === 'price') {
+        //     let url = "http://localhost:8080/product/?sort=price"
+        //     axios
+        //         .get(url)
+        //         .then(result => {
+        //             console.log(result);
+        //             console.log(this.state.sort);
+        //             this.setState({
+        //                 product: result.data.data,
+        //                 sort: ''
+        //             });
+        //         })
+        //         .catch(error => {
+        //             console.log(error);
+        //         })
+        // }
+        // if (this.state.order === 'asc') {
+        //     let url = "http://localhost:8080/product/?order=asc"
+        //     axios
+        //         .get(url)
+        //         .then(result => {
+        //             console.log(result);
+        //             console.log(this.state.order);
+        //             this.setState({
+        //                 product: result.data.data,
+        //                 order: ''
+        //             });
+        //         })
+        //         .catch(error => {
+        //             console.log(error);
+        //         })
+        // }
+        // if (this.state.order === 'desc') {
+        //     let url = "http://localhost:8080/product/?order=desc"
+        //     axios
+        //         .get(url)
+        //         .then(result => {
+        //             console.log(result);
+        //             console.log(this.state.order);
+        //             this.setState({
+        //                 product: result.data.data,
+        //                 order: ''
+        //             });
+        //         })
+        //         .catch(error => {
+        //             console.log(error);
+        //         })
+        // }
+        // if (this.state.isAll) {
+        //     let url = "http://localhost:8080/product"
+        //     axios
+        //         .get(url)
+        //         .then(result => {
+        //             this.setState({
+        //                 product: result.data.data,
+        //             });
+        //         }).catch(error => {
+        //             console.log(error)
+        //         })
 
-            this.setState({
-                isCoffee: false
-            })
-        }
-        if (this.state.isNonCoffee) {
-            let url = "http://localhost:8080/product?category_name=tea"
-            axios
-                .get(url)
-                .then(result => {
-                    this.setState({
-                        product: result.data.data,
-                    });
-                }).catch(error => {
-                    console.log(error)
-                })
+        //     this.setState({
+        //         isAll: false
+        //     })
+        // }
+        // if (this.state.isFood) {
+        //     let url = "http://localhost:8080/product?category_name=food"
+        //     axios
+        //         .get(url)
+        //         .then(result => {
+        //             this.setState({
+        //                 product: result.data.data,
+        //             });
+        //         }).catch(error => {
+        //             console.log(error)
+        //         })
 
-            this.setState({
-                isNonCoffee: false
-            })
-        }
+        //     this.setState({
+        //         isFood: false
+        //     })
+        // }
+        // if (this.state.isCoffee) {
+        //     let url = "http://localhost:8080/product?category_name=coffee"
+        //     axios
+        //         .get(url)
+        //         .then(result => {
+        //             this.setState({
+        //                 product: result.data.data,
+        //             });
+        //         }).catch(error => {
+        //             console.log(error)
+        //         })
+
+        //     this.setState({
+        //         isCoffee: false
+        //     })
+        // }
+        // if (this.state.isNonCoffee) {
+        //     let url = "http://localhost:8080/product?category_name=tea"
+        //     axios
+        //         .get(url)
+        //         .then(result => {
+        //             this.setState({
+        //                 product: result.data.data,
+        //             });
+        //         }).catch(error => {
+        //             console.log(error)
+        //         })
+
+        //     this.setState({
+        //         isNonCoffee: false
+        //     })
+        // }
     }
 
     render() {
@@ -241,7 +275,8 @@ class Product extends Component {
                                                 <button className="nav-link text-secondary"
                                                     onClick={() => {
                                                         this.setState({
-                                                            isFavorite: true,
+                                                            filter: true,
+                                                            iscategory: "favorite"
                                                         })
                                                     }}
                                                 >Favorite {'&'} promo</button>
@@ -250,7 +285,8 @@ class Product extends Component {
                                                 <button className="nav-link text-secondary"
                                                     onClick={() => {
                                                         this.setState({
-                                                            isCoffee: true,
+                                                            filter: true,
+                                                            iscategory: "coffee"
                                                         })
                                                     }}
                                                 >Coffee</button>
@@ -259,7 +295,8 @@ class Product extends Component {
                                                 <button className="nav-link text-secondary"
                                                     onClick={() => {
                                                         this.setState({
-                                                            isNonCoffee: true,
+                                                            filter: true,
+                                                            iscategory: "tea"
                                                         })
                                                     }}
                                                 >Non Coffee</button>
@@ -268,7 +305,8 @@ class Product extends Component {
                                                 <button className="nav-link text-secondary"
                                                     onClick={() => {
                                                         this.setState({
-                                                            isFood: true,
+                                                            filter: true,
+                                                            iscategory: "food"
                                                         })
                                                     }}
                                                 >Foods</button>
@@ -277,7 +315,8 @@ class Product extends Component {
                                                 <button className="nav-link text-secondary"
                                                     onClick={() => {
                                                         this.setState({
-                                                            isAll: true,
+                                                            filter: true,
+                                                            iscategory: 'all'
                                                         })
                                                     }}
                                                 >All</button>
@@ -292,6 +331,7 @@ class Product extends Component {
                                                     <button className='nav-item btn btn-outline-secondary'
                                                         onClick={() => {
                                                             this.setState({
+                                                                filter: true,
                                                                 sort: 'name',
                                                             })
                                                         }}
@@ -302,6 +342,7 @@ class Product extends Component {
                                                     <button className='nav-item btn btn-outline-secondary'
                                                         onClick={() => {
                                                             this.setState({
+                                                                filter: true,
                                                                 sort: 'price',
                                                             })
                                                         }}
@@ -312,6 +353,7 @@ class Product extends Component {
                                                     <button className='nav-item btn btn-outline-secondary'
                                                         onClick={() => {
                                                             this.setState({
+                                                                filter: true,
                                                                 order: 'asc',
                                                             })
                                                         }}
@@ -321,6 +363,7 @@ class Product extends Component {
                                                     <button className='nav-item btn btn-outline-secondary'
                                                         onClick={() => {
                                                             this.setState({
+                                                                filter: true,
                                                                 order: 'desc',
                                                             })
                                                         }}
@@ -331,20 +374,8 @@ class Product extends Component {
                                     </div>
                                     <div className="main-product">
                                         <div className="row">
-                                            {this.state.product.map((product) => (
-                                                <div className="col-lg-3 col-md-4">
-                                                    <Link to={`/product/${product.id}`} className='nav-link'>
-                                                        <div className="card card-custom-product">
-                                                            <div className="card-body text-center">
-                                                                <img src={`http://localhost:8080${product.photo}`} className="card-img-top"
-                                                                    alt="product" />
-                                                                <p className="card-title-custom">{product.name}</p>
-                                                                <p className='card-title-custom'>{product.category_name}</p>
-                                                                <p className="card-text-custom">{product.price}</p>
-                                                            </div>
-                                                        </div>
-                                                    </Link>
-                                                </div>
+                                            {this.state.product.map((product, idx) => (
+                                                <Cardproduct key={idx} id={product.id} photo={`http://localhost:8080${product.photo}`} name={product.name} category={product.category_name} price={product.price} />
                                             ))}
                                         </div>
                                         <div className="pagination-button">

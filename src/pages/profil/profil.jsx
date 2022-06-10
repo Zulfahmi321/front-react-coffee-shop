@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './profil.css'
 
+import ProfDef from '../../assets/img/profil-default.png'
 import Pencil from '../../assets/img/icons/pencil-icon.svg'
 import Header from '../../components/navbar/Header'
 import Footer from '../../components/footer/Footer'
@@ -20,6 +21,7 @@ class Profil extends Component {
             date_of_birth: '',
             gender: '',
             address: '',
+            file: null,
             isSuccess: false
         }
     }
@@ -29,8 +31,9 @@ class Profil extends Component {
         axios
             .get('http://localhost:8080/user', config)
             .then((result) => {
-                console.log(result.data.data.data[0])
+                console.log(result.data.data.data[0]);
                 this.setState({
+                    file: result.data.data.data[0].photo,
                     username: result.data.data.data[0].username,
                     first_name: result.data.data.data[0].first_name,
                     last_name: result.data.data.data[0].last_name,
@@ -49,8 +52,15 @@ class Profil extends Component {
         this.setState({ [e.target.name]: e.target.value })
     }
 
+    handlerChangeImg = (e) => {
+        // console.log(e.target.files[0]);
+        this.setState({
+            file: e.target.files[0]
+        })
+    }
+
     render() {
-        const { isLoggedin, username, mobile_number, address, first_name, last_name, date_of_birth, email } = this.state
+        const { isLoggedin, username, mobile_number, address, first_name, last_name, date_of_birth, email, file } = this.state
         // const { } = this.state.profilData
 
         if (isLoggedin === false) {
@@ -71,9 +81,13 @@ class Profil extends Component {
                                 <div className="col-lg-3 col-sm-12 col-xs-12">
                                     <div className="card text-center">
                                         <div className="card-body card-body-profil">
-                                            <div><img className="pencil" src={Pencil} alt="" /></div>
-                                            <Link to=""><img src={Profilimg}
-                                                className="card-profil-img card-img-top mx-auto d-block" alt="" /></Link>
+                                            <form action="">
+                                                <label className='label-upload'>
+                                                    <img className="pencil" src={Pencil} alt="" />
+                                                    <img src={file ? `http://localhost:8080${file}` : ProfDef} className="card-profil-img card-img-top mx-auto d-block" alt="" />
+                                                    <input type="file" className='input-upload' name='file' onChange={this.handlerChangeImg} />
+                                                </label>
+                                            </form>
                                             <p className="card-title-name fs-5 fw-bold">{username}</p>
                                             <p className="card-text">{email}</p>
                                             <p className="card-text py-4">Has been ordered 15 products</p>
@@ -100,14 +114,16 @@ class Profil extends Component {
                                                             <div className="p-3 text-secondary">
                                                                 <label htmlFor="" className="form-label">Email address:</label><br />
                                                                 <input type="email" name="email"
-                                                                    value={email}
+                                                                    placeholder='enter your email'
+                                                                    value={email == null ? '' : email}
                                                                     onChange={this.handlerChange}
                                                                 />
                                                             </div>
                                                             <div className="p-3 text-secondary">
                                                                 <label htmlFor="" className="form-label">Delivery Address:</label><br />
                                                                 <textarea name="address"
-                                                                    id="" value={address}
+                                                                    placeholder='enter your address'
+                                                                    value={address == null ? '' : address}
                                                                     onChange={this.handlerChange}
                                                                 ></textarea>
                                                             </div>
@@ -118,7 +134,7 @@ class Profil extends Component {
                                                             <div className="p-3 text-secondary">
                                                                 <label htmlFor="" className="form-label">Mobile number:</label><br />
                                                                 <input type="text" pattern="[0-9]+" name="mobile_number"
-                                                                    value={mobile_number}
+                                                                    value={mobile_number == null ? '' : mobile_number}
                                                                     onChange={this.handlerChange}
                                                                 />
                                                             </div>
@@ -156,19 +172,19 @@ class Profil extends Component {
                                                                     <label htmlFor="" className="form-label">Display name:</label><br />
                                                                     <input type="text" name="username"
                                                                         placeholder={username}
-                                                                        value={this.state.username}
+                                                                        value={username == null ? '' : username}
                                                                         onChange={this.handlerChange}
                                                                     />
                                                                 </div>
                                                                 <div className="p-3 text-secondary">
                                                                     <label htmlFor="" className="form-label">First name:</label><br />
-                                                                    <input type="text" name="first_name" value={first_name}
+                                                                    <input type="text" name="first_name" value={first_name == null ? '' : first_name}
                                                                         onChange={this.handlerChange}
                                                                     />
                                                                 </div>
                                                                 <div className="p-3 text-secondary">
                                                                     <label htmlFor="" className="form-label">Last name:</label><br />
-                                                                    <input type="text" name="last_name" value={last_name}
+                                                                    <input type="text" name="last_name" value={last_name == null ? '' : last_name}
                                                                         onChange={this.handlerChange}
                                                                     />
                                                                 </div>
@@ -178,7 +194,7 @@ class Profil extends Component {
                                                             <form action="">
                                                                 <div className="p-3 text-secondary">
                                                                     <label htmlFor="" className="form-label">Birthday</label><br />
-                                                                    <input type="date" name="date_of_birth" value={date_of_birth}
+                                                                    <input type="date" name="date_of_birth" value={date_of_birth == null ? '' : date_of_birth}
                                                                         onChange={this.handlerChange}
                                                                     />
                                                                 </div>
@@ -215,13 +231,24 @@ class Profil extends Component {
                                             <div className="d-grid pt-4">
                                                 <button className=" button-save" data-bs-toggle="modal" data-bs-target="#exampleModal"
                                                     onClick={() => {
-                                                        const { username, first_name, last_name, date_of_birth, email, mobile_number, address, gender } = this.state;
-                                                        const body = { username, first_name, last_name, date_of_birth, email, mobile_number, address, gender };
+                                                        const { username, first_name, last_name, date_of_birth, email, mobile_number, address, gender, file } = this.state;
+                                                        let body = new FormData()
+                                                        body.append('photo', file);
+                                                        body.append('username', username);
+                                                        body.append('first_name', first_name);
+                                                        body.append('last_name', last_name);
+                                                        body.append('date_of_birth', date_of_birth);
+                                                        body.append('email', email);
+                                                        body.append('mobile_number', mobile_number);
+                                                        body.append('address', address);
+                                                        body.append('gender', gender);
+
                                                         const { token } = JSON.parse(localStorage.getItem("user-info"))
-                                                        const config = { headers: { Authorization: `Bearer ${token}` } }
+                                                        const config = { headers: { Authorization: `Bearer ${token}`, 'content-type': 'multipart/form-data' } }
                                                         axios
                                                             .patch('http://localhost:8080/user', body, config)
-                                                            .then(() => {
+                                                            .then((result) => {
+                                                                console.log(result);
                                                                 this.setState({
                                                                     isSuccess: true
                                                                 })
@@ -277,7 +304,7 @@ class Profil extends Component {
                                 {this.state.isSuccess ?
                                     <h5>Update Success</h5>
                                     :
-                                    <h5>Update Failed</h5>
+                                    <h5>Update Failed "INSERT ALL DATA!!"</h5>
                                 }
                             </div>
                         </div>

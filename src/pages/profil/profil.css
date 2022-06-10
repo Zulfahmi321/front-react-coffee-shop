@@ -74,6 +74,11 @@
     z-index: 1;
 }
 
+.input-upload{
+    position: absolute;
+    opacity: 0%;
+}
+
 .card-footer {
     background-color: #6A4029;
 }

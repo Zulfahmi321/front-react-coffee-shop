@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import Header from '../../components/navbar/Header'
 import Footer from '../../components/footer/Footer';
 import withParams from '../../helper/withparams';
+import { connect } from 'react-redux';
 import axios from 'axios';
 
 import './productdetail.css'
+import { counterDown, counterUp } from '../../redux/actionCreator/counter';
 
 class Productdetail extends Component {
     constructor() {
@@ -29,7 +31,8 @@ class Productdetail extends Component {
             })
     }
     render() {
-
+        const { counter, dispatch } = this.props
+        // console.log(counter);
         return (
             <React.Fragment>
                 <Header />
@@ -100,9 +103,9 @@ class Productdetail extends Component {
                                             </div>
                                             <div className="col-lg-7">
                                                 <div className='quantity'>
-                                                    <button>-</button>
-                                                    <p>2</p>
-                                                    <button>+</button>
+                                                    <button onClick={() => dispatch(counterDown())}>-</button>
+                                                    <p>{counter}</p>
+                                                    <button onClick={() => dispatch(counterUp())}>+</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -121,4 +124,11 @@ class Productdetail extends Component {
     }
 }
 
-export default withParams(Productdetail);
+const mapStateToProps = (reduxState) => {
+    const { counter } = reduxState
+    return {
+        counter,
+    }
+}
+
+export default connect(mapStateToProps)(withParams(Productdetail));
