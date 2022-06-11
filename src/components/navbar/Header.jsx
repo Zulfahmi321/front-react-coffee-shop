@@ -5,12 +5,14 @@ import './header.css';
 import searchIcon from '../../assets/img/icons/search-icon.svg'
 import chatIcon from '../../assets/img/icons/chat-icon.svg'
 import profilImg from '../../assets/img/profil.png'
+import { connect } from 'react-redux';
 
 class Header extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
+        const { isSuccess } = this.props
         this.state = {
-            isLoggedin: localStorage.getItem("user-info") ? true : false
+            isLoggedIn: isSuccess ? true : false
         }
     }
     render() {
@@ -42,7 +44,7 @@ class Header extends Component {
                                     </li>
                                 </ul>
                             </div>
-                            {this.state.isLoggedin ?
+                            {this.state.isLoggedIn ?
                                 <div className="col-lg-4 col-md-4 offset-lg-2">
                                     <ul className="navbar-nav">
                                         <li className="nav-item px-2">
@@ -82,5 +84,9 @@ class Header extends Component {
         )
     }
 }
-
-export default Header
+const mapStateToProps = (state) => {
+    return {
+        isSuccess: state.auth.isSuccess
+    }
+}
+export default connect(mapStateToProps)(Header)

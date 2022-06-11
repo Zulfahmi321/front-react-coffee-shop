@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Footer from '../../components/footer/Footer';
 import Header from '../../components/navbar/Header';
 // import Product from '../../assets/img-products/product-1.png'
@@ -15,7 +16,7 @@ class History extends Component {
     }
 
     componentDidMount() {
-        const { token } = JSON.parse(localStorage.getItem('user-info'))
+        const { token = null } = this.props.userInfo || {}
         const config = { headers: { Authorization: `Bearer ${token}` } }
         axios
             .get('http://localhost:8080/transaction/', config)
@@ -52,5 +53,11 @@ class History extends Component {
         );
     }
 }
-
-export default History;
+const mapStateToProps = (state) => {
+    return {
+        userInfo: state.auth.userInfo,
+        isSuccess: state.auth.isSuccess,
+        // isLoggedOut: state.auth.isLoggedOut
+    }
+}
+export default connect(mapStateToProps)(History);

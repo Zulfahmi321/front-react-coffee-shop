@@ -7,12 +7,14 @@ import Header from '../../components/navbar/Header'
 import Footer from '../../components/footer/Footer'
 import { Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { logoutAction } from '../../redux/actionCreator/login';
 
 class Profil extends Component {
     constructor() {
         super()
         this.state = {
-            isLoggedin: localStorage.getItem("user-info") ? true : false,
+            // isLoggedin: localStorage.getItem("user-info") ? true : false,
             username: '',
             first_name: '',
             last_name: '',
@@ -26,7 +28,9 @@ class Profil extends Component {
         }
     }
     componentDidMount() {
-        const { token } = JSON.parse(localStorage.getItem('user-info'))
+        console.log(this.props.userInfo);
+        const { token = null } = this.props.userInfo || {}
+        // console.log(this.props);
         const config = { headers: { Authorization: `Bearer ${token}` } }
         axios
             .get('http://localhost:8080/user', config)
@@ -288,7 +292,7 @@ class Profil extends Component {
                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                 <Link to="/"
                                     onClick={() => {
-                                        localStorage.removeItem("user-info")
+                                        this.props.dispatch(logoutAction())
                                     }}>
                                     <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Yes</button>
                                 </Link>
@@ -314,5 +318,12 @@ class Profil extends Component {
         );
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        userInfo: state.auth.userInfo,
+        isSuccess: state.auth.isSuccess,
+        // isLoggedOut: state.auth.isLoggedOut
+    }
+}
 
-export default Profil;
+export default connect(mapStateToProps)(Profil);

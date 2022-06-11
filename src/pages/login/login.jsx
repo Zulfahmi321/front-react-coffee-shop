@@ -21,7 +21,7 @@ class Login extends Component {
             email: '',
             password: '',
             // isSuccess: false,
-            // isLoggedin: false,
+            isLoggedIn: false,
             showPassword: false
         }
     }
@@ -55,8 +55,8 @@ class Login extends Component {
     }
 
     render() {
-        console.log(this.props.isLoggedIn);
-        if (this.props.isLoggedin === true) {
+        console.log(this.state.isLoggedIn);
+        if (this.state.isLoggedIn === true) {
             return <Navigate to="/" />
         }
         return (
@@ -166,12 +166,12 @@ class Login extends Component {
                             <div className="modal-body">
                                 {this.props.isSuccess ? <p>{this.props.userInfo.msg}</p> : <p>{this.props.error}</p>}
                             </div>
-                            {/* <div className="modal-footer">
+                            <div className="modal-footer">
                                 {this.props.isSuccess ?
                                     <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
                                         onClick={() => {
                                             this.setState({
-                                                isLoggedin: true
+                                                isLoggedIn: true
                                             })
                                         }}
                                     >Go Home</button>
@@ -179,7 +179,7 @@ class Login extends Component {
                                     <></>
                                 }
 
-                            </div> */}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -193,7 +193,7 @@ const mapStateToProps = (state) => {
         userInfo: state.auth.userInfo,
         error: state.auth.error,
         isSuccess: state.auth.isSuccess,
-        isLoggedIn: state.auth.isLoggedIn
+
     }
 }
 

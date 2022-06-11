@@ -9,9 +9,10 @@ import Header from '../../components/navbar/Header'
 import Footer from '../../components/footer/Footer'
 import axios from 'axios';
 import Cardproduct from './cardproduct';
+import withSearchParams from '../../helper/searchwithParams';
 class Product extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             product: [],
             // isFavorite: false,
@@ -23,11 +24,13 @@ class Product extends Component {
             iscategory: 'all',
             sort: 'name',
             order: 'asc',
+            setSearchParams: this.props.setSearchParams.bind(this)
         };
     }
     componentDidMount() {
+        this.state.setSearchParams('');
         axios
-            .get('http://localhost:8080/product/')
+            .get('http://localhost:8080/product')
             .then((result) => {
                 this.setState({
                     product: result.data.data,
@@ -40,17 +43,23 @@ class Product extends Component {
 
     componentDidUpdate() {
         if (this.state.filter) {
+            let params = ''
             let url = "http://localhost:8080/product"
             if (this.state.iscategory === 'all') {
                 url += '?'
             }
             // if (this.state.iscategory === 'favorite') {
             //     url += '/favorite?'
+            params += 'category=favorite&'
             // }
             if (this.state.iscategory !== 'all' && this.state.iscategory !== 'favorite') {
                 url += `?category_name=${this.state.iscategory}&`
+                params += `category_name=${this.state.iscategory}&`
             }
             url += `sort=${this.state.sort}&order=${this.state.order}`
+            params += `sort=${this.state.sort}&order=${this.state.order}`
+
+            this.state.setSearchParams(params)
 
 
             axios
@@ -396,4 +405,4 @@ class Product extends Component {
     }
 }
 
-export default Product;
+export default withSearchParams(Product);

@@ -1,4 +1,5 @@
 import React from "react";
+import { connect, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 
@@ -9,7 +10,7 @@ function PrivateElement({
     isRouteReplaced = true,
     extraData = null,
 }) {
-    const { token = null } = JSON.parse(localStorage.getItem('user-info')) || {};
+    const { token = null } = useSelector((state) => state.auth.userInfo) || {};
     if (!token) {
         return (
             <Navigate to={redirectedTo} replace={isRouteReplaced} state={extraData} />
@@ -17,5 +18,11 @@ function PrivateElement({
     }
     return children;
 }
-
-export default PrivateElement
+const mapStateToProps = (state) => {
+    return {
+        userInfo: state.auth.userInfo,
+        isSuccess: state.auth.isSuccess,
+        // isLoggedOut: state.auth.isLoggedOut
+    }
+}
+export default connect(mapStateToProps)(PrivateElement)
