@@ -16,6 +16,7 @@ class History extends Component {
     }
 
     componentDidMount() {
+        document.title = "History"
         const { token = null } = this.props.userInfo || {}
         const config = { headers: { Authorization: `Bearer ${token}` } }
         axios

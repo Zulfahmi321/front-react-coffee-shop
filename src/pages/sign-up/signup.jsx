@@ -52,6 +52,9 @@ class Signup extends Component {
                 })
             })
     }
+    componentDidMount() {
+        document.title = "Sign Up"
+    }
     render() {
         if (this.state.registered === true) {
             return <Navigate to="/login" />

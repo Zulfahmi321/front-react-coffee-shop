@@ -28,7 +28,8 @@ class Profil extends Component {
         }
     }
     componentDidMount() {
-        console.log(this.props.userInfo);
+        // console.log(this.props.userInfo);
+        document.title = "Profil"
         const { token = null } = this.props.userInfo || {}
         // console.log(this.props);
         const config = { headers: { Authorization: `Bearer ${token}` } }

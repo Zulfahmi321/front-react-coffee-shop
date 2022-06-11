@@ -10,6 +10,9 @@ import Cod from '../../assets/img-payment/cod.png'
 import './payment.css'
 
 class Payment extends Component {
+    componentDidMount() {
+        document.title = "Cart"
+    }
     render() {
         return (
             <React.Fragment>

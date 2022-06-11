@@ -53,7 +53,9 @@ class Login extends Component {
 
         //     })
     }
-
+    componentDidMount() {
+        document.title = "Login"
+    }
     render() {
         console.log(this.state.isLoggedIn);
         if (this.state.isLoggedIn === true) {

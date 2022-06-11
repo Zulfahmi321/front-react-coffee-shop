@@ -7,6 +7,9 @@ import './forgot.css'
 import { Link } from 'react-router-dom';
 
 class Forgot extends Component {
+    componentDidMount() {
+        document.title = "Forgot Password"
+    }
     render() {
         return (
             <div className="flex-container">

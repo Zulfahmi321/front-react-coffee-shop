@@ -28,6 +28,7 @@ class Product extends Component {
         };
     }
     componentDidMount() {
+        document.title = "Product"
         this.state.setSearchParams('');
         axios
             .get('http://localhost:8080/product')

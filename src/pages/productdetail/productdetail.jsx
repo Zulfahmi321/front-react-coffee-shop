@@ -17,6 +17,7 @@ class Productdetail extends Component {
         }
     }
     componentDidMount() {
+        document.title = "Product Detail"
         const { params } = this.props;
         axios
             .get(`http://localhost:8080/product/${params.id}`)
