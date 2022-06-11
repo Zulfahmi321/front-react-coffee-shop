@@ -13,12 +13,14 @@ import Payment from './pages/payment/payment';
 import History from './pages/history/history';
 import PrivateElement from './components/privateroute/PrivateElement';
 import {Provider as ReduxProvider} from 'react-redux';
-import { store } from './redux/store';
+import { persistor, store } from './redux/store';
+import { PersistGate } from 'redux-persist/integration/react'
 
 function App() {
   return (
     <div className="App">
       <ReduxProvider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
       <Router>
               <Routes>
                 <Route exact path='/' element={<Home/>}/>
@@ -47,6 +49,7 @@ function App() {
                 }/>
               </Routes>
             </Router>
+            </PersistGate>
       </ReduxProvider>
     </div>
   );

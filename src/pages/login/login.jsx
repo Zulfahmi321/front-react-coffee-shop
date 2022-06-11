@@ -8,7 +8,11 @@ import Google from '../../assets/img/icons/google-icon.png'
 import ShowPass from '../../assets/img/icons/showpass.png'
 import ShowPassOff from '../../assets/img/icons/showoffpass.png'
 import './login.css'
-import axios from 'axios';
+// import axios from 'axios';
+
+import { connect } from 'react-redux';
+import { loginAction } from '../../redux/actionCreator/login';
+
 
 class Login extends Component {
     constructor() {
@@ -16,41 +20,43 @@ class Login extends Component {
         this.state = {
             email: '',
             password: '',
-            isSuccess: false,
-            isLoggedin: false,
+            // isSuccess: false,
+            // isLoggedin: false,
             showPassword: false
         }
     }
     handlerChange = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     }
-    handlerSubmit = async (e) => {
+    handlerSubmit = (e) => {
         e.preventDefault()
         const { email, password } = this.state;
         const body = { email, password };
-        await axios
-            .post("http://localhost:8080/auth", body)
-            .then(result => {
-                console.log(result.data);
-                localStorage.setItem("user-info", JSON.stringify(result.data.data));
-                console.log(result.data.data.msg);
-                this.setState({
-                    isSuccess: true,
-                    successMsg: `${result.data.data.msg}`
-                })
+        this.props.dispatch(loginAction(body))
+        // axios
+        //     .post("http://localhost:8080/auth", body)
+        //     .then(result => {
+        //         console.log(result.data);
+        //         localStorage.setItem("user-info", JSON.stringify(result.data.data));
+        //         console.log(result.data.data.msg);
+        //         this.setState({
+        //             isSuccess: true,
+        //             successMsg: `${result.data.data.msg}`
+        //         })
 
-            })
-            .catch(error => {
-                console.log(error);
-                this.setState({
-                    errorMsg: `${error.response.data.err.msg}`
-                })
+        //     })
+        //     .catch(error => {
+        //         console.log(error);
+        //         this.setState({
+        //             errorMsg: `${error.response.data.err.msg}`
+        //         })
 
-            })
+        //     })
     }
 
     render() {
-        if (this.state.isLoggedin === true) {
+        console.log(this.props.isLoggedIn);
+        if (this.props.isLoggedin === true) {
             return <Navigate to="/" />
         }
         return (
@@ -158,10 +164,10 @@ class Login extends Component {
                     <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content">
                             <div className="modal-body">
-                                {this.state.isSuccess ? <p>{this.state.successMsg}</p> : <p>{this.state.errorMsg}</p>}
+                                {this.props.isSuccess ? <p>{this.props.userInfo.msg}</p> : <p>{this.props.error}</p>}
                             </div>
-                            <div className="modal-footer">
-                                {this.state.isSuccess ?
+                            {/* <div className="modal-footer">
+                                {this.props.isSuccess ?
                                     <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
                                         onClick={() => {
                                             this.setState({
@@ -173,13 +179,22 @@ class Login extends Component {
                                     <></>
                                 }
 
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
-            </React.Fragment>
+            </React.Fragment >
         );
     }
 }
+const mapStateToProps = (state) => {
+    // const { auth: { userInfo, error, isSuccess } } = state
+    return {
+        userInfo: state.auth.userInfo,
+        error: state.auth.error,
+        isSuccess: state.auth.isSuccess,
+        isLoggedIn: state.auth.isLoggedIn
+    }
+}
 
-export default Login;
+export default connect(mapStateToProps)(Login);

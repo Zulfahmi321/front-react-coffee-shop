@@ -1,23 +1,22 @@
-import { legacy_createStore as createstore } from "redux";
-import { counterDownAction, counterUpAction } from "./actionCreator/actionString";
+import { applyMiddleware, legacy_createStore as createstore } from "redux";
+import { createLogger } from "redux-logger";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from 'redux-persist/lib/storage'
+import rpm from "redux-promise-middleware"
+import reducers from "./reducer";
 
-const initialState = {
-    counter: 0
+//setup redux-persist
+const persistConfig = {
+    key: 'root',
+    storage,
+    whitelist: ["auth"]
 }
 
-const reducer = (prevState = initialState, action) => {
-    switch (action.type) {
-        case counterUpAction:
-            return { ...prevState, counter: prevState.counter + 1 }
+const persistedReducer = persistReducer(persistConfig, reducers)
 
-        case counterDownAction:
-            return { ...prevState, counter: prevState.counter - 1 }
+const logger = createLogger();
+const middlewares = applyMiddleware(rpm, logger)
 
-        default:
-            return prevState
-
-    }
-}
-
-export const store = createstore(reducer);
+export let store = createstore(persistedReducer, middlewares);
+export let persistor = persistStore(store)
 

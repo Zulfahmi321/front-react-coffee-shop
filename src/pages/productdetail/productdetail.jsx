@@ -31,7 +31,7 @@ class Productdetail extends Component {
             })
     }
     render() {
-        const { counter, dispatch } = this.props
+        const { counter, counterDown, counterUp } = this.props
         // console.log(counter);
         return (
             <React.Fragment>
@@ -103,9 +103,9 @@ class Productdetail extends Component {
                                             </div>
                                             <div className="col-lg-7">
                                                 <div className='quantity'>
-                                                    <button onClick={() => dispatch(counterDown())}>-</button>
+                                                    <button onClick={() => counterDown()}>-</button>
                                                     <p>{counter}</p>
-                                                    <button onClick={() => dispatch(counterUp())}>+</button>
+                                                    <button onClick={() => counterUp()}>+</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -125,10 +125,19 @@ class Productdetail extends Component {
 }
 
 const mapStateToProps = (reduxState) => {
-    const { counter } = reduxState
+    const { counter: { counter } } = reduxState
+    return { counter, }
+}
+
+const mapDispatchToProps = (dispatch) => {
     return {
-        counter,
+        counterDown: () => {
+            dispatch(counterDown())
+        },
+        counterUp: () => {
+            dispatch(counterUp())
+        }
     }
 }
 
-export default connect(mapStateToProps)(withParams(Productdetail));
+export default connect(mapStateToProps, mapDispatchToProps)(withParams(Productdetail));
