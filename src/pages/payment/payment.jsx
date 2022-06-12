@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Footer from '../../components/footer/Footer';
 import Header from '../../components/navbar/Header';
-import Product1 from '../../assets/img-products/product-6.png'
 import Card from '../../assets/img-payment/card.png'
 import Bank from '../../assets/img-payment/bank-account.png'
 import Cod from '../../assets/img-payment/cod.png'
 
 
 import './payment.css'
+import { connect } from 'react-redux';
 
 class Payment extends Component {
     componentDidMount() {
@@ -28,28 +28,13 @@ class Payment extends Component {
                                         <div className="container">
                                             <div className="row">
                                                 <div className="col-lg-3 col-md-3">
-                                                    <img className='pay-product1' src={Product1} alt="" />
+                                                    <img className='pay-product1' src={`http://localhost:8080${this.props.cart.photo}`} alt="" />
                                                 </div>
                                                 <div className="col-lg-3 col-md-3">
-                                                    <p>Hazelnut Latte
-                                                        x 1
-                                                        Regular</p>
+                                                    <p>{this.props.cart.name}</p>
                                                 </div>
                                                 <div className="col-lg-3 col-md-3">
-                                                    <p className='payment-price'>IDR 24.0</p>
-                                                </div>
-                                            </div>
-                                            <div className="row">
-                                                <div className="col-lg-3 col-md-3">
-                                                    <img className='pay-product1' src={Product1} alt="" />
-                                                </div>
-                                                <div className="col-lg-3 col-md-3">
-                                                    <p>Hazelnut Latte
-                                                        x 1
-                                                        Regular</p>
-                                                </div>
-                                                <div className="col-lg-3 col-md-3">
-                                                    <p className='payment-price'>IDR 24.0</p>
+                                                    <p className='payment-price'>{this.props.cart.price}</p>
                                                 </div>
                                             </div>
                                             <div className="underline-payment">
@@ -161,5 +146,10 @@ class Payment extends Component {
         );
     }
 }
-
-export default Payment;
+const mapStateToProps = (state) => {
+    return {
+        counter: state.counter.counter,
+        cart: state.cart.cart
+    }
+}
+export default connect(mapStateToProps)(Payment);

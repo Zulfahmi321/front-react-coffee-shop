@@ -15,11 +15,10 @@ class Product extends Component {
         super(props);
         this.state = {
             product: [],
-            // isFavorite: false,
-            // isCoffee: false,
-            // isNonCoffee: false,
-            // isFood: false,
-            // isAll: false,
+            page: 1,
+            limit: 3,
+            totalPage: 1,
+            meta: null,
             filter: false,
             iscategory: 'all',
             sort: 'name',
@@ -33,8 +32,10 @@ class Product extends Component {
         axios
             .get('http://localhost:8080/product')
             .then((result) => {
+                console.log(result.data.data);
                 this.setState({
                     product: result.data.data,
+                    totalPage: result.data.meta.totalPage
                 });
             })
             .catch((error) => {
@@ -47,15 +48,16 @@ class Product extends Component {
             let params = ''
             let url = "http://localhost:8080/product"
             if (this.state.iscategory === 'all') {
-                url += '?'
+                url += `?page=${this.state.page}&limit=${this.state.limit}&`
+                params += `page=${this.state.page}&limit=${this.state.limit}&`
             }
             // if (this.state.iscategory === 'favorite') {
             //     url += '/favorite?'
             params += 'category=favorite&'
             // }
             if (this.state.iscategory !== 'all' && this.state.iscategory !== 'favorite') {
-                url += `?category_name=${this.state.iscategory}&`
-                params += `category_name=${this.state.iscategory}&`
+                url += `?category_name=${this.state.iscategory}&page=${this.state.page}&limit=${this.state.limit}&`
+                params += `category_name=${this.state.iscategory}&page=${this.state.page}&limit=${this.state.limit}&`
             }
             url += `sort=${this.state.sort}&order=${this.state.order}`
             params += `sort=${this.state.sort}&order=${this.state.order}`
@@ -66,11 +68,9 @@ class Product extends Component {
             axios
                 .get(url)
                 .then(result => {
-                    console.log(result);
-                    console.log(this.state.order);
                     this.setState({
                         product: result.data.data,
-                        order: ''
+                        totalPage: !result.data.meta ? "1" : result.data.meta.totalPage
                     });
                 })
                 .catch(error => {
@@ -80,135 +80,6 @@ class Product extends Component {
                 filter: false
             })
         }
-
-        // if (this.state.sort === 'name') {
-        //     let url = "http://localhost:8080/product/?sort=name"
-        //     axios
-        //         .get(url)
-        //         .then(result => {
-        //             console.log(result);
-        //             console.log(this.state.sort);
-        //             this.setState({
-        //                 product: result.data.data,
-        //                 sort: ''
-        //             });
-        //         })
-        //         .catch(error => {
-        //             console.log(error);
-        //         })
-        // }
-        // if (this.state.sort === 'price') {
-        //     let url = "http://localhost:8080/product/?sort=price"
-        //     axios
-        //         .get(url)
-        //         .then(result => {
-        //             console.log(result);
-        //             console.log(this.state.sort);
-        //             this.setState({
-        //                 product: result.data.data,
-        //                 sort: ''
-        //             });
-        //         })
-        //         .catch(error => {
-        //             console.log(error);
-        //         })
-        // }
-        // if (this.state.order === 'asc') {
-        //     let url = "http://localhost:8080/product/?order=asc"
-        //     axios
-        //         .get(url)
-        //         .then(result => {
-        //             console.log(result);
-        //             console.log(this.state.order);
-        //             this.setState({
-        //                 product: result.data.data,
-        //                 order: ''
-        //             });
-        //         })
-        //         .catch(error => {
-        //             console.log(error);
-        //         })
-        // }
-        // if (this.state.order === 'desc') {
-        //     let url = "http://localhost:8080/product/?order=desc"
-        //     axios
-        //         .get(url)
-        //         .then(result => {
-        //             console.log(result);
-        //             console.log(this.state.order);
-        //             this.setState({
-        //                 product: result.data.data,
-        //                 order: ''
-        //             });
-        //         })
-        //         .catch(error => {
-        //             console.log(error);
-        //         })
-        // }
-        // if (this.state.isAll) {
-        //     let url = "http://localhost:8080/product"
-        //     axios
-        //         .get(url)
-        //         .then(result => {
-        //             this.setState({
-        //                 product: result.data.data,
-        //             });
-        //         }).catch(error => {
-        //             console.log(error)
-        //         })
-
-        //     this.setState({
-        //         isAll: false
-        //     })
-        // }
-        // if (this.state.isFood) {
-        //     let url = "http://localhost:8080/product?category_name=food"
-        //     axios
-        //         .get(url)
-        //         .then(result => {
-        //             this.setState({
-        //                 product: result.data.data,
-        //             });
-        //         }).catch(error => {
-        //             console.log(error)
-        //         })
-
-        //     this.setState({
-        //         isFood: false
-        //     })
-        // }
-        // if (this.state.isCoffee) {
-        //     let url = "http://localhost:8080/product?category_name=coffee"
-        //     axios
-        //         .get(url)
-        //         .then(result => {
-        //             this.setState({
-        //                 product: result.data.data,
-        //             });
-        //         }).catch(error => {
-        //             console.log(error)
-        //         })
-
-        //     this.setState({
-        //         isCoffee: false
-        //     })
-        // }
-        // if (this.state.isNonCoffee) {
-        //     let url = "http://localhost:8080/product?category_name=tea"
-        //     axios
-        //         .get(url)
-        //         .then(result => {
-        //             this.setState({
-        //                 product: result.data.data,
-        //             });
-        //         }).catch(error => {
-        //             console.log(error)
-        //         })
-
-        //     this.setState({
-        //         isNonCoffee: false
-        //     })
-        // }
     }
 
     render() {
@@ -389,9 +260,30 @@ class Product extends Component {
                                             ))}
                                         </div>
                                         <div className="pagination-button">
-                                            <button className='btn btn-success'>Previous</button>
-                                            <p>1/3</p>
-                                            <button className='btn btn-success'>Next</button>
+                                            {this.state.page === 1 ?
+                                                <button disabled className='btn btn-secondary'>Previous</button> :
+                                                <button className='btn btn-success'
+                                                    onClick={() => {
+                                                        this.setState({
+                                                            page: this.state.page - 1,
+                                                            filter: true
+                                                        })
+                                                    }}
+                                                >Previous</button>
+                                            }
+                                            {/* <p>1/3</p> */}
+                                            <div>{this.state.page}</div>
+                                            {this.state.page === Number(this.state.totalPage) ?
+                                                <button disabled className='btn btn-secondary'>Next</button> :
+                                                <button className='btn btn-success'
+                                                    onClick={() => {
+                                                        this.setState({
+                                                            page: this.state.page + 1,
+                                                            filter: true
+                                                        })
+                                                    }}
+                                                >Next</button>
+                                            }
                                         </div>
                                         <p>*the price has been cutted by discount appears</p>
                                     </div>

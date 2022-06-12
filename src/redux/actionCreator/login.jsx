@@ -1,4 +1,3 @@
-
 import { doLogin } from "../utility/auth";
 import { loginString, logoutString } from "./actionString";
 

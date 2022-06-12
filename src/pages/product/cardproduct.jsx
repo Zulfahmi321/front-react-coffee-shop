@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function Cardproduct(props) {
     return (
         <React.Fragment>
-            <div className="col-lg-3 col-md-4">
+            <div className="col-lg-3 col-md-4 col-sm-6">
                 <Link to={`/product/${props.id}`} className='nav-link'>
                     <div className="card card-custom-product">
                         <div className="card-body text-center">

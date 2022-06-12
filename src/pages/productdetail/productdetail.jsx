@@ -8,12 +8,13 @@ import axios from 'axios';
 
 import './productdetail.css'
 import { counterDown, counterUp } from '../../redux/actionCreator/counter';
+import { addToCart } from '../../redux/actionCreator/addtocart';
 
 class Productdetail extends Component {
     constructor() {
         super()
         this.state = {
-            product: []
+            product: [],
         }
     }
     componentDidMount() {
@@ -32,7 +33,7 @@ class Productdetail extends Component {
             })
     }
     render() {
-        const { counter, counterDown, counterUp } = this.props
+        const { counter, counterDown, counterUp, cart } = this.props
         // console.log(counter);
         return (
             <React.Fragment>
@@ -114,7 +115,10 @@ class Productdetail extends Component {
                                 </div>
                             </div>
                             <div className="col-lg-6 col-md-6">
-                                <button className='checkout'>CHECKOUT</button>
+                                <button className='checkout' onClick={() => {
+                                    console.log(this.state.product);
+                                    cart(this.state.product)
+                                }}>CHECKOUT</button>
                             </div>
                         </div>
                     </section>
@@ -137,6 +141,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         counterUp: () => {
             dispatch(counterUp())
+        },
+        cart: (product) => {
+            dispatch(addToCart(product))
         }
     }
 }
