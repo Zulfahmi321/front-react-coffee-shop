@@ -28,8 +28,8 @@ class Header extends Component {
                             <span className="navbar-toggler-icon"></span>
                         </button>
                         <div className="collapse navbar-collapse" id="kolep">
-                            <div className="col-lg-4 col-md-4 offset-lg-2">
-                                <ul className="navbar-nav fw-bold">
+                            <div className="col-lg-4 col-md-4 offset-lg-3">
+                                <ul className="navbar-nav fw-bold justify-content-between">
                                     <li className="nav-item">
                                         <Link className='nav-link' to='/'>Home</Link>
                                     </li>

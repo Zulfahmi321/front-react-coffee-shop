@@ -7,7 +7,7 @@ function Cardhistory(props) {
                 <div className="card-history-product">
                     <div className="row">
                         <div className="col-4 col-md-4 col-sm-4">
-                            <img src='{Product}' alt="producthistory" className='product-history' />
+                            <img src={props.photo} alt="producthistory" className='product-history' />
                         </div>
                         <div className="col-8 col-md-8">
                             <div className="history-info">

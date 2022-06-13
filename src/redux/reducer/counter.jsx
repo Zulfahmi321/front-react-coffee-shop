@@ -1,7 +1,7 @@
 import { counterDownAction, counterUpAction } from '../actionCreator/actionString'
 
 const initialState = {
-    counter: 0
+    counter: 1
 }
 
 const counterReducers = (prevState = initialState, action) => {
@@ -10,7 +10,7 @@ const counterReducers = (prevState = initialState, action) => {
             return { ...prevState, counter: prevState.counter + 1 }
 
         case counterDownAction:
-            return { ...prevState, counter: prevState.counter === 0 ? prevState.counter = 0 : prevState.counter - 1 }
+            return { ...prevState, counter: prevState.counter === 1 ? prevState.counter = 1 : prevState.counter - 1 }
 
         default:
             return prevState

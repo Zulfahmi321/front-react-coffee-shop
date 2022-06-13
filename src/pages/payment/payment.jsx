@@ -32,6 +32,7 @@ class Payment extends Component {
                                                 </div>
                                                 <div className="col-lg-3 col-md-3">
                                                     <p>{this.props.cart.name}</p>
+                                                    <p>x {this.props.counter}</p>
                                                 </div>
                                                 <div className="col-lg-3 col-md-3">
                                                     <p className='payment-price'>{this.props.cart.price}</p>
@@ -48,7 +49,7 @@ class Payment extends Component {
                                                         <p>SHIPPING</p>
                                                     </div>
                                                     <div className="col-lg-6 col-md-6">
-                                                        <p>IDR 120.000</p>
+                                                        <p>IDR {this.props.cart.price * this.props.counter}</p>
                                                         <p>IDR 20.000</p>
                                                         <p>IDR 10.000</p>
                                                     </div>

@@ -15,6 +15,8 @@ class Productdetail extends Component {
         super()
         this.state = {
             product: [],
+            size: '',
+            delivery: ''
         }
     }
     componentDidMount() {
@@ -47,10 +49,10 @@ class Productdetail extends Component {
                                 <h1>{this.state.product.name}</h1>
                                 <h5>{this.state.product.price}</h5>
                                 <div className='cart-button'>
-                                    <Link to='' className='button-cart' >Add to Cart</Link><br />
+                                    <button className='button-cart' >Add to Cart</button><br />
                                 </div>
                                 <div className="staff-button">
-                                    <Link to='' className='button-staff'>Ask to Staff</Link>
+                                    <button className='button-staff'>Ask to Staff</button>
                                 </div>
                             </div>
                             <div className="col-lg-6 right-product">
@@ -58,26 +60,62 @@ class Productdetail extends Component {
                                     <div className='card-product-details'>
                                         <p className='card-title'>Delivery only on <strong>Monday to friday at  1 - 7 pm</strong></p>
                                         <p className='card-text'>Cold brewing is a method of brewing that combines ground coffee and cool water and uses time instead of heat to extract the flavor. It is brewed in small batches and steeped for as long as 48 hours.</p>
-                                        <strong className='size' >Choose a size</strong>
-                                        <div className='container-size'>
-                                            <div className='choose-size'>R</div>
-                                            <div className='choose-size'>L</div>
-                                            <div className='choose-size'>XL</div>
+                                        <strong className='size-title' >Choose a size</strong>
+                                        <div className="size-button">
+                                            <label className="size-label">
+                                                <input type="radio" name="size-input" className='size-input' />
+                                                <span className="size-checkmark"
+                                                    onClick={() => {
+                                                        this.setState({ size: "Reguler" })
+                                                    }}
+                                                >R</span>
+                                            </label>
+                                            <label className="size-label">
+                                                <input type="radio" name="size-input" className='size-input' />
+                                                <span className="size-checkmark"
+                                                    onClick={() => {
+                                                        this.setState({ size: "Large" })
+                                                    }}
+                                                >L</span>
+                                            </label>
+                                            <label className="size-label">
+                                                <input type="radio" name="size-input" className='size-input' />
+                                                <span className="size-checkmark"
+                                                    onClick={() => {
+                                                        this.setState({ size: "Extra Large" })
+                                                    }}
+                                                >XL</span>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
-                                <div className='delivery'>
-                                    <h4>Choose Delivery Method</h4>
-                                </div>
-                                <div className='choose-delivery'>
-                                    <div className='dine-in'>
-                                        <p>Dine in</p>
-                                    </div>
-                                    <div className="door-delivery">
-                                        <p>Door Delivery</p>
-                                    </div>
-                                    <div className="pick-up">
-                                        <p>Pick Up</p>
+                                <div className="delivery-container">
+                                    <h4>Choose Delivery Methods</h4>
+                                    <div className="delivery-button">
+                                        <label className="delivery-label">
+                                            <input type="radio" name="delivery-input" className='delivery-input' />
+                                            <span className="delivery-checkmark"
+                                                onClick={() => {
+                                                    this.setState({ delivery: "Dine In" })
+                                                }}
+                                            >Dine in</span>
+                                        </label>
+                                        <label className="delivery-label">
+                                            <input type="radio" name="delivery-input" className='delivery-input' />
+                                            <span className="delivery-checkmark"
+                                                onClick={() => {
+                                                    this.setState({ delivery: "Door Delivery" })
+                                                }}
+                                            >Door Delivery</span>
+                                        </label>
+                                        <label className="delivery-label">
+                                            <input type="radio" name="delivery-input" className='delivery-input' />
+                                            <span className="delivery-checkmark"
+                                                onClick={() => {
+                                                    this.setState({ delivery: "Pick Up" })
+                                                }}
+                                            >Pick up</span>
+                                        </label>
                                     </div>
                                 </div>
                                 <div className="set-time">

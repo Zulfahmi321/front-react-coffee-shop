@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 function Cardproduct(props) {
     return (
         <React.Fragment>
-            <div className="col-lg-3 col-md-4 col-sm-6">
+            <div className="col-lg-3 col-md-4 col-6">
                 <Link to={`/product/${props.id}`} className='nav-link'>
                     <div className="card card-custom-product">
-                        <div className="card-body text-center">
-                            <img src={props.photo} className="card-img-top"
+                        <div className="card-body text-center ">
+                            <img src={props.photo} className="card-img-top mb-4"
                                 alt="product" />
                             <p className="card-title-custom">{props.name}</p>
                             <p className='card-title-custom'>{props.category_name}</p>
