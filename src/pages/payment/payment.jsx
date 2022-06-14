@@ -9,6 +9,7 @@ import { currencyFormatter } from '../../helper/formatter'
 import './payment.css'
 import { connect } from 'react-redux';
 import { getUserDataAction } from '../../redux/actionCreator/userdata';
+import axios from 'axios';
 
 class Payment extends Component {
     constructor() {
@@ -17,6 +18,29 @@ class Payment extends Component {
             product: [],
             payment: ''
         }
+    }
+    handlePayment = () => {
+        const { counter, delivery, idProduct, idUser, cart, userInfo, size } = this.props
+        const product_id = idProduct
+        const total_price = (cart.price * counter) + (cart.price * counter * 10 / 100) + (delivery === "Door Delivery" ? 10000 : 0)
+        const quantity = counter
+        const user_id = idUser
+        const size_id = size === "Reguler" ? 1 : size === "Large" ? 2 : 3
+        const payment_id = this.state.payment === "Card" ? 1 : this.state.payment === "Bank Account" ? 2 : 3
+        const delivery_id = delivery === "Dine In" ? 3 : delivery === "Door Delivery" ? 1 : 2
+
+        const { token } = userInfo
+        const config = { headers: { Authorization: `Bearer ${token}` } }
+
+        const body = { product_id, total_price, quantity, user_id, payment_id, delivery_id, size_id }
+        axios
+            .post('http://localhost:8080/transaction', body, config)
+            .then(result => {
+                console.log(result);
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
     componentDidMount() {
         document.title = "Cart"
@@ -27,7 +51,7 @@ class Payment extends Component {
         }
     }
     render() {
-        // console.log(this.props);
+        console.log(this.props);
         const { counter, cart, size, user, delivery } = this.props
         return (
             <React.Fragment>
@@ -162,7 +186,9 @@ class Payment extends Component {
                                         </div>
                                     </div>
                                     <div className="button-confirm-pay">
-                                        <button>Confirm and Pay</button>
+                                        <button
+                                            onClick={this.handlePayment}
+                                        >Confirm and Pay</button>
                                     </div>
                                 </div>
                             </div>
@@ -182,6 +208,9 @@ const mapStateToProps = (state) => {
         user: state.user.data,
         delivery: state.cart.delivery,
         userInfo: state.auth.userInfo,
+        idProduct: state.cart.cart.id,
+        idUser: state.user.data.id,
+        address: state.user.data.address,
         isSuccess: state.auth.isSuccess
     }
 }
