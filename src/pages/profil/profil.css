@@ -144,7 +144,7 @@
     border: none;
     border-radius: 10px;
     height: 50px;
-    width: 270px;
+    width: 305px;
 }
 
 .button-save:hover {
@@ -249,7 +249,7 @@
     color: rgb(114, 112, 112);
 }
 
-@media(max-width: 834px) {
+@media(max-width: 768px) {
     .main-content-profil {
         height: 1850px;
     }
@@ -265,7 +265,7 @@
     }
 
     .button-logout {
-        width: 660px;
+        width: 100%;
     }
 
     .card-body-detail {
@@ -283,7 +283,13 @@
     }
 }
 
-@media(max-width: 428px) {
+@media(max-width:1024px){
+    .button-logout {
+        width: 100%;
+    }
+}
+
+@media(max-width: 425px) {
     .main-content-profil {
         height: 1850px;
     }
@@ -299,7 +305,7 @@
     }
 
     .button-logout {
-        width: 370px;
+        width: 100%;
     }
 
     .card-body-detail {

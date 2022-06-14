@@ -21,7 +21,6 @@ import Right from '../../assets/img/icons/right.png'
 import './home.css'
 import { Link } from 'react-router-dom';
 
-
 class Home extends Component {
     componentDidMount() {
         document.title = "Coffee Shop"

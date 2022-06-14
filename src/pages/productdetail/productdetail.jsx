@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import Header from '../../components/navbar/Header'
 import Footer from '../../components/footer/Footer';
 import withParams from '../../helper/withparams';
@@ -49,7 +48,11 @@ class Productdetail extends Component {
                                 <h1>{this.state.product.name}</h1>
                                 <h5>{this.state.product.price}</h5>
                                 <div className='cart-button'>
-                                    <button className='button-cart' >Add to Cart</button><br />
+                                    <button className='button-cart'
+                                        onClick={() => {
+                                            cart(this.state.product, this.state.size, this.state.delivery)
+                                        }}
+                                    >Add to Cart</button><br />
                                 </div>
                                 <div className="staff-button">
                                     <button className='button-staff'>Ask to Staff</button>
@@ -137,8 +140,7 @@ class Productdetail extends Component {
                                             <div className="col-lg-3">
                                                 <div className='card-product-info'>
                                                     <strong>{this.state.product.name}</strong>
-                                                    <p>x1 (Large)</p>
-                                                    <p>x1 (Regular)</p>
+                                                    <p>x{counter} {this.state.size} <br /> {this.state.delivery} </p>
                                                 </div>
                                             </div>
                                             <div className="col-lg-7">
@@ -154,8 +156,7 @@ class Productdetail extends Component {
                             </div>
                             <div className="col-lg-6 col-md-6">
                                 <button className='checkout' onClick={() => {
-                                    console.log(this.state.product);
-                                    cart(this.state.product)
+                                    cart(this.state.product, this.state.size, this.state.delivery)
                                 }}>CHECKOUT</button>
                             </div>
                         </div>
@@ -167,9 +168,13 @@ class Productdetail extends Component {
     }
 }
 
-const mapStateToProps = (reduxState) => {
-    const { counter: { counter } } = reduxState
-    return { counter, }
+const mapStateToProps = (state) => {
+    return {
+        counter: state.counter.counter,
+        cart: state.cart.cart,
+        size: state.cart.size,
+        delivery: state.cart.delivery
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -180,8 +185,8 @@ const mapDispatchToProps = (dispatch) => {
         counterUp: () => {
             dispatch(counterUp())
         },
-        cart: (product) => {
-            dispatch(addToCart(product))
+        cart: (product, size, delivery) => {
+            dispatch(addToCart(product, size, delivery))
         }
     }
 }

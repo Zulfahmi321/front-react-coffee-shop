@@ -5,15 +5,30 @@ import Card from '../../assets/img-payment/card.png'
 import Bank from '../../assets/img-payment/bank-account.png'
 import Cod from '../../assets/img-payment/cod.png'
 
-
+import { currencyFormatter } from '../../helper/formatter'
 import './payment.css'
 import { connect } from 'react-redux';
+import { getUserDataAction } from '../../redux/actionCreator/userdata';
 
 class Payment extends Component {
+    constructor() {
+        super();
+        this.state = {
+            product: [],
+            payment: ''
+        }
+    }
     componentDidMount() {
         document.title = "Cart"
+        const { isSuccess, dispatch } = this.props
+        if (isSuccess) {
+            const { token = null } = this.props.userInfo || {}
+            dispatch(getUserDataAction(token))
+        }
     }
     render() {
+        // console.log(this.props);
+        const { counter, cart, size, user, delivery } = this.props
         return (
             <React.Fragment>
                 <Header />
@@ -28,14 +43,15 @@ class Payment extends Component {
                                         <div className="container">
                                             <div className="row">
                                                 <div className="col-lg-3 col-md-3">
-                                                    <img className='pay-product1' src={`http://localhost:8080${this.props.cart.photo}`} alt="" />
+                                                    <img className='pay-product1' src={`http://localhost:8080${cart.photo}`} alt="" />
                                                 </div>
                                                 <div className="col-lg-3 col-md-3">
-                                                    <p>{this.props.cart.name}</p>
-                                                    <p>x {this.props.counter}</p>
+                                                    <p>{cart.name}</p>
+                                                    <p>{size}</p>
+                                                    <p>x {counter}</p>
                                                 </div>
                                                 <div className="col-lg-3 col-md-3">
-                                                    <p className='payment-price'>{this.props.cart.price}</p>
+                                                    <p className='payment-price'>{currencyFormatter.format(cart.price)}</p>
                                                 </div>
                                             </div>
                                             <div className="underline-payment">
@@ -49,9 +65,9 @@ class Payment extends Component {
                                                         <p>SHIPPING</p>
                                                     </div>
                                                     <div className="col-lg-6 col-md-6">
-                                                        <p>IDR {this.props.cart.price * this.props.counter}</p>
-                                                        <p>IDR 20.000</p>
-                                                        <p>IDR 10.000</p>
+                                                        <p>{currencyFormatter.format(cart.price * counter)}</p>
+                                                        <p>{currencyFormatter.format(cart.price * counter * 10 / 100)}</p>
+                                                        <p>{currencyFormatter.format(delivery === "Door Delivery" ? 10000 : 0)}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -61,7 +77,7 @@ class Payment extends Component {
                                                         <p>TOTAL</p>
                                                     </div>
                                                     <div className="col-lg-6 col-md-6">
-                                                        <p>IDR 150.000</p>
+                                                        <p>{currencyFormatter.format((cart.price * counter) + (cart.price * counter * 10 / 100) + (delivery === "Door Delivery" ? 10000 : 0))}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -75,10 +91,9 @@ class Payment extends Component {
                                         <h3 className='right-payment-title'>Address details</h3>
                                         <div className="card-payment-delivery">
                                             <div className="card-payment-right">
-                                                <p><strong>Delivery</strong> to Iskandar Street</p>
-                                                <p>Km 5 refinery road oppsite re
-                                                    public road, effurun, Jakarta</p>
-                                                <p>+62 81348287878</p>
+                                                <p><strong>Delivery</strong> to {user.username} </p>
+                                                <p>{user.address}</p>
+                                                <p>{user.mobile_number}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -95,7 +110,11 @@ class Payment extends Component {
                                                         </div>
                                                         <div className="col-lg-11 col-md-11">
                                                             <label className="label-radio-payment">Card
-                                                                <input type="radio" name="payment" />
+                                                                <input type="radio" name="payment-method"
+                                                                    onClick={() => {
+                                                                        this.setState({ payment: "Card" })
+                                                                    }}
+                                                                />
                                                                 <span className="checkmark-payment"></span>
                                                             </label>
                                                         </div>
@@ -110,7 +129,11 @@ class Payment extends Component {
                                                         </div>
                                                         <div className="col-lg-11 col-md-11">
                                                             <label className="label-radio-payment">Bank Account
-                                                                <input type="radio" name="payment" />
+                                                                <input type="radio" name="payment-method"
+                                                                    onClick={() => {
+                                                                        this.setState({ payment: "Bank Account" })
+                                                                    }}
+                                                                />
                                                                 <span className="checkmark-payment"></span>
                                                             </label>
                                                         </div>
@@ -125,8 +148,12 @@ class Payment extends Component {
                                                         </div>
                                                         <div className="col-lg-11 col-md-11">
                                                             <label className="label-radio-payment">Cash On Delivery
-                                                                <input type="radio" name="payment" />
-                                                                <span className="checkmark-payment"></span>
+                                                                <input type="radio" name="payment-method"
+                                                                    onClick={() => {
+                                                                        this.setState({ payment: "Cash On Delivery" })
+                                                                    }}
+                                                                />
+                                                                <span span className="checkmark-payment"></span>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -150,7 +177,12 @@ class Payment extends Component {
 const mapStateToProps = (state) => {
     return {
         counter: state.counter.counter,
-        cart: state.cart.cart
+        cart: state.cart.cart,
+        size: state.cart.size,
+        user: state.user.data,
+        delivery: state.cart.delivery,
+        userInfo: state.auth.userInfo,
+        isSuccess: state.auth.isSuccess
     }
 }
 export default connect(mapStateToProps)(Payment);

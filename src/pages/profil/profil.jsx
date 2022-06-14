@@ -248,7 +248,7 @@ class Profil extends Component {
                                                         body.append('address', address);
                                                         body.append('gender', gender);
 
-                                                        const { token } = JSON.parse(localStorage.getItem("user-info"))
+                                                        const { token = null } = this.props.userInfo || {}
                                                         const config = { headers: { Authorization: `Bearer ${token}`, 'content-type': 'multipart/form-data' } }
                                                         axios
                                                             .patch('http://localhost:8080/user', body, config)
