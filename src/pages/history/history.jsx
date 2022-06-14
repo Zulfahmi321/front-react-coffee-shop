@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Footer from '../../components/footer/Footer';
 import Header from '../../components/navbar/Header';
-// import Product from '../../assets/img-products/product-1.png'
 import Cardhistory from './cardhistory';
 import './history.css'
 
@@ -44,7 +43,7 @@ class History extends Component {
                         </div>
                         <div className='row'>
                             {this.state.transaction.map((transaction, idx) => (
-                                <Cardhistory key={idx} id={transaction.id} name={transaction.product} price={transaction.price} photo={`http://localhost:8080${transaction.photo}`} />
+                                <Cardhistory key={idx} id={transaction.id} name={transaction.product} price={transaction.price * transaction.quantity} photo={`http://localhost:8080${transaction.photo}`} />
                             ))}
                         </div>
                     </div>

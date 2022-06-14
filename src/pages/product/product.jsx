@@ -23,19 +23,19 @@ class Product extends Component {
             iscategory: 'all',
             sort: 'name',
             order: 'asc',
+            searchName: '',
             setSearchParams: this.props.setSearchParams.bind(this)
         };
     }
     componentDidMount() {
         document.title = "Product"
-        this.state.setSearchParams('');
         axios
             .get('http://localhost:8080/product')
             .then((result) => {
                 console.log(result.data.data);
                 this.setState({
                     product: result.data.data,
-                    totalPage: result.data.meta.totalPage
+                    totalPage: result.data.meta.totalPage,
                 });
             })
             .catch((error) => {
@@ -53,11 +53,15 @@ class Product extends Component {
             }
             // if (this.state.iscategory === 'favorite') {
             //     url += '/favorite?'
-            params += 'category=favorite&'
+            // params += 'category=favorite&'
             // }
             if (this.state.iscategory !== 'all' && this.state.iscategory !== 'favorite') {
                 url += `?category_name=${this.state.iscategory}&page=${this.state.page}&limit=${this.state.limit}&`
                 params += `category_name=${this.state.iscategory}&page=${this.state.page}&limit=${this.state.limit}&`
+            }
+            if (this.state.searchName !== '') {
+                url += `name=${this.state.searchName}&`
+                params += `name=${this.state.searchName}&`
             }
             url += `sort=${this.state.sort}&order=${this.state.order}`
             params += `sort=${this.state.sort}&order=${this.state.order}`
@@ -249,6 +253,19 @@ class Product extends Component {
                                                 >Desc</button>
                                             </li>
                                         </ul>
+                                    </div>
+                                    <div className='row g-3 mx-5'>
+                                        <div className='col-auto'>
+                                            <p>Search</p>
+                                        </div>
+                                        <div className="col-auto">
+                                            <input type="text" className='form-control'
+                                                onChange={e => this.setState({
+                                                    filter: true,
+                                                    searchName: e.target.value
+                                                })}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="main-product">

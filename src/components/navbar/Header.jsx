@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Logo from '../../assets/img/icons/coffee-icon.png'
 import { Link } from 'react-router-dom'
 import './header.css';
-import searchIcon from '../../assets/img/icons/search-icon.svg'
+// import searchIcon from '../../assets/img/icons/search-icon.svg'
 import chatIcon from '../../assets/img/icons/chat-icon.svg'
 import profilImg from '../../assets/img/profil.png'
 import { connect } from 'react-redux';
@@ -47,11 +47,11 @@ class Header extends Component {
                             {this.state.isLoggedIn ?
                                 <div className="col-lg-4 col-md-4 offset-lg-2">
                                     <ul className="navbar-nav">
-                                        <li className="nav-item px-2">
+                                        {/* <li className="nav-item px-2">
                                             <Link className="nav-link" to="">
                                                 <img src={searchIcon} alt="" />
                                             </Link>
-                                        </li>
+                                        </li> */}
                                         <li className="nav-item px-2 position-relative chat-icon">
                                             <Link className="nav-link" to="">
                                                 <span>1</span>
