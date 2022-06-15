@@ -22,7 +22,7 @@ class Productdetail extends Component {
         document.title = "Product Detail"
         const { params } = this.props;
         axios
-            .get(`http://localhost:8080/product/${params.id}`)
+            .get(`${process.env.REACT_APP_BE_HOST}/product/${params.id}`)
             .then((result) => {
                 this.setState({
                     product: result.data.data.data[0],
@@ -44,7 +44,7 @@ class Productdetail extends Component {
                         <div className="row">
                             <div className="col-lg-6 left-product">
                                 <p>Favorite {'&'} Promo {'>'} {this.state.product.name}</p>
-                                <img src={`http://localhost:8080${this.state.product.photo}`} alt="product" />
+                                <img src={`${process.env.REACT_APP_BE_HOST}${this.state.product.photo}`} alt="product" />
                                 <h1>{this.state.product.name}</h1>
                                 <h5>{this.state.product.price}</h5>
                                 <div className='cart-button'>
@@ -135,7 +135,7 @@ class Productdetail extends Component {
                                     <div className="card-body card-product-cart">
                                         <div className="row">
                                             <div className="col-lg-2">
-                                                <img src={`http://localhost:8080${this.state.product.photo}`} alt="product" className='product-cart-detail' />
+                                                <img src={`${process.env.REACT_APP_BE_HOST}${this.state.product.photo}`} alt="product" className='product-cart-detail' />
                                             </div>
                                             <div className="col-lg-3">
                                                 <div className='card-product-info'>

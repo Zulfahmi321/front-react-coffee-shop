@@ -30,7 +30,7 @@ class Product extends Component {
     componentDidMount() {
         document.title = "Product"
         axios
-            .get('http://localhost:8080/product')
+            .get(`${process.env.REACT_APP_BE_HOST}/product`)
             .then((result) => {
                 console.log(result.data.data);
                 this.setState({
@@ -41,13 +41,14 @@ class Product extends Component {
             .catch((error) => {
                 console.log(error);
             })
+        this.state.setSearchParams('page=1&limit=12&sort=name&order=asc')
     }
 
     componentDidUpdate() {
         window.scrollTo(0, 0)
         if (this.state.filter) {
             let params = ''
-            let url = "http://localhost:8080/product"
+            let url = `${process.env.REACT_APP_BE_HOST}/product`
             if (this.state.iscategory === 'all') {
                 url += `?page=${this.state.page}&limit=${this.state.limit}&`
                 params += `page=${this.state.page}&limit=${this.state.limit}&`
@@ -272,7 +273,7 @@ class Product extends Component {
                                 <div className="main-product">
                                     <div className="row">
                                         {this.state.product.map((product, idx) => (
-                                            <Cardproduct key={idx} id={product.id} photo={`http://localhost:8080${product.photo}`} name={product.name} category={product.category_name} price={product.price} />
+                                            <Cardproduct key={idx} id={product.id} photo={`${process.env.REACT_APP_BE_HOST}${product.photo}`} name={product.name} category={product.category_name} price={product.price} />
                                         ))}
                                     </div>
                                     <div className="pagination-button">

@@ -37,7 +37,7 @@ class Signup extends Component {
         const { email, password, mobile_number } = this.state
         const body = { email, password, mobile_number }
         axios
-            .post("http://localhost:8080/auth/new", body)
+            .post(`${process.env.REACT_APP_BE_HOST}/auth/new`, body)
             .then(result => {
                 console.log(result)
                 this.setState({

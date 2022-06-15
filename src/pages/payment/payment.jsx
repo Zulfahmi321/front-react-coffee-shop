@@ -34,7 +34,7 @@ class Payment extends Component {
 
         const body = { product_id, total_price, quantity, user_id, payment_id, delivery_id, size_id }
         axios
-            .post('http://localhost:8080/transaction', body, config)
+            .post(`${process.env.REACT_APP_BE_HOST}/transaction`, body, config)
             .then(result => {
                 console.log(result);
             })
@@ -67,7 +67,7 @@ class Payment extends Component {
                                         <div className="container">
                                             <div className="row">
                                                 <div className="col-lg-3 col-md-3">
-                                                    <img className='pay-product1' src={`http://localhost:8080${cart.photo}`} alt="" />
+                                                    <img className='pay-product1' src={`${process.env.REACT_APP_BE_HOST}${cart.photo}`} alt="" />
                                                 </div>
                                                 <div className="col-lg-3 col-md-3">
                                                     <p>{cart.name}</p>

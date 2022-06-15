@@ -19,7 +19,7 @@ class History extends Component {
         const { token = null } = this.props.userInfo || {}
         const config = { headers: { Authorization: `Bearer ${token}` } }
         axios
-            .get('http://localhost:8080/transaction/', config)
+            .get(`${process.env.REACT_APP_BE_HOST}/transaction`, config)
             .then((result) => {
                 console.log(result);
                 this.setState({
@@ -43,7 +43,7 @@ class History extends Component {
                         </div>
                         <div className='row'>
                             {this.state.transaction.map((transaction, idx) => (
-                                <Cardhistory key={idx} id={transaction.id} name={transaction.product} price={transaction.price * transaction.quantity} photo={`http://localhost:8080${transaction.photo}`} />
+                                <Cardhistory key={idx} id={transaction.id} name={transaction.product} price={transaction.price * transaction.quantity} photo={`${process.env.REACT_APP_BE_HOST}${transaction.photo}`} />
                             ))}
                         </div>
                     </div>

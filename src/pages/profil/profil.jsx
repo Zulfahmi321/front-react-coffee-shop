@@ -34,7 +34,7 @@ class Profil extends Component {
         // console.log(this.props);
         const config = { headers: { Authorization: `Bearer ${token}` } }
         axios
-            .get('http://localhost:8080/user', config)
+            .get(`${process.env.REACT_APP_BE_HOST}/user`, config)
             .then((result) => {
                 console.log(result.data.data.data[0]);
                 this.setState({
@@ -89,7 +89,7 @@ class Profil extends Component {
                                             <form action="">
                                                 <label className='label-upload'>
                                                     <img className="pencil" src={Pencil} alt="" />
-                                                    <img src={file ? `http://localhost:8080${file}` : ProfDef} className="card-profil-img card-img-top mx-auto d-block" alt="" />
+                                                    <img src={file ? `${process.env.REACT_APP_BE_HOST}${file}` : ProfDef} className="card-profil-img card-img-top mx-auto d-block" alt="" />
                                                     <input type="file" className='input-upload' name='file' onChange={this.handlerChangeImg} />
                                                 </label>
                                             </form>
@@ -251,7 +251,7 @@ class Profil extends Component {
                                                         const { token = null } = this.props.userInfo || {}
                                                         const config = { headers: { Authorization: `Bearer ${token}`, 'content-type': 'multipart/form-data' } }
                                                         axios
-                                                            .patch('http://localhost:8080/user', body, config)
+                                                            .patch(`${process.env.REACT_APP_BE_HOST}/user`, body, config)
                                                             .then((result) => {
                                                                 console.log(result);
                                                                 this.setState({
