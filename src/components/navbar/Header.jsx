@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Logo from '../../assets/img/icons/coffee-icon.png'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import './header.css';
 // import searchIcon from '../../assets/img/icons/search-icon.svg'
 import chatIcon from '../../assets/img/icons/chat-icon.svg'
@@ -28,19 +28,19 @@ class Header extends Component {
                             <span className="navbar-toggler-icon"></span>
                         </button>
                         <div className="collapse navbar-collapse" id="kolep">
-                            <div className="col-lg-4 col-md-4 offset-lg-3">
+                            <div className="col-lg-4 col-md-4 offset-lg-3" id='navbar'>
                                 <ul className="navbar-nav fw-bold justify-content-between">
                                     <li className="nav-item">
-                                        <Link className='nav-link' to='/'>Home</Link>
+                                        <NavLink className='nav-link' to='/'>Home</NavLink>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className='nav-link' to='/product'>Product</Link>
+                                        <NavLink className='nav-link' to='/product'>Product</NavLink>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className='nav-link' to='/payment'>Cart</Link>
+                                        <NavLink className='nav-link' to='/payment'>Cart</NavLink>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to="/history">History</Link>
+                                        <NavLink className='nav-link' to="/history">History</NavLink>
                                     </li>
                                 </ul>
                             </div>

@@ -44,6 +44,7 @@ class Product extends Component {
     }
 
     componentDidUpdate() {
+        window.scrollTo(0, 0)
         if (this.state.filter) {
             let params = ''
             let url = "http://localhost:8080/product"
@@ -283,7 +284,9 @@ class Product extends Component {
                                                         page: this.state.page - 1,
                                                         filter: true
                                                     })
+                                                    // window.scrollTo(0, 0)
                                                 }}
+
                                             >Previous</button>
                                         }
                                         <div className='page-number'>{this.state.page}</div>
@@ -295,6 +298,7 @@ class Product extends Component {
                                                         page: this.state.page + 1,
                                                         filter: true
                                                     })
+                                                    // window.scrollTo(0, 0)
                                                 }}
                                             >Next</button>
                                         }

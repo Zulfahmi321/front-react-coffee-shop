@@ -61,8 +61,8 @@ class Productdetail extends Component {
                             <div className="col-lg-6 right-product">
                                 <div className="card card-product-custom">
                                     <div className='card-product-details'>
-                                        <p className='card-title'>Delivery only on <strong>Monday to friday at  1 - 7 pm</strong></p>
-                                        <p className='card-text'>Cold brewing is a method of brewing that combines ground coffee and cool water and uses time instead of heat to extract the flavor. It is brewed in small batches and steeped for as long as 48 hours.</p>
+                                        <p className='card-title'>Delivery only on <strong>{this.state.product.delivery_info}</strong></p>
+                                        <p className='card-text'>{this.state.product.description}</p>
                                         <strong className='size-title' >Choose a size</strong>
                                         <div className="size-button">
                                             <label className="size-label">
