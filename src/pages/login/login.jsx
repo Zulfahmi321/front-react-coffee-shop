@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Navigate, useLocation } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 import Modal from 'react-bootstrap/Modal'
 
@@ -174,7 +174,8 @@ class Login extends Component {
                         </section>
                     </main>
                 </div>
-                <Modal show={this.state.isShow} onHide={() => this.setState({ isShow: false })}>
+                <Modal show={this.state.isShow} onHide={() => this.setState({ isShow: false },
+                    () => this.props.navigate("/login", { replace: true, state: null }))}>
                     <Modal.Title>Warning</ Modal.Title>
                     <Modal.Body>Login First</Modal.Body>
                 </Modal>
@@ -204,6 +205,14 @@ class Login extends Component {
         );
     }
 }
+const withLocation = (Component) => {
+    const WithLocation = (props) => {
+        const location = useLocation()
+        const navigate = useNavigate();
+        return <Component location={location} navigate={navigate} {...props} />
+    }
+    return WithLocation
+}
 const mapStateToProps = (state) => {
     // const { auth: { userInfo, error, isSuccess } } = state
     return {
@@ -212,12 +221,5 @@ const mapStateToProps = (state) => {
         isSuccess: state.auth.isSuccess,
 
     }
-}
-const withLocation = (Component) => {
-    const WithLocation = () => {
-        const location = useLocation()
-        return <Component location={location} />
-    }
-    return WithLocation
 }
 export default connect(mapStateToProps)(withLocation(Login));

@@ -33,7 +33,7 @@ function App() {
                 <Route path='/signup' element={<Signup/>}/>
                 <Route path='/profil/' 
                 element={
-                <PrivateElement redirectedTo='/login' extraData={{isLoggedIn:false}}>
+                <PrivateElement redirectedTo='/login' extraData={{isAuthenticated:false}}>
                   <Profil/>
                 </PrivateElement>
                 }/>
@@ -47,13 +47,13 @@ function App() {
                 <Route path='/product/:id'element={<Productdetail/>}/>
                 <Route path='/payment' 
                 element={
-                  <PrivateElement redirectedTo='/login'>
+                  <PrivateElement redirectedTo='/login' extraData={{isAuthenticated:false}}>
                 <Payment/>
                 </PrivateElement>
                 }/>
                 <Route path='/history' 
                 element={
-                <PrivateElement redirectedTo='/login'>
+                <PrivateElement redirectedTo='/login' extraData={{isAuthenticated:false}}>
                   <History/>
                 </PrivateElement>
                 }/>
