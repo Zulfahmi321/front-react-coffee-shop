@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useLocation } from 'react-router-dom';
+
+import Modal from 'react-bootstrap/Modal'
+
+// import gambar
 import CoffeeIcon from '../../assets/img/icons/coffee-icon.png'
 import Fb from '../../assets/img/icons/fb-vektor.png'
 import Twitter from '../../assets/img/icons/twitter-vector.png'
@@ -22,7 +26,8 @@ class Login extends Component {
             password: '',
             // isSuccess: false,
             isLoggedIn: false,
-            showPassword: false
+            showPassword: false,
+            isShow: false
         }
     }
     handlerChange = (e) => {
@@ -55,10 +60,16 @@ class Login extends Component {
     }
     componentDidMount() {
         document.title = "Login"
+        const { state = null } = this.props.location;
+        if (state !== null && !state.isAuthenticated) {
+            this.setState({
+                isShow: true,
+            });
+        }
 
     }
     render() {
-        console.log(this.state.isLoggedIn);
+        console.log("LOCATION", this.props.location);
         if (this.state.isLoggedIn === true) {
             return <Navigate to="/" />
         }
@@ -163,6 +174,10 @@ class Login extends Component {
                         </section>
                     </main>
                 </div>
+                <Modal show={this.state.isShow} onHide={() => this.setState({ isShow: false })}>
+                    <Modal.Title>Warning</ Modal.Title>
+                    <Modal.Body>Login First</Modal.Body>
+                </Modal>
                 <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content">
@@ -181,7 +196,6 @@ class Login extends Component {
                                     :
                                     <></>
                                 }
-
                             </div>
                         </div>
                     </div>
@@ -199,5 +213,11 @@ const mapStateToProps = (state) => {
 
     }
 }
-
-export default connect(mapStateToProps)(Login);
+const withLocation = (Component) => {
+    const WithLocation = () => {
+        const location = useLocation()
+        return <Component location={location} />
+    }
+    return WithLocation
+}
+export default connect(mapStateToProps)(withLocation(Login));

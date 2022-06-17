@@ -9,6 +9,9 @@ import Profil from './pages/profil/profil'
 import Product from './pages/product/product'
 import Newproduct from './pages/newproduct/createproduct'
 import Newpromo from './pages/newpromo/createpromo'
+import Editpromo from './pages/editpromo/editpromo'
+import Editproduct from './pages/editproduct/editproduct';
+import Dashboard from './pages/Dashbord/dashboard';
 import Forgot from './pages/forgot/forgot'
 import Productdetail from './pages/productdetail/productdetail';
 import Payment from './pages/payment/payment';
@@ -30,13 +33,16 @@ function App() {
                 <Route path='/signup' element={<Signup/>}/>
                 <Route path='/profil/' 
                 element={
-                <PrivateElement redirectedTo='/login'>
+                <PrivateElement redirectedTo='/login' extraData={{isLoggedIn:false}}>
                   <Profil/>
                 </PrivateElement>
                 }/>
                 <Route path='/product' element={<Product/>}/>
                 <Route path='/newproduct' element={<Newproduct/>}/>
                 <Route path='/newpromo' element={<Newpromo/>}/>
+                <Route path='/editpromo' element={<Editpromo/>}/>
+                <Route path='/editproduct' element={<Editproduct/>}/>
+                <Route path='/dashboard' element={<Dashboard/>}/>
                 <Route path='/forgot' element={<Forgot/>}/>
                 <Route path='/product/:id'element={<Productdetail/>}/>
                 <Route path='/payment' 
