@@ -7,6 +7,8 @@ import Login from './pages/login/login'
 import Signup from './pages/sign-up/signup'
 import Profil from './pages/profil/profil'
 import Product from './pages/product/product'
+import Newproduct from './pages/newproduct/createproduct'
+import Newpromo from './pages/newpromo/createpromo'
 import Forgot from './pages/forgot/forgot'
 import Productdetail from './pages/productdetail/productdetail';
 import Payment from './pages/payment/payment';
@@ -33,6 +35,8 @@ function App() {
                 </PrivateElement>
                 }/>
                 <Route path='/product' element={<Product/>}/>
+                <Route path='/newproduct' element={<Newproduct/>}/>
+                <Route path='/newpromo' element={<Newpromo/>}/>
                 <Route path='/forgot' element={<Forgot/>}/>
                 <Route path='/product/:id'element={<Productdetail/>}/>
                 <Route path='/payment' 

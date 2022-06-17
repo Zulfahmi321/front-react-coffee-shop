@@ -66,7 +66,7 @@ class Header extends Component {
                                     </ul>
                                 </div>
                                 :
-                                <div className="col-lg-4 col-md-4 offset-lg-2">
+                                <div className="col-lg-4 col-md-4 offset-lg-1">
                                     <ul className="navbar-nav">
                                         <li className="nav-item position-relative chat-icon">
                                             <Link className="nav-link button-login" to="/login">Login</Link>

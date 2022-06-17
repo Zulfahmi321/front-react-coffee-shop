@@ -49,14 +49,16 @@ class Product extends Component {
         if (this.state.filter) {
             let params = ''
             let url = `${process.env.REACT_APP_BE_HOST}/product`
+            // let urlBest = `${process.env.REACT_APP_BE_HOST}/product/best`
+
             if (this.state.iscategory === 'all') {
                 url += `?page=${this.state.page}&limit=${this.state.limit}&`
                 params += `page=${this.state.page}&limit=${this.state.limit}&`
             }
-            // if (this.state.iscategory === 'favorite') {
-            //     url += '/favorite?'
-            // params += 'category=favorite&'
-            // }
+            if (this.state.iscategory === 'favorite') {
+                url += `/best?page=${this.state.page}&limit=${this.state.limit}&`
+                params += `category_name=${this.state.iscategory}&page=${this.state.page}&limit=${this.state.limit}&`
+            }
             if (this.state.iscategory !== 'all' && this.state.iscategory !== 'favorite') {
                 url += `?category_name=${this.state.iscategory}&page=${this.state.page}&limit=${this.state.limit}&`
                 params += `category_name=${this.state.iscategory}&page=${this.state.page}&limit=${this.state.limit}&`
@@ -157,54 +159,54 @@ class Product extends Component {
                                 <div className="navbar navbar-expand-lg navbar-expand-md">
                                     <ul className="navbar-nav nav-product-nav">
                                         <li className="nav-item mx-2">
-                                            <button className="nav-link text-secondary"
+                                            <div className={this.state.iscategory === 'favorite' ? "nav-active" : "nav-non-active"}
                                                 onClick={() => {
                                                     this.setState({
                                                         filter: true,
-                                                        iscategory: "favorite"
+                                                        iscategory: "favorite",
                                                     })
                                                 }}
-                                            >Favorite {'&'} promo</button>
+                                            >Favorite {'&'} promo</div>
                                         </li>
                                         <li className="nav-item mx-2">
-                                            <button className="nav-link text-secondary"
+                                            <div className={this.state.iscategory === 'coffee' ? "nav-active" : "nav-non-active"}
                                                 onClick={() => {
                                                     this.setState({
                                                         filter: true,
                                                         iscategory: "coffee"
                                                     })
                                                 }}
-                                            >Coffee</button>
+                                            >Coffee</div>
                                         </li>
                                         <li className="nav-item mx-2">
-                                            <button className="nav-link text-secondary"
+                                            <div className={this.state.iscategory === 'tea' ? "nav-active" : "nav-non-active"}
                                                 onClick={() => {
                                                     this.setState({
                                                         filter: true,
                                                         iscategory: "tea"
                                                     })
                                                 }}
-                                            >Non Coffee</button>
+                                            >Non Coffee</div>
                                         </li>
                                         <li className="nav-item mx-2">
-                                            <button className="nav-link text-secondary"
+                                            <div className={this.state.iscategory === 'food' ? "nav-active" : "nav-non-active"}
                                                 onClick={() => {
                                                     this.setState({
                                                         filter: true,
                                                         iscategory: "food"
                                                     })
                                                 }}
-                                            >Foods</button>
+                                            >Foods</div>
                                         </li>
                                         <li className="nav-item mx-2">
-                                            <button className="nav-link text-secondary"
+                                            <div className={this.state.iscategory === 'all' ? "nav-active" : "nav-non-active"}
                                                 onClick={() => {
                                                     this.setState({
                                                         filter: true,
                                                         iscategory: 'all'
                                                     })
                                                 }}
-                                            >All</button>
+                                            >All</div>
                                         </li>
                                     </ul>
                                 </div>
@@ -213,7 +215,7 @@ class Product extends Component {
                                         <ul className='navbar-nav navbar-custom-two'>
                                             <p>Sort By</p>
                                             <li className='nav-item mx-1'>
-                                                <button className='nav-item btn btn-outline-secondary'
+                                                <div className={this.state.sort === 'name' ? "nav-active" : "nav-non-active"}
                                                     onClick={() => {
                                                         this.setState({
                                                             filter: true,
@@ -221,38 +223,38 @@ class Product extends Component {
                                                         })
                                                     }}
                                                 >
-                                                    Name</button>
+                                                    Name</div>
                                             </li>
                                             <li className='nav-item mx-1'>
-                                                <button className='nav-item btn btn-outline-secondary'
+                                                <div className={this.state.sort === 'price' ? "nav-active" : "nav-non-active"}
                                                     onClick={() => {
                                                         this.setState({
                                                             filter: true,
                                                             sort: 'price',
                                                         })
                                                     }}
-                                                >Price</button>
+                                                >Price</div>
                                             </li>
                                             <p>Order By</p>
                                             <li className='nav-item mx-1'>
-                                                <button className='nav-item btn btn-outline-secondary'
+                                                <div className={this.state.order === 'asc' ? "nav-active" : "nav-non-active"}
                                                     onClick={() => {
                                                         this.setState({
                                                             filter: true,
                                                             order: 'asc',
                                                         })
                                                     }}
-                                                >Asc</button>
+                                                >Asc</div>
                                             </li>
                                             <li className='nav-item mx-1'>
-                                                <button className='nav-item btn btn-outline-secondary'
+                                                <div className={this.state.order === 'desc' ? "nav-active" : "nav-non-active"}
                                                     onClick={() => {
                                                         this.setState({
                                                             filter: true,
                                                             order: 'desc',
                                                         })
                                                     }}
-                                                >Desc</button>
+                                                >Desc</div>
                                             </li>
                                         </ul>
                                     </div>

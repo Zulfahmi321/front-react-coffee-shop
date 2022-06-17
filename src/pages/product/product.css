@@ -150,6 +150,20 @@
     border: none;
     background-color: white;
 }
+
+.nav-active{
+    width: auto;
+    height: 50px;
+    color: #6A4029;
+    border-bottom: 3px solid #6A4029;
+}
+
+.nav-non-active{
+    width: auto;
+    height: 49px;
+    color: #464646;
+}
+
 .navbar-custom-two{
     /* margin: 0 20%; */
     justify-content: space-evenly;

@@ -55,6 +55,7 @@ class Login extends Component {
     }
     componentDidMount() {
         document.title = "Login"
+
     }
     render() {
         console.log(this.state.isLoggedIn);
