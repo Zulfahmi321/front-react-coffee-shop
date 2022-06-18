@@ -13,6 +13,7 @@ const getUserDataReducer = (state = initialState, action) => {
         case getUserDataString + PENDING:
             return { ...state, error: null, isLoading: true }
         case getUserDataString + FULFILLED:
+            console.log(action.payload.data.data.data[0]);
             return { ...state, isLoading: false, data: action.payload.data.data.data[0], isSuccess: true, isLoggedIn: true }
         case getUserDataString + REJECTED:
             return { ...state, error: action.payload.data, isLoading: false, isSuccess: false }

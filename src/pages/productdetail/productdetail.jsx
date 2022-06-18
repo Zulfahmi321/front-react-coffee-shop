@@ -61,7 +61,7 @@ class Productdetail extends Component {
                             <div className="col-lg-6 right-product">
                                 <div className="card card-product-custom">
                                     <div className='card-product-details'>
-                                        <p className='card-title'>Delivery only on <strong>{this.state.product.delivery_info}</strong></p>
+                                        <p className='card-text'>Delivery only on <strong>{this.state.product.delivery_info}</strong></p>
                                         <p className='card-text'>{this.state.product.description}</p>
                                         <strong className='size-title' >Choose a size</strong>
                                         <div className="size-button">
@@ -128,7 +128,7 @@ class Productdetail extends Component {
                             </div>
                         </div>
                     </section>
-                    <section className='container'>
+                    <section className='container container-custom-cart'>
                         <div className="row">
                             <div className="col-lg-6 col-md-6">
                                 <div className="card card-custom-cart">
@@ -139,8 +139,8 @@ class Productdetail extends Component {
                                             </div>
                                             <div className="col-lg-3">
                                                 <div className='card-product-info'>
-                                                    <strong>{this.state.product.name}</strong>
-                                                    <p>x{counter} {this.state.size} <br /> {this.state.delivery} </p>
+                                                    <h4>{this.state.product.name}</h4>
+                                                    <h5>x{counter} {this.state.size} <br /> {this.state.delivery} </h5>
                                                 </div>
                                             </div>
                                             <div className="col-lg-7">

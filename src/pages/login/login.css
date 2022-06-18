@@ -103,6 +103,26 @@
     background-color: #F8F8F8;
 }
 
+.modal-title-warning{
+    text-align: center;
+    color: red;
+    width: 100%;
+    height: 50px;
+    background-color: #cdd7ec;
+    margin: 3% 0 ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+}
+
+.modal-body-warning{
+    text-align: center;
+    color: rgb(255, 0, 0);
+    font-weight: 900;
+    font-size: 20px;
+}
+
 .coffee-shop {
     display: flex;
     margin: 20px;

@@ -10,6 +10,7 @@ import './payment.css'
 import { connect } from 'react-redux';
 import { getUserDataAction } from '../../redux/actionCreator/userdata';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class Payment extends Component {
     constructor() {
@@ -20,6 +21,7 @@ class Payment extends Component {
         }
     }
     handlePayment = () => {
+        console.log(this.props.idUser);
         const { counter, delivery, idProduct, idUser, cart, userInfo, size } = this.props
         const product_id = idProduct
         const total_price = (cart.price * counter) + (cart.price * counter * 10 / 100) + (delivery === "Door Delivery" ? 10000 : 0)
@@ -51,7 +53,7 @@ class Payment extends Component {
         }
     }
     render() {
-        console.log(this.props);
+        console.log(this.props.user);
         const { counter, cart, size, user, delivery } = this.props
         return (
             <React.Fragment>
@@ -62,51 +64,60 @@ class Payment extends Component {
                             <div className="col-lg-6 col-sm-12">
                                 <h4 className='left-payment-title'>Checkout your item now!</h4>
                                 <div className="card-payment">
-                                    <div className="card-left-payment">
-                                        <p className='card-title'>Order Summary</p>
-                                        <div className="container">
-                                            <div className="row">
-                                                <div className="col-lg-3 col-md-3">
-                                                    <img className='pay-product1' src={`${process.env.REACT_APP_BE_HOST}${cart.photo}`} alt="" />
-                                                </div>
-                                                <div className="col-lg-3 col-md-3">
-                                                    <p>{cart.name}</p>
-                                                    <p>{size}</p>
-                                                    <p>x {counter}</p>
-                                                </div>
-                                                <div className="col-lg-3 col-md-3">
-                                                    <p className='payment-price'>{currencyFormatter.format(cart.price)}</p>
-                                                </div>
-                                            </div>
-                                            <div className="underline-payment">
-                                                <span></span>
-                                            </div>
-                                            <div className="detail-payment">
+                                    {delivery !== "" && size !== "" ?
+                                        <div className="card-left-payment">
+                                            <p className='card-title'>Order Summary</p>
+                                            <div className="container">
                                                 <div className="row">
-                                                    <div className="col-lg-6 col-md-6">
-                                                        <p>SUBTOTAL</p>
-                                                        <p>TAX {'&'} FEES</p>
-                                                        <p>SHIPPING</p>
+                                                    <div className="col-lg-3 col-md-3">
+                                                        <img className='pay-product1' src={`${process.env.REACT_APP_BE_HOST}${cart.photo}`} alt="" />
                                                     </div>
-                                                    <div className="col-lg-6 col-md-6">
-                                                        <p>{currencyFormatter.format(cart.price * counter)}</p>
-                                                        <p>{currencyFormatter.format(cart.price * counter * 10 / 100)}</p>
-                                                        <p>{currencyFormatter.format(delivery === "Door Delivery" ? 10000 : 0)}</p>
+                                                    <div className="col-lg-3 col-md-3">
+                                                        <p>{cart.name}</p>
+                                                        <p>{size}</p>
+                                                        <p>x {counter}</p>
+                                                    </div>
+                                                    <div className="col-lg-3 col-md-3">
+                                                        <p className='payment-price'>{currencyFormatter.format(cart.price)}</p>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div className="payment-total">
-                                                <div className="row">
-                                                    <div className="col-lg-6 col-md-6">
-                                                        <p>TOTAL</p>
+                                                <div className="underline-payment">
+                                                    <span></span>
+                                                </div>
+                                                <div className="detail-payment">
+                                                    <div className="row">
+                                                        <div className="col-lg-6 col-md-6">
+                                                            <p>SUBTOTAL</p>
+                                                            <p>TAX {'&'} FEES</p>
+                                                            <p>SHIPPING</p>
+                                                        </div>
+                                                        <div className="col-lg-6 col-md-6">
+                                                            <p>{currencyFormatter.format(cart.price * counter)}</p>
+                                                            <p>{currencyFormatter.format(cart.price * counter * 10 / 100)}</p>
+                                                            <p>{currencyFormatter.format(delivery === "Door Delivery" ? 10000 : 0)}</p>
+                                                        </div>
                                                     </div>
-                                                    <div className="col-lg-6 col-md-6">
-                                                        <p>{currencyFormatter.format((cart.price * counter) + (cart.price * counter * 10 / 100) + (delivery === "Door Delivery" ? 10000 : 0))}</p>
+                                                </div>
+                                                <div className="payment-total">
+                                                    <div className="row">
+                                                        <div className="col-lg-6 col-md-6">
+                                                            <p>TOTAL</p>
+                                                        </div>
+                                                        <div className="col-lg-6 col-md-6">
+                                                            <p>{currencyFormatter.format((cart.price * counter) + (cart.price * counter * 10 / 100) + (delivery === "Door Delivery" ? 10000 : 0))}</p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                        :
+                                        <section className='cart-empty'>
+                                            <p>Your Cart is Empty</p>
+                                            <Link to="/product" className='order-here'>
+                                                <p>Click here to order</p>
+                                            </Link>
+                                        </section>
+                                    }
                                 </div>
                             </div>
                             <div className="col-lg-6 col-md-12">

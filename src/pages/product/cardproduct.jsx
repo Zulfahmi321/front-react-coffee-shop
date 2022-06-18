@@ -10,14 +10,14 @@ function Cardproduct(props) {
                         <div className="card-body text-center ">
                             <img src={props.photo} className="card-img-top mb-4"
                                 alt="product" />
-                            <p className="card-title-custom">{props.name}</p>
-                            <p className='card-title-custom'>{props.category_name}</p>
-                            <p className="card-text-custom">{props.price}</p>
+                            <h5 className="card-title-custom">{props.name}</h5>
+                            {/* <h5 className='card-title-custom'>{props.category_name}</h5> */}
+                            <h6 className="card-text-custom">{props.price}</h6>
                         </div>
                     </div>
                 </Link>
-            </div>
-        </React.Fragment>
+            </div >
+        </React.Fragment >
     )
 }
 

@@ -175,9 +175,9 @@ class Login extends Component {
                     </main>
                 </div>
                 <Modal show={this.state.isShow} onHide={() => this.setState({ isShow: false },
-                    () => this.props.navigate("/login", { replace: true, state: null }))}>
-                    <Modal.Title>Warning</ Modal.Title>
-                    <Modal.Body>Login First</Modal.Body>
+                    () => this.props.navigate("/login", { replace: true, state: null }))} className='modal-warning'>
+                    <Modal.Title className='modal-title-warning'>Warning</ Modal.Title>
+                    <Modal.Body className='modal-body-warning'>Login First</Modal.Body>
                 </Modal>
                 <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-centered">

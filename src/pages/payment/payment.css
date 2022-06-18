@@ -66,6 +66,24 @@
     font-size: 30px;
 }
 
+.cart-empty{
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.order-here{
+    text-decoration: none;
+}
+
+.order-here p {
+    color: #6A4029;
+    font-size: 20px;
+    border-bottom: 3px solid #6A4029;
+    border-top: 3px solid #6A4029;
+    text-align: center;
+}
+
 .container-delivery-all{
     margin: 140px 0;
 }

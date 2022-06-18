@@ -213,7 +213,7 @@ class Product extends Component {
                                 <div className='container'>
                                     <div className='navbar navbar-expand-lg navbar-expand-sm'>
                                         <ul className='navbar-nav navbar-custom-two'>
-                                            <p>Sort By</p>
+                                            <strong>Sort By</strong>
                                             <li className='nav-item mx-1'>
                                                 <div className={this.state.sort === 'name' ? "nav-active" : "nav-non-active"}
                                                     onClick={() => {
@@ -235,7 +235,7 @@ class Product extends Component {
                                                     }}
                                                 >Price</div>
                                             </li>
-                                            <p>Order By</p>
+                                            <strong>Order By</strong>
                                             <li className='nav-item mx-1'>
                                                 <div className={this.state.order === 'asc' ? "nav-active" : "nav-non-active"}
                                                     onClick={() => {
