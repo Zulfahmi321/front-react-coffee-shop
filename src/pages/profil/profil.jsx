@@ -89,7 +89,7 @@ class Profil extends Component {
                                             <form action="">
                                                 <label className='label-upload'>
                                                     <img className="pencil" src={Pencil} alt="" />
-                                                    <img src={file ? `${process.env.REACT_APP_BE_HOST}${file}` : ProfDef} className="card-profil-img card-img-top mx-auto d-block" alt="" />
+                                                    <img src={file ? `${file}` : ProfDef} className="card-profil-img card-img-top mx-auto d-block" alt="" />
                                                     <input type="file" className='input-upload' name='file' onChange={this.handlerChangeImg} />
                                                 </label>
                                             </form>

@@ -44,7 +44,7 @@ class Productdetail extends Component {
                         <div className="row">
                             <div className="col-lg-6 left-product">
                                 <p>Favorite {'&'} Promo {'>'} {this.state.product.name}</p>
-                                <img src={`${process.env.REACT_APP_BE_HOST}${this.state.product.photo}`} alt="product" />
+                                <img src={`${this.state.product.photo}`} alt="product" />
                                 <h1>{this.state.product.name}</h1>
                                 <h5>{this.state.product.price}</h5>
                                 <div className='cart-button'>
@@ -59,39 +59,40 @@ class Productdetail extends Component {
                                 </div>
                             </div>
                             <div className="col-lg-6 right-product">
-                                <div className="card card-product-custom">
+                                <div className='card-product-detail'>
                                     <div className='card-product-details'>
                                         <p className='card-text'>Delivery only on <strong>{this.state.product.delivery_info}</strong></p>
                                         <p className='card-text'>{this.state.product.description}</p>
                                         <strong className='size-title' >Choose a size</strong>
-                                        <div className="size-button">
-                                            <label className="size-label">
-                                                <input type="radio" name="size-input" className='size-input' />
-                                                <span className="size-checkmark"
-                                                    onClick={() => {
-                                                        this.setState({ size: "Reguler" })
-                                                    }}
-                                                >R</span>
-                                            </label>
-                                            <label className="size-label">
-                                                <input type="radio" name="size-input" className='size-input' />
-                                                <span className="size-checkmark"
-                                                    onClick={() => {
-                                                        this.setState({ size: "Large" })
-                                                    }}
-                                                >L</span>
-                                            </label>
-                                            <label className="size-label">
-                                                <input type="radio" name="size-input" className='size-input' />
-                                                <span className="size-checkmark"
-                                                    onClick={() => {
-                                                        this.setState({ size: "Extra Large" })
-                                                    }}
-                                                >XL</span>
-                                            </label>
-                                        </div>
+                                    </div>
+                                    <div className="size-button">
+                                        <label className="size-label">
+                                            <input type="radio" name="size-input" className='size-input' />
+                                            <span className="size-checkmark"
+                                                onClick={() => {
+                                                    this.setState({ size: "Reguler" })
+                                                }}
+                                            >R</span>
+                                        </label>
+                                        <label className="size-label">
+                                            <input type="radio" name="size-input" className='size-input' />
+                                            <span className="size-checkmark"
+                                                onClick={() => {
+                                                    this.setState({ size: "Large" })
+                                                }}
+                                            >L</span>
+                                        </label>
+                                        <label className="size-label">
+                                            <input type="radio" name="size-input" className='size-input' />
+                                            <span className="size-checkmark"
+                                                onClick={() => {
+                                                    this.setState({ size: "Extra Large" })
+                                                }}
+                                            >XL</span>
+                                        </label>
                                     </div>
                                 </div>
+
                                 <div className="delivery-container">
                                     <h4>Choose Delivery Methods</h4>
                                     <div className="delivery-button">
@@ -135,7 +136,7 @@ class Productdetail extends Component {
                                     <div className="card-body card-product-cart">
                                         <div className="row">
                                             <div className="col-lg-2">
-                                                <img src={`${process.env.REACT_APP_BE_HOST}${this.state.product.photo}`} alt="product" className='product-cart-detail' />
+                                                <img src={`${this.state.product.photo}`} alt="product" className='product-cart-detail' />
                                             </div>
                                             <div className="col-lg-3">
                                                 <div className='card-product-info'>

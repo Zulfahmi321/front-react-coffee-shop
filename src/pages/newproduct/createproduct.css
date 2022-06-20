@@ -108,7 +108,164 @@
     border: none;
     border-bottom: 1px solid #6A4029;
 }
+.size-title-cpd{
+    font-size: 20px;
+    font-weight: bold;
+    color: #6A4029;
+    display: flex;
+    /* justify-content: center; */
+}
 
+.size-button-cpd {
+    display: flex;
+    /* justify-content: space-evenly; */
+}
+
+.size-label-cpd {
+    width: 50px;
+    height: 50px;
+    margin: 20px 10px;
+    background: #F4F4F8;
+    border-radius: 50%;
+    border: 1px solid #BABABA59;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #050505;
+
+}
+
+.size-input-cpd {
+    position: absolute;
+}
+
+.size-checkmark-cpd {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    margin: 20px 10px;
+    background: #F4F4F8;
+    border-radius: 50%;
+    border: 1px solid #BABABA59;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #3b3b3b59;
+    cursor: pointer;
+
+}
+
+.size-label-cpd:hover input~.size-checkmark-cpd {
+    background: #FFBA33;
+    box-shadow: 0px 6px 20px rgba(240, 218, 75, 0.4);
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+.size-label-cpd input:checked~.size-checkmark-cpd {
+    background: #FFBA33;
+    box-shadow: 0px 6px 20px rgba(240, 218, 75, 0.4);
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+.category-container-cpd {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center; */
+    /* padding: 50px; */
+}
+
+.category-button-cpd {
+    display: flex;
+}
+
+.category-label-cpd {
+    width: 120px;
+    height: 40px;
+    margin: 20px 10px;
+    background: #6A4029;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #FFFFFF;
+}
+
+.category-label-cpd {
+    width: 120px;
+    height: 40px;
+    margin: 20px 10px;
+    background: #F4F4F8;
+    border-radius: 10px;
+    border: 1px solid #BABABA59;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #9F9F9F;
+
+}
+
+.category-input-cpd {
+    position: absolute;
+}
+
+.category-checkmark-cpd {
+    position: absolute;
+    width: 130px;
+    height: 40px;
+    margin: 20px 10px;
+    background: #F4F4F8;
+    border-radius: 10px;
+    border: 1px solid #BABABA59;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #9F9F9F;
+    cursor: pointer;
+
+}
+
+.category-label-cpd:hover input~.category-checkmark-cpd {
+    background: #6A4029;
+    box-shadow: 0px 6px 20px rgba(137, 85, 55, 0.4);
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+.category-label-cpd input:checked~.category-checkmark-cpd {
+    background: #6A4029;
+    box-shadow: 0px 6px 20px rgba(137, 85, 55, 0.4);
+    color: #FFFFFF;
+    font-weight: 700;
+}
 @media(max-width: 1024px){
     .create-product-input{
         margin: 2% 0;

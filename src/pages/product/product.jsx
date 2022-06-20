@@ -10,6 +10,9 @@ import Footer from '../../components/footer/Footer'
 import axios from 'axios';
 import Cardproduct from './cardproduct';
 import withSearchParams from '../../helper/searchwithParams';
+import { connect } from 'react-redux';
+import { getUserDataAction } from '../../redux/actionCreator/userdata';
+import { Link } from 'react-router-dom';
 class Product extends Component {
     constructor(props) {
         super(props);
@@ -27,8 +30,20 @@ class Product extends Component {
             setSearchParams: this.props.setSearchParams.bind(this)
         };
     }
+    setSearchName = (props) => {
+        this.setState({
+            searchName: props,
+            filter: true,
+        })
+    }
+
     componentDidMount() {
         document.title = "Product"
+        const { isSuccess, dispatch } = this.props
+        if (isSuccess) {
+            const { token = null } = this.props.userInfo || {}
+            dispatch(getUserDataAction(token))
+        }
         axios
             .get(`${process.env.REACT_APP_BE_HOST}/product`)
             .then((result) => {
@@ -92,7 +107,7 @@ class Product extends Component {
     render() {
         return (
             <React.Fragment>
-                <Header />
+                <Header setSearchName={this.setSearchName.bind(this)} />
                 <main>
                     <section className='row'>
                         <div className="col-lg-4 col-sm-12 container-left ">
@@ -258,7 +273,7 @@ class Product extends Component {
                                             </li>
                                         </ul>
                                     </div>
-                                    <div className='row g-3 mx-5'>
+                                    {/* <div className='row g-3 mx-5'>
                                         <div className='col-auto'>
                                             <p>Search</p>
                                         </div>
@@ -270,12 +285,12 @@ class Product extends Component {
                                                 })}
                                             />
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <div className="main-product">
                                     <div className="row">
                                         {this.state.product.map((product, idx) => (
-                                            <Cardproduct key={idx} id={product.id} photo={`${process.env.REACT_APP_BE_HOST}${product.photo}`} name={product.name} category={product.category_name} price={product.price} />
+                                            <Cardproduct key={idx} id={product.id} photo={`${product.photo}`} name={product.name} category={product.category_name} price={product.price} />
                                         ))}
                                     </div>
                                     <div className="pagination-button">
@@ -306,7 +321,13 @@ class Product extends Component {
                                             >Next</button>
                                         }
                                     </div>
-                                    <p>*the price has been cutted by discount appears</p>
+                                    {this.props.roles !== "admin" ?
+                                        <p>*the price has been cutted by discount appears</p>
+                                        :
+                                        <Link to='/product/new' className='link-new-product'>
+                                            <button className='product-new-product'>New Product</button>
+                                        </Link>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -317,5 +338,13 @@ class Product extends Component {
         );
     }
 }
-
-export default withSearchParams(Product);
+const mapStateToProps = (state) => {
+    return {
+        isSuccess: state.auth.isSuccess,
+        user: state.user.data,
+        profPict: state.user.data.photo,
+        userInfo: state.auth.userInfo,
+        roles: state.user.data.roles,
+    }
+}
+export default connect(mapStateToProps)(withSearchParams(Product));

@@ -38,10 +38,10 @@ function App() {
                 </PrivateElement>
                 }/>
                 <Route path='/product' element={<Product/>}/>
-                <Route path='/newproduct' element={<Newproduct/>}/>
-                <Route path='/newpromo' element={<Newpromo/>}/>
-                <Route path='/editpromo' element={<Editpromo/>}/>
-                <Route path='/editproduct' element={<Editproduct/>}/>
+                <Route path='/product/new' element={<Newproduct/>}/>
+                <Route path='/promo/new' element={<Newpromo/>}/>
+                <Route path='/promo/edit' element={<Editpromo/>}/>
+                <Route path='/product/edit/:id' element={<Editproduct/>}/>
                 <Route path='/dashboard' element={<Dashboard/>}/>
                 <Route path='/forgot' element={<Forgot/>}/>
                 <Route path='/product/:id'element={<Productdetail/>}/>

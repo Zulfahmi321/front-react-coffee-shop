@@ -20,12 +20,16 @@ import Left from '../../assets/img/icons/left.png'
 import Right from '../../assets/img/icons/right.png'
 import './home.css'
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 
 class Home extends Component {
     componentDidMount() {
         document.title = "Coffee Shop"
+
     }
     render() {
+        // console.log(this.props);
         return (
             <div>
                 <Header />
@@ -268,5 +272,12 @@ class Home extends Component {
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        user: state.user.data,
+        userInfo: state.auth.userInfo,
+        isSuccess: state.auth.isSuccess
+    }
+}
 
-export default Home;
+export default connect(mapStateToProps)(Home);

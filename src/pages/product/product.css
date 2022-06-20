@@ -227,7 +227,48 @@
 .pagination-button button{
     width: 150px;
 }
-
+.link-new-product{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    
+}
+.product-new-product{
+    width: 300px;
+    height: 50px;
+    background-color: #6A4029;
+    color: #EFEEEE;
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 10px;
+    cursor:pointer;
+}
+.edit-product{
+    position: absolute;
+}
+.btn-edit-product{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #6A4029;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 3;
+    margin-left: 180px;
+    margin-top: -40px;
+}
+.btn-edit-product img{
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    
+}
 
 @media(max-width: 768px) {
     .container-left {

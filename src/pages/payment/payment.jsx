@@ -53,7 +53,7 @@ class Payment extends Component {
         }
     }
     render() {
-        console.log(this.props.user);
+        console.log(this.props);
         const { counter, cart, size, user, delivery } = this.props
         return (
             <React.Fragment>

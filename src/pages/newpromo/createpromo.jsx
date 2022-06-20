@@ -7,8 +7,43 @@ import Kamera from '../../assets/img/icons/kamera.png'
 
 // import css
 import './createpromo.css'
+import axios from 'axios';
 
 class Createpromo extends Component {
+    constructor() {
+        super()
+        this.state = {
+            name: '',
+            normal_price: '',
+            description: '',
+            code: '',
+            discount: '',
+            expired_start: '',
+            expired_end: '',
+        }
+    }
+    handlerSubmit = (e) => {
+        e.preventDefault()
+        const { name, normal_price, description, code, discount, expired_start, expired_end } = this.state
+        const body = { name, normal_price, description, code, discount, expired_start, expired_end }
+        axios
+            .post(`${process.env.REACT_APP_BE_HOST}/promos`, body)
+            .then(rows => {
+                console.log(rows)
+                this.setState({
+                    successMsg: `${rows.data}`
+                })
+            })
+            .catch(error => {
+                console.log(error)
+                this.setState({
+                    errorMsg: `${error}`
+                })
+            })
+    }
+    handlerChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
     render() {
         return (
             <React.Fragment>
@@ -29,26 +64,27 @@ class Createpromo extends Component {
                                 </div>
                                 <div className='enter-discount form-create-product'>
                                     <label htmlFor="" className='form-label-title'>Enter the discount :</label>
-                                    <input type="text" className='create-promo-input' />
-                                    <label htmlFor="" className='form-label-title'>Expire date :</label>
-                                    <input type="text" className='create-promo-input' />
-                                    <input type="text" className='create-promo-input' />
+                                    <input type="text" name='discount' className='create-promo-input' onChange={this.handlerChange} />
+                                    <label htmlFor="" className='form-label-title'>Expired start :</label>
+                                    <input type="date" name='expired_start' className='create-promo-input' onChange={this.handlerChange} />
+                                    <label htmlFor="" className='form-label-title'>Expired end :</label>
+                                    <input type="date" name='expired_end' className='create-promo-input' onChange={this.handlerChange} />
                                     <label htmlFor="" className='form-label-title'>Input coupon code :</label>
-                                    <input type="text" className='create-promo-input' />
+                                    <input type="text" name='code' className='create-promo-input' onChange={this.handlerChange} />
                                 </div>
                             </div>
                             <div className='col-lg-6 right-create-product'>
                                 <div>
                                     <form action='' className='form-create-product'>
                                         <label htmlFor="" className='form-label-title'>Name :</label>
-                                        <input type="text" className='create-product-input' placeholder='Type product name min. 50 characters' />
+                                        <input type="text" name='name' className='create-product-input' placeholder='Type product name min. 50 characters' onChange={this.handlerChange} />
                                         <label htmlFor="" className='form-label-title'>Normal Price :</label>
-                                        <input type="text" className='create-product-input' placeholder='Type the price' />
+                                        <input type="text" name='normal_price' className='create-product-input' placeholder='Type the price' onChange={this.handlerChange} />
                                         <label htmlFor="" className='form-label-title'>Description :</label>
-                                        <input type="text" className='create-product-input' placeholder='Describe your product min. 150 characters' />
+                                        <input type="text" name='description' className='create-product-input' placeholder='Describe your product min. 150 characters' onChange={this.handlerChange} />
                                     </form>
                                 </div>
-                                <strong className='cpromo-size-title' >Input product size :</strong>
+                                {/* <strong className='cpromo-size-title' >Input product size :</strong>
                                 <p>Click product size you want to use for this promo</p>
                                 <div className="cpromo-size-button">
                                     <label className="cpromo-size-label">
@@ -105,9 +141,9 @@ class Createpromo extends Component {
                                             >Pick up</span>
                                         </label>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className='save-create-promo'>
-                                    <button className='save-create-promo-button'>Save Promo</button>
+                                    <button className='save-create-promo-button' onClick={this.handlerSubmit}>Save Promo</button>
                                 </div>
                                 <div className="cancel-create-promo">
                                     <button className='cancel-create-promo-button'>Cancel</button>
