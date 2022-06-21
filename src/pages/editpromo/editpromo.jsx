@@ -7,84 +7,84 @@ import Product from '../../assets/img-products/product-1.png'
 
 // import css
 import './editpromo.css'
-import axios from 'axios';
+// import axios from 'axios';
 
 class Editpromo extends Component {
-    constructor() {
-        super()
-        this.state = {
-            name: '',
-            normal_price: '',
-            description: '',
-            code: '',
-            discount: '',
-            expired_start: '',
-            expired_end: '',
-        }
-    }
-    componentDidMount() {
-        document.title = "Edit Product"
-        const { params } = this.props;
-        axios
-            .get(`${process.env.REACT_APP_BE_HOST}/product/${params.id}`)
-            .then((result) => {
-                // console.log(result);
-                this.setState({
-                    // product: result.data.data.data[0],
-                    photo: result.data.data.data[0].photo,
-                    name: result.data.data.data[0].name,
-                    price: result.data.data.data[0].price,
-                    description: result.data.data.data[0].description,
-                    delivery_info: result.data.data.data[0].delivery_info,
-                    stock: result.data.data.data[0].stock,
-                    category: result.data.data.data[0].category_id === 'Coffee' ? 1 : result.data.data.data[0].category_id === 'Non Coffee' ? 2 : result.data.data.data[0].category_id === 'Snack' ? 3 : 4,
-                })
-            })
-            .catch((error) => {
-                console.log(error)
-            })
-    }
-    handlerChange = (e) => {
-        this.setState({ [e.target.name]: e.target.value })
-    }
-    handlerChangeImg = (e) => {
-        // console.log(e.target.files[0]);
-        this.setState({
-            photo: e.target.files[0]
-        })
-    }
+    // constructor() {
+    //     super()
+    //     this.state = {
+    //         name: '',
+    //         normal_price: '',
+    //         description: '',
+    //         code: '',
+    //         discount: '',
+    //         expired_start: '',
+    //         expired_end: '',
+    //     }
+    // }
+    // componentDidMount() {
+    //     document.title = "Edit Product"
+    //     const { params } = this.props;
+    //     axios
+    //         .get(`${process.env.REACT_APP_BE_HOST}/product/${params.id}`)
+    //         .then((result) => {
+    //             // console.log(result);
+    //             this.setState({
+    //                 // product: result.data.data.data[0],
+    //                 photo: result.data.data.data[0].photo,
+    //                 name: result.data.data.data[0].name,
+    //                 price: result.data.data.data[0].price,
+    //                 description: result.data.data.data[0].description,
+    //                 delivery_info: result.data.data.data[0].delivery_info,
+    //                 stock: result.data.data.data[0].stock,
+    //                 category: result.data.data.data[0].category_id === 'Coffee' ? 1 : result.data.data.data[0].category_id === 'Non Coffee' ? 2 : result.data.data.data[0].category_id === 'Snack' ? 3 : 4,
+    //             })
+    //         })
+    //         .catch((error) => {
+    //             console.log(error)
+    //         })
+    // }
+    // handlerChange = (e) => {
+    //     this.setState({ [e.target.name]: e.target.value })
+    // }
+    // handlerChangeImg = (e) => {
+    //     // console.log(e.target.files[0]);
+    //     this.setState({
+    //         photo: e.target.files[0]
+    //     })
+    // }
 
-    handlerSubmit = (e) => {
-        // console.log(this.state.category);
-        e.preventDefault()
-        const { name, price, description, delivery_info, stock, category, photo } = this.state
-        let body = new FormData()
-        body.append('photo', photo);
-        body.append('name', name);
-        body.append('price', price);
-        body.append('description', description);
-        body.append('delivery_info', delivery_info);
-        body.append('stock', stock);
-        body.append('category_id', category);
+    // handlerSubmit = (e) => {
+    //     // console.log(this.state.category);
+    //     e.preventDefault()
+    //     const { name, price, description, delivery_info, stock, category, photo } = this.state
+    //     let body = new FormData()
+    //     body.append('photo', photo);
+    //     body.append('name', name);
+    //     body.append('price', price);
+    //     body.append('description', description);
+    //     body.append('delivery_info', delivery_info);
+    //     body.append('stock', stock);
+    //     body.append('category_id', category);
 
-        const { token = null } = this.props.userInfo || {}
-        const config = { headers: { Authorization: `Bearer ${token}`, 'content-type': 'multipart/form-data' } }
-        const { params } = this.props;
-        axios
-            .patch(`${process.env.REACT_APP_BE_HOST}/product/${params.id}`, body, config)
-            .then(result => {
-                console.log(result)
-                this.setState({
-                    successMsg: `${result.data}`
-                })
-            })
-            .catch(error => {
-                console.log(error);
-                this.setState({
-                    errorMsg: `${error}`
-                })
-            })
-    }
+    //     const { token = null } = this.props.userInfo || {}
+    //     const config = { headers: { Authorization: `Bearer ${token}`, 'content-type': 'multipart/form-data' } }
+    //     const { params } = this.props;
+    //     axios
+    //         .patch(`${process.env.REACT_APP_BE_HOST}/product/${params.id}`, body, config)
+    //         .then(result => {
+    //             console.log(result)
+    //             this.setState({
+    //                 successMsg: `${result.data}`
+    //             })
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //             this.setState({
+    //                 errorMsg: `${error}`
+    //             })
+    //         })
+    // }
     render() {
         return (
             <React.Fragment>
