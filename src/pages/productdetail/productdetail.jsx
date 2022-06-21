@@ -167,17 +167,7 @@ class Productdetail extends Component {
                             </div>
                             <div className="col-lg-6 col-md-6">
                                 <Link to='/payment'>
-                                    <button className='checkout'
-                                        onClick={() => {
-                                            const addSize = this.state.size !== "" ? this.state.size : null
-                                            const addDeliv = this.state.delivery !== "" ? this.state.delivery : null
-                                            const addProd = this.state.product !== "" ? this.state.product : null
-                                            addSize !== null && addDeliv !== null ?
-                                                cart(addProd, addSize, addDeliv) :
-                                                this.setState({
-                                                    isShow: true
-                                                })
-                                        }}>CHECKOUT</button>
+                                    <button className='checkout'>CHECKOUT</button>
                                 </Link>
                             </div>
                         </div>
