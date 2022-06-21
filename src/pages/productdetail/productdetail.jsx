@@ -10,6 +10,7 @@ import { counterDown, counterUp } from '../../redux/actionCreator/counter';
 import { addToCart } from '../../redux/actionCreator/addtocart';
 import { Link } from 'react-router-dom';
 import { Modal } from 'react-bootstrap';
+import { currencyFormatter } from '../../helper/formatter';
 
 class Productdetail extends Component {
     constructor() {
@@ -49,7 +50,7 @@ class Productdetail extends Component {
                                 <p>Favorite {'&'} Promo {'>'} {this.state.product.name}</p>
                                 <img src={`${this.state.product.photo}`} alt="product" />
                                 <h1>{this.state.product.name}</h1>
-                                <h5>{this.state.product.price}</h5>
+                                <h5>{currencyFormatter.format(this.state.product.price)}</h5>
                                 <div className='cart-button'>
                                     <button className='button-cart'
                                         onClick={() => {
