@@ -24,6 +24,7 @@ class Profil extends Component {
             gender: '',
             address: '',
             file: null,
+            photo: null,
             isSuccess: false
         }
     }
@@ -59,9 +60,17 @@ class Profil extends Component {
 
     handlerChangeImg = (e) => {
         // console.log(e.target.files[0]);
-        this.setState({
-            file: e.target.files[0]
-        })
+        // this.setState({
+        //     file: e.target.files[0]
+        // })
+        const file = e.target.files[0]
+        if (file) {
+            const reader = new FileReader()
+            reader.onload = () => {
+                this.setState({ photo: reader.result, file: file })
+            }
+            reader.readAsDataURL(file)
+        }
     }
 
     render() {
@@ -89,7 +98,11 @@ class Profil extends Component {
                                             <form action="">
                                                 <label className='label-upload'>
                                                     <img className="pencil" src={Pencil} alt="" />
-                                                    <img src={file ? `${file}` : ProfDef} className="card-profil-img card-img-top mx-auto d-block" alt="" />
+                                                    {file ?
+                                                        <img src={`${file}`} className="card-profil-img card-img-top mx-auto d-block" alt="" />
+                                                        :
+                                                        <img src={ProfDef} alt="" />
+                                                    }
                                                     <input type="file" className='input-upload' name='file' onChange={this.handlerChangeImg} />
                                                 </label>
                                             </form>
