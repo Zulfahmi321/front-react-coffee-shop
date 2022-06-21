@@ -30,7 +30,14 @@ class Createproduct extends Component {
     handlerChangeImg = (e) => {
         // console.log(e.target.files[0]);
         this.setState({
-            photo: e.target.files[0]
+            photo: e.target.files[0],
+            // if(photo) {
+            //     const reader = new FileReader()
+            //     reader.onload = () => {
+            //         this.setState({ file: reader.result, picture: photo })
+            //     }
+            //     reader.readAsDataURL(photo)
+            // }
         })
     }
 
@@ -81,8 +88,7 @@ class Createproduct extends Component {
                                     {/* <img src={Kamera} alt="product" className='kamera-img' /> */}
                                     <form action="">
                                         <label className='label-upload'>
-                                            <img src={this.state.photo ? `${process.env.REACT_APP_BE_HOST}${this.state.photo}` : Kamera} className="kamera-img" alt="" />
-
+                                            <img src={this.state.photo ? `${this.state.photo}` : Kamera} className="kamera-img" alt="" />
                                         </label>
                                     </form>
                                 </div>

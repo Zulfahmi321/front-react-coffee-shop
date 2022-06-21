@@ -43,7 +43,7 @@ class History extends Component {
                         </div>
                         <div className='row'>
                             {this.state.transaction.map((transaction, idx) => (
-                                <Cardhistory key={idx} id={transaction.id} name={transaction.product} price={transaction.price * transaction.quantity} photo={`${process.env.REACT_APP_BE_HOST}${transaction.photo}`} />
+                                <Cardhistory key={idx} id={transaction.id} name={transaction.product} price={transaction.price * transaction.quantity} photo={`${transaction.photo}`} />
                             ))}
                         </div>
                     </div>

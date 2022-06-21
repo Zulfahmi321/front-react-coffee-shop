@@ -59,7 +59,7 @@ class Editproduct extends Component {
     }
 
     handlerSubmit = (e) => {
-        console.log(this.state.category);
+        // console.log(this.state.category);
         e.preventDefault()
         const { name, price, description, delivery_info, stock, category, photo } = this.state
         let body = new FormData()
@@ -137,7 +137,7 @@ class Editproduct extends Component {
                                     <div className="category-button-epd">
                                         <label className="category-label-epd">
                                             <input type="radio" name="category" className='category-input-epd'
-                                                value='snack'
+                                                value='snack' checked={this.state.category === "3" ? true : false}
                                                 onClick={() => {
                                                     this.setState({ category: '3' })
                                                 }}
@@ -147,7 +147,7 @@ class Editproduct extends Component {
                                         </label>
                                         <label className="category-label-epd">
                                             <input type="radio" name="category" className='category-input-epd'
-                                                value='food'
+                                                value='food' checked={this.state.category === "4" ? true : false}
                                                 onClick={() => {
                                                     this.setState({ category: '4' })
                                                 }}
@@ -157,7 +157,7 @@ class Editproduct extends Component {
                                         </label>
                                         <label className="category-label-epd">
                                             <input type="radio" name="category" className='category-input-epd'
-                                                value='coffee'
+                                                value='coffee' checked={this.state.category === "1" ? true : false}
                                                 onClick={() => {
                                                     this.setState({ category: '1' })
                                                 }}
@@ -166,7 +166,7 @@ class Editproduct extends Component {
                                         </label>
                                         <label className="category-label-epd">
                                             <input type="radio" name="category" className='category-input-epd'
-                                                value='tea'
+                                                value='tea' checked={this.state.category === "2" ? true : false}
                                                 onClick={() => {
                                                     this.setState({ category: '2' })
                                                 }}

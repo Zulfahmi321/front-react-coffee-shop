@@ -8,6 +8,8 @@ import axios from 'axios';
 import './productdetail.css'
 import { counterDown, counterUp } from '../../redux/actionCreator/counter';
 import { addToCart } from '../../redux/actionCreator/addtocart';
+import { Link } from 'react-router-dom';
+import { Modal } from 'react-bootstrap';
 
 class Productdetail extends Component {
     constructor() {
@@ -15,7 +17,8 @@ class Productdetail extends Component {
         this.state = {
             product: [],
             size: '',
-            delivery: ''
+            delivery: '',
+            isShow: false
         }
     }
     componentDidMount() {
@@ -50,7 +53,14 @@ class Productdetail extends Component {
                                 <div className='cart-button'>
                                     <button className='button-cart'
                                         onClick={() => {
-                                            cart(this.state.product, this.state.size, this.state.delivery)
+                                            const addSize = this.state.size !== "" ? this.state.size : null
+                                            const addDeliv = this.state.delivery !== "" ? this.state.delivery : null
+                                            const addProd = this.state.product !== "" ? this.state.product : null
+                                            addSize !== null && addDeliv !== null ?
+                                                cart(addProd, addSize, addDeliv) :
+                                                this.setState({
+                                                    isShow: true
+                                                })
                                         }}
                                     >Add to Cart</button><br />
                                 </div>
@@ -156,14 +166,38 @@ class Productdetail extends Component {
                                 </div>
                             </div>
                             <div className="col-lg-6 col-md-6">
-                                <button className='checkout' onClick={() => {
-                                    cart(this.state.product, this.state.size, this.state.delivery)
-                                }}>CHECKOUT</button>
+                                <Link to='/payment'>
+                                    <button className='checkout'
+                                        onClick={() => {
+                                            const addSize = this.state.size !== "" ? this.state.size : null
+                                            const addDeliv = this.state.delivery !== "" ? this.state.delivery : null
+                                            const addProd = this.state.product !== "" ? this.state.product : null
+                                            addSize !== null && addDeliv !== null ?
+                                                cart(addProd, addSize, addDeliv) :
+                                                this.setState({
+                                                    isShow: true
+                                                })
+                                        }}>CHECKOUT</button>
+                                </Link>
                             </div>
                         </div>
                     </section>
                 </main>
                 <Footer />
+                <Modal
+                    show={this.state.isShow}
+                    onHide={() => {
+                        this.setState({ isShow: false },
+                        );
+                    }}>
+                    <Modal.Header>
+                        <Modal.Title className='profile-modal-title'>Please Insert Size and Delivery Method</Modal.Title>
+                    </Modal.Header>
+                    {/* <Modal.Body></Modal.Body> */}
+                    <Modal.Footer>
+                        {/* <Button></Button> */}
+                    </Modal.Footer>
+                </Modal>
             </React.Fragment >
         );
     }

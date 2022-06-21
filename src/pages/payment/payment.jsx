@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import { getUserDataAction } from '../../redux/actionCreator/userdata';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { resetCart } from '../../redux/actionCreator/addtocart';
 
 class Payment extends Component {
     constructor() {
@@ -21,7 +22,7 @@ class Payment extends Component {
         }
     }
     handlePayment = () => {
-        console.log(this.props.idUser);
+        // console.log(this.props.idUser);
         const { counter, delivery, idProduct, idUser, cart, userInfo, size } = this.props
         const product_id = idProduct
         const total_price = (cart.price * counter) + (cart.price * counter * 10 / 100) + (delivery === "Door Delivery" ? 10000 : 0)
@@ -39,10 +40,12 @@ class Payment extends Component {
             .post(`${process.env.REACT_APP_BE_HOST}/transaction`, body, config)
             .then(result => {
                 console.log(result);
+                this.props.dispatch(resetCart())
             })
             .catch(error => {
                 console.log(error);
             })
+
     }
     componentDidMount() {
         document.title = "Cart"
@@ -53,7 +56,7 @@ class Payment extends Component {
         }
     }
     render() {
-        console.log(this.props);
+        // console.log(this.props);
         const { counter, cart, size, user, delivery } = this.props
         return (
             <React.Fragment>
@@ -70,7 +73,7 @@ class Payment extends Component {
                                             <div className="container">
                                                 <div className="row">
                                                     <div className="col-lg-3 col-md-3">
-                                                        <img className='pay-product1' src={`${process.env.REACT_APP_BE_HOST}${cart.photo}`} alt="" />
+                                                        <img className='pay-product1' src={`${cart.photo}`} alt="" />
                                                     </div>
                                                     <div className="col-lg-3 col-md-3">
                                                         <p>{cart.name}</p>

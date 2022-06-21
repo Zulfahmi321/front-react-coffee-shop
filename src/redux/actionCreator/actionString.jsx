@@ -11,3 +11,4 @@ export const FULFILLED = "_FULFILLED";
 export const REJECTED = "_REJECTED";
 
 export const addToCartAction = "ADD_TO_CART"
+export const resetCartAction = "DELETE_CART"

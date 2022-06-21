@@ -1,4 +1,4 @@
-import { addToCartAction } from "../actionCreator/actionString";
+import { addToCartAction, resetCartAction } from "../actionCreator/actionString";
 
 export const addToCart = (product, size, delivery) => {
     return {
@@ -6,5 +6,11 @@ export const addToCart = (product, size, delivery) => {
         payload: product,
         size: size,
         delivery: delivery
+    }
+}
+
+export const resetCart = () => {
+    return {
+        type: resetCartAction,
     }
 }
