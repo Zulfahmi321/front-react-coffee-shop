@@ -20,7 +20,8 @@ class Createproduct extends Component {
             delivery_info: '',
             stock: '',
             category: '',
-            photo: null
+            photo: null,
+            file: null
         }
     }
     handlerChange = (e) => {
@@ -29,16 +30,16 @@ class Createproduct extends Component {
 
     handlerChangeImg = (e) => {
         // console.log(e.target.files[0]);
-        this.setState({
-            photo: e.target.files[0],
-            // if(photo) {
-            //     const reader = new FileReader()
-            //     reader.onload = () => {
-            //         this.setState({ file: reader.result, picture: photo })
-            //     }
-            //     reader.readAsDataURL(photo)
-            // }
-        })
+        // this.setState({
+        const file = e.target.files[0]
+        if (file) {
+            const reader = new FileReader()
+            reader.onload = () => {
+                this.setState({ file: reader.result, photo: file })
+            }
+            reader.readAsDataURL(file)
+        }
+        // })
     }
 
     handlerSubmit = (e) => {
@@ -88,7 +89,11 @@ class Createproduct extends Component {
                                     {/* <img src={Kamera} alt="product" className='kamera-img' /> */}
                                     <form action="">
                                         <label className='label-upload'>
-                                            <img src={this.state.photo ? `${this.state.photo}` : Kamera} className="kamera-img" alt="" />
+                                            {this.state.file ?
+                                                <img src={this.state.file} className="kamera-img" alt="" />
+                                                :
+                                                <img src={Kamera} className="kamera-img" alt="" />
+                                            }
                                         </label>
                                     </form>
                                 </div>
