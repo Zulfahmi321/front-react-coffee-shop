@@ -13,6 +13,7 @@ import withSearchParams from '../../helper/searchwithParams';
 import { connect } from 'react-redux';
 import { getUserDataAction } from '../../redux/actionCreator/userdata';
 import { Link } from 'react-router-dom';
+import { currencyFormatter } from '../../helper/formatter';
 class Product extends Component {
     constructor(props) {
         super(props);
@@ -290,7 +291,7 @@ class Product extends Component {
                                 <div className="main-product">
                                     <div className="row">
                                         {this.state.product.map((product, idx) => (
-                                            <Cardproduct key={idx} id={product.id} photo={`${product.photo}`} name={product.name} category={product.category_name} price={product.price} />
+                                            <Cardproduct key={idx} id={product.id} photo={`${product.photo}`} name={product.name} category={product.category_name} price={currencyFormatter.format(product.price)} />
                                         ))}
                                     </div>
                                     <div className="pagination-button">

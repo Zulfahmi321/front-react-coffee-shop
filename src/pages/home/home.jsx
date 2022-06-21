@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from '../../components/navbar/Header';
 import Footer from '../../components/footer/Footer';
 
-import Search from '../../assets/img/icons/search-icon.svg'
+// import Search from '../../assets/img/icons/search-icon.svg'
 import User from '../../assets/img/icons/user.png'
 import Location from '../../assets/img/icons/location.png'
 import Love from '../../assets/img/icons/love.png'
@@ -45,11 +45,11 @@ class Home extends Component {
                                     <Link to="" className="nav-link button-get">Get Started</Link>
                                 </div>
                             </div>
-                            <div className="col-lg-6 col-md-12">
+                            {/* <div className="col-lg-6 col-md-12">
                                 <div className="top-content-search">
                                     <Link to=""><img src={Search} alt="search" />Search</Link>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </section>
                     <section className="main-content-two">
