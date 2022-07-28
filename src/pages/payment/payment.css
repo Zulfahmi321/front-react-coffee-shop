@@ -12,12 +12,14 @@
     height: auto;
     padding: 20px;
 }
-
+.container-left-payment{
+    margin: 14% 0;
+}
 .left-payment-title{
     color: white;
     font-weight: bold;
     font-size: 30px;
-    margin:50px 20px;
+    /* margin:50px 20px; */
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.8);
 }
 
@@ -38,8 +40,8 @@
 }
 
 .pay-product1{
-    height: 82px;
-    width: 82px;
+    height: 100px;
+    width: 100px;
     object-fit: cover;
     object-position: -5 0;
     border-radius: 20px;
@@ -58,7 +60,7 @@
 .detail-payment{
     margin-top: 20px;
     font-weight: 400;
-    font-size: 22px;
+    font-size: 22px;   
 }
 
 .payment-total{
@@ -85,7 +87,7 @@
 }
 
 .container-delivery-all{
-    margin: 140px 0;
+    margin: 16% 0;
 }
 
 .container-right-delivery{
@@ -104,7 +106,7 @@
     border: none;
     border-radius: 20px;
     background-color: white;
-    padding: 50px 70px;
+    padding: 5%;
     font-size: 20px;
 }
 
@@ -116,8 +118,7 @@
     cursor: pointer;
     font-size: 22px;
     user-select: none;
-    left: 30px;
-    border-bottom: 1px solid black;
+    left: 30px;    
 }
 
 .container-radio-payment label {

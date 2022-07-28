@@ -22,6 +22,7 @@ class Editproduct extends Component {
             delivery_info: '',
             stock: '',
             category: '',
+            file: null,
             photo: null
         }
     }
@@ -35,7 +36,7 @@ class Editproduct extends Component {
                 // console.log(result);
                 this.setState({
                     // product: result.data.data.data[0],
-                    photo: result.data.data.data[0].photo,
+                    file: result.data.data.data[0].photo,
                     name: result.data.data.data[0].name,
                     price: result.data.data.data[0].price,
                     description: result.data.data.data[0].description,
@@ -53,17 +54,24 @@ class Editproduct extends Component {
     }
     handlerChangeImg = (e) => {
         // console.log(e.target.files[0]);
-        this.setState({
-            photo: e.target.files[0]
-        })
+        const file = e.target.files[0]
+        // console.log(file);
+        if (file) {
+            const reader = new FileReader()
+            reader.onload = (e) => {
+                const { result } = e.target
+                this.setState({ photo: file, file: result })
+            }
+            reader.readAsDataURL(file)
+        }
     }
 
     handlerSubmit = (e) => {
         // console.log(this.state.category);
         e.preventDefault()
-        const { name, price, description, delivery_info, stock, category, photo } = this.state
+        const { name, price, description, delivery_info, stock, category, file } = this.state
         let body = new FormData()
-        body.append('photo', photo);
+        body.append('photo', file);
         body.append('name', name);
         body.append('price', price);
         body.append('description', description);
@@ -90,6 +98,7 @@ class Editproduct extends Component {
             })
     }
     render() {
+        // console.log(this.state.file);
         return (
             <React.Fragment>
                 <Header />
@@ -99,7 +108,11 @@ class Editproduct extends Component {
                             <div className='col-lg-6 left-create-product'>
                                 <p>Favorite {'&'} Promo {'>'} Edit product</p>
                                 <div className='kamera'>
-                                    <img src={this.state.photo ? `${this.state.photo}` : Kamera} alt="product" className='kamera-img' />
+                                    {this.state.file ?
+                                        <img src={`${this.state.file}`} alt="product" className='kamera-img' />
+                                        :
+                                        <img src={Kamera} alt="" />
+                                    }
                                 </div>
                                 <div className='take-picture'>
                                     <button className='take-picture-button'>Take a picture</button>

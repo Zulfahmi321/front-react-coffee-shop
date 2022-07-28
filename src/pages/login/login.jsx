@@ -9,8 +9,7 @@ import Fb from '../../assets/img/icons/fb-vektor.png'
 import Twitter from '../../assets/img/icons/twitter-vector.png'
 import Ig from '../../assets/img/icons/ig-vector.png'
 import Google from '../../assets/img/icons/google-icon.png'
-import ShowPass from '../../assets/img/icons/showpass.png'
-import ShowPassOff from '../../assets/img/icons/showoffpass.png'
+import { Eye, EyeSlash } from "react-bootstrap-icons"
 import './login.css'
 // import axios from 'axios';
 
@@ -100,7 +99,7 @@ class Login extends Component {
                                         />
                                         <div
                                             className='input-group-text' onClick={() => this.setState({ showPassword: !this.state.showPassword })}>
-                                            {this.state.showPassword ? <img src={ShowPassOff} alt="show" className='showpass-login' /> : <img src={ShowPass} alt="hide" className='hidepass-login' />}
+                                            {this.state.showPassword ? <Eye alt="show" className='showpass-login' /> : <EyeSlash alt="hide" className='hidepass-login' />}
                                         </div>
                                     </div>
                                 </div>

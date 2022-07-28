@@ -12,17 +12,22 @@ import { getUserDataAction } from '../../redux/actionCreator/userdata';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { resetCart } from '../../redux/actionCreator/addtocart';
+import { Modal } from 'react-bootstrap';
 
 class Payment extends Component {
     constructor() {
         super();
         this.state = {
             product: [],
-            payment: ''
+            payment: '',
+            isShow: false,
+            isShowCart: false,
+            isSuccess: false
+
         }
     }
     handlePayment = () => {
-        // console.log(this.props.idUser);
+        // console.log(this.props.idUser);    
         const { counter, delivery, idProduct, idUser, cart, userInfo, size } = this.props
         const product_id = idProduct
         const total_price = (cart.price * counter) + (cart.price * counter * 10 / 100) + (delivery === "Door Delivery" ? 10000 : 0)
@@ -31,7 +36,14 @@ class Payment extends Component {
         const size_id = size === "Reguler" ? 1 : size === "Large" ? 2 : 3
         const payment_id = this.state.payment === "Card" ? 1 : this.state.payment === "Bank Account" ? 2 : 3
         const delivery_id = delivery === "Dine In" ? 3 : delivery === "Door Delivery" ? 1 : 2
-
+        if (!this.state.payment) {
+            this.setState(
+                {
+                    isShow: true
+                }
+            )
+            return
+        }
         const { token } = userInfo
         const config = { headers: { Authorization: `Bearer ${token}` } }
 
@@ -41,6 +53,9 @@ class Payment extends Component {
             .then(result => {
                 console.log(result);
                 this.props.dispatch(resetCart())
+                this.setState({
+                    isSuccess: true
+                })
             })
             .catch(error => {
                 console.log(error);
@@ -65,62 +80,64 @@ class Payment extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-6 col-sm-12">
-                                <h4 className='left-payment-title'>Checkout your item now!</h4>
-                                <div className="card-payment">
-                                    {delivery !== "" && size !== "" ?
-                                        <div className="card-left-payment">
-                                            <p className='card-title'>Order Summary</p>
-                                            <div className="container">
-                                                <div className="row">
-                                                    <div className="col-lg-3 col-md-3">
-                                                        <img className='pay-product1' src={`${cart.photo}`} alt="" />
-                                                    </div>
-                                                    <div className="col-lg-3 col-md-3">
-                                                        <p>{cart.name}</p>
-                                                        <p>{size}</p>
-                                                        <p>x {counter}</p>
-                                                    </div>
-                                                    <div className="col-lg-3 col-md-3">
-                                                        <p className='payment-price'>{currencyFormatter.format(cart.price)}</p>
-                                                    </div>
-                                                </div>
-                                                <div className="underline-payment">
-                                                    <span></span>
-                                                </div>
-                                                <div className="detail-payment">
+                                <div className="container-left-payment">
+                                    <h4 className='left-payment-title'>Checkout your item now!</h4>
+                                    <div className="card-payment">
+                                        {delivery !== "" && size !== "" ?
+                                            <div className="card-left-payment">
+                                                <p className='card-title'>Order Summary</p>
+                                                <div className="container">
                                                     <div className="row">
-                                                        <div className="col-lg-6 col-md-6">
-                                                            <p>SUBTOTAL</p>
-                                                            <p>TAX {'&'} FEES</p>
-                                                            <p>SHIPPING</p>
+                                                        <div className="col-lg-3 col-md-3">
+                                                            <img className='pay-product1' src={`${cart.photo}`} alt="" />
                                                         </div>
                                                         <div className="col-lg-6 col-md-6">
-                                                            <p>{currencyFormatter.format(cart.price * counter)}</p>
-                                                            <p>{currencyFormatter.format(cart.price * counter * 10 / 100)}</p>
-                                                            <p>{currencyFormatter.format(delivery === "Door Delivery" ? 10000 : 0)}</p>
+                                                            <p>{cart.name}</p>
+                                                            <p>{size}</p>
+                                                            <p>x {counter}</p>
+                                                        </div>
+                                                        <div className="col-lg-3 col-md-3 text-end">
+                                                            <p className='payment-price'>{currencyFormatter.format(cart.price)}</p>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div className="payment-total">
-                                                    <div className="row">
-                                                        <div className="col-lg-6 col-md-6">
-                                                            <p>TOTAL</p>
+                                                    <div className="underline-payment">
+                                                        <span></span>
+                                                    </div>
+                                                    <div className="detail-payment">
+                                                        <div className="row">
+                                                            <div className="col-lg-6 col-md-6">
+                                                                <p>SUBTOTAL</p>
+                                                                <p>TAX {'&'} FEES</p>
+                                                                <p>SHIPPING</p>
+                                                            </div>
+                                                            <div className="col-lg-6 col-md-6 text-end">
+                                                                <p>{currencyFormatter.format(cart.price * counter)}</p>
+                                                                <p>{currencyFormatter.format(cart.price * counter * 10 / 100)}</p>
+                                                                <p>{currencyFormatter.format(delivery === "Door Delivery" ? 10000 : 0)}</p>
+                                                            </div>
                                                         </div>
-                                                        <div className="col-lg-6 col-md-6">
-                                                            <p>{currencyFormatter.format((cart.price * counter) + (cart.price * counter * 10 / 100) + (delivery === "Door Delivery" ? 10000 : 0))}</p>
+                                                    </div>
+                                                    <div className="payment-total">
+                                                        <div className="row">
+                                                            <div className="col-lg-6 col-md-6">
+                                                                <p>TOTAL</p>
+                                                            </div>
+                                                            <div className="col-lg-6 col-md-6 text-end">
+                                                                <p>{currencyFormatter.format((cart.price * counter) + (cart.price * counter * 10 / 100) + (delivery === "Door Delivery" ? 10000 : 0))}</p>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        :
-                                        <section className='cart-empty'>
-                                            <p>Your Cart is Empty</p>
-                                            <Link to="/product" className='order-here'>
-                                                <p>Click here to order</p>
-                                            </Link>
-                                        </section>
-                                    }
+                                            :
+                                            <section className='cart-empty'>
+                                                <p>Your Cart is Empty</p>
+                                                <Link to="/product" className='order-here'>
+                                                    <p>Click here to order</p>
+                                                </Link>
+                                            </section>
+                                        }
+                                    </div>
                                 </div>
                             </div>
                             <div className="col-lg-6 col-md-12">
@@ -199,17 +216,49 @@ class Payment extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="button-confirm-pay">
-                                        <button
-                                            onClick={this.handlePayment}
-                                        >Confirm and Pay</button>
-                                    </div>
+                                    {delivery !== "" && size !== "" ?
+                                        <div className="button-confirm-pay">
+                                            <button
+                                                onClick={this.handlePayment}
+                                            >Confirm and Pay</button>
+                                        </div>
+                                        :
+                                        <></>
+                                    }
                                 </div>
                             </div>
                         </div>
                     </div>
                 </main>
                 <Footer />
+                <Modal
+                    show={this.state.isShow}
+                    onHide={() => {
+                        this.setState({ isShow: false },
+                        );
+                    }}>
+                    <Modal.Header>
+                        <Modal.Title className='profile-modal-title'>Please Insert Payment Method</Modal.Title>
+                    </Modal.Header>
+                    {/* <Modal.Body></Modal.Body> */}
+                    <Modal.Footer>
+                        {/* <Button></Button> */}
+                    </Modal.Footer>
+                </Modal>
+                <Modal
+                    show={this.state.isSuccess}
+                    onHide={() => {
+                        this.setState({ isSuccess: false },
+                        );
+                    }}>
+                    <Modal.Header>
+                        <Modal.Title className='profile-modal-title'>Order Success, Thanks</Modal.Title>
+                    </Modal.Header>
+                    {/* <Modal.Body></Modal.Body> */}
+                    <Modal.Footer>
+                        {/* <Button></Button> */}
+                    </Modal.Footer>
+                </Modal>
             </React.Fragment>
         );
     }

@@ -31,7 +31,7 @@ class Header extends Component {
                 <nav className="navbar navbar-expand-lg navbar-light bg-light py-4">
                     <div className="container">
                         <div className="logo">
-                            <Link className='navbar-brand' to='/'><img src={Logo} alt="logo"
+                            <Link className='navbar-brand fs-3' to='/'><img src={Logo} alt="logo"
                                 width="30px" />Coffee Shop</Link>
                         </div>
                         <button className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#kolep">
@@ -40,7 +40,7 @@ class Header extends Component {
                         <div className="collapse navbar-collapse" id="kolep">
                             <div className="col-lg-4 col-md-4 offset-lg-3" id='navbar'>
                                 {this.props.roles !== "admin" ?
-                                    <ul className="navbar-nav fw-bold justify-content-between">
+                                    <ul className="navbar-nav fs-5 fw-bold justify-content-between">
                                         <li className="nav-item">
                                             <NavLink className='nav-link' to='/'>Home</NavLink>
                                         </li>
@@ -78,8 +78,14 @@ class Header extends Component {
                                             {/* <Link className="nav-link" to="">
                                                 <img src={searchIcon} alt="" />
                                             </Link> */}
-                                            <input type="text" className='form-control' placeholder='Search'
-                                                onChange={(e) => this.props.setSearchName(e.target.value)} />
+                                            <input type="text" className='form-control fs-5' placeholder='Search'
+                                                onKeyUp={(e) => {
+                                                    if (e.key === "Enter") {
+                                                        this.props.setSearchName(e.target.value)
+                                                    }
+                                                }
+                                                }
+                                            />
                                         </li>
                                         <li className="nav-item px-2 position-relative chat-icon">
                                             <Link className="nav-link" to="">

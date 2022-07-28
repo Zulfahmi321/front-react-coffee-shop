@@ -180,6 +180,7 @@ class Product extends Component {
                                                     this.setState({
                                                         filter: true,
                                                         iscategory: "favorite",
+                                                        page: 1
                                                     })
                                                 }}
                                             >Favorite {'&'} promo</div>
@@ -189,7 +190,8 @@ class Product extends Component {
                                                 onClick={() => {
                                                     this.setState({
                                                         filter: true,
-                                                        iscategory: "coffee"
+                                                        iscategory: "coffee",
+                                                        page: 1
                                                     })
                                                 }}
                                             >Coffee</div>
@@ -199,7 +201,8 @@ class Product extends Component {
                                                 onClick={() => {
                                                     this.setState({
                                                         filter: true,
-                                                        iscategory: "tea"
+                                                        iscategory: "tea",
+                                                        page: 1
                                                     })
                                                 }}
                                             >Non Coffee</div>
@@ -209,7 +212,8 @@ class Product extends Component {
                                                 onClick={() => {
                                                     this.setState({
                                                         filter: true,
-                                                        iscategory: "food"
+                                                        iscategory: "food",
+                                                        page: 1
                                                     })
                                                 }}
                                             >Foods</div>
@@ -219,7 +223,8 @@ class Product extends Component {
                                                 onClick={() => {
                                                     this.setState({
                                                         filter: true,
-                                                        iscategory: 'all'
+                                                        iscategory: 'all',
+                                                        page: 1
                                                     })
                                                 }}
                                             >All</div>

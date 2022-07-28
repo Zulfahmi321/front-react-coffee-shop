@@ -8,7 +8,6 @@ import axios from 'axios';
 import './productdetail.css'
 import { counterDown, counterUp } from '../../redux/actionCreator/counter';
 import { addToCart } from '../../redux/actionCreator/addtocart';
-import { Link } from 'react-router-dom';
 import { Modal } from 'react-bootstrap';
 import { currencyFormatter } from '../../helper/formatter';
 
@@ -19,7 +18,7 @@ class Productdetail extends Component {
             product: [],
             size: '',
             delivery: '',
-            isShow: false
+            isShow: false,
         }
     }
     componentDidMount() {
@@ -48,20 +47,37 @@ class Productdetail extends Component {
                         <div className="row">
                             <div className="col-lg-6 left-product">
                                 <p>Favorite {'&'} Promo {'>'} {this.state.product.name}</p>
-                                <img src={`${this.state.product.photo}`} alt="product" />
+                                <div className='product-detail-photo'>
+                                    <img src={`${this.state.product.photo}`} alt="product" />
+                                </div>
                                 <h1>{this.state.product.name}</h1>
-                                <h5>{currencyFormatter.format(this.state.product.price)}</h5>
+                                <h5 className='fw-semibold'>{currencyFormatter.format(this.state.product.price)}</h5>
                                 <div className='cart-button'>
                                     <button className='button-cart'
                                         onClick={() => {
-                                            const addSize = this.state.size !== "" ? this.state.size : null
-                                            const addDeliv = this.state.delivery !== "" ? this.state.delivery : null
-                                            const addProd = this.state.product !== "" ? this.state.product : null
-                                            addSize !== null && addDeliv !== null ?
-                                                cart(addProd, addSize, addDeliv) :
+                                            const { size, delivery, product } = this.state
+                                            if (!size) {
                                                 this.setState({
                                                     isShow: true
                                                 })
+                                                return
+                                            }
+                                            if (!delivery) {
+                                                this.setState({
+                                                    isShow: true
+                                                })
+                                                return
+                                            }
+
+                                            // const addSize = this.state.size !== "" ? this.state.size : null
+                                            // const addDeliv = this.state.delivery !== "" ? this.state.delivery : null
+                                            // const addProd = this.state.product !== "" ? this.state.product : null
+                                            // addSize !== null && addDeliv !== null ?
+                                            cart(product, size, delivery)
+                                            this.setState({
+                                                isShow: true
+                                            })
+                                            this.props.navigate("/payment")
                                         }}
                                     >Add to Cart</button><br />
                                 </div>
@@ -71,15 +87,15 @@ class Productdetail extends Component {
                             </div>
                             <div className="col-lg-6 right-product">
                                 <div className='card-product-detail'>
-                                    <div className='card-product-details'>
-                                        <p className='card-text'>Delivery only on <strong>{this.state.product.delivery_info}</strong></p>
+                                    <p className='card-text'>Delivery only on <strong>{this.state.product.delivery_info}</strong></p>
+                                    <div className='card-product-description'>
                                         <p className='card-text'>{this.state.product.description}</p>
-                                        <strong className='size-title' >Choose a size</strong>
                                     </div>
+                                    <strong className='size-title' >Choose a size</strong>
                                     <div className="size-button">
                                         <label className="size-label">
                                             <input type="radio" name="size-input" className='size-input' />
-                                            <span className="size-checkmark"
+                                            <span className="size-checkmark fw-bold"
                                                 onClick={() => {
                                                     this.setState({ size: "Reguler" })
                                                 }}
@@ -87,7 +103,7 @@ class Productdetail extends Component {
                                         </label>
                                         <label className="size-label">
                                             <input type="radio" name="size-input" className='size-input' />
-                                            <span className="size-checkmark"
+                                            <span className="size-checkmark fw-bold"
                                                 onClick={() => {
                                                     this.setState({ size: "Large" })
                                                 }}
@@ -95,7 +111,7 @@ class Productdetail extends Component {
                                         </label>
                                         <label className="size-label">
                                             <input type="radio" name="size-input" className='size-input' />
-                                            <span className="size-checkmark"
+                                            <span className="size-checkmark fw-bold"
                                                 onClick={() => {
                                                     this.setState({ size: "Extra Large" })
                                                 }}
@@ -146,16 +162,16 @@ class Productdetail extends Component {
                                 <div className="card card-custom-cart">
                                     <div className="card-body card-product-cart">
                                         <div className="row">
-                                            <div className="col-lg-2">
+                                            <div className="col-lg-3">
                                                 <img src={`${this.state.product.photo}`} alt="product" className='product-cart-detail' />
                                             </div>
-                                            <div className="col-lg-3">
+                                            <div className="col-lg-4">
                                                 <div className='card-product-info'>
                                                     <h4>{this.state.product.name}</h4>
                                                     <h5>x{counter} {this.state.size} <br /> {this.state.delivery} </h5>
                                                 </div>
                                             </div>
-                                            <div className="col-lg-7">
+                                            <div className="col-lg-5">
                                                 <div className='quantity'>
                                                     <button onClick={() => counterDown()}>-</button>
                                                     <p>{counter}</p>
@@ -167,9 +183,33 @@ class Productdetail extends Component {
                                 </div>
                             </div>
                             <div className="col-lg-6 col-md-6">
-                                <Link to='/payment'>
-                                    <button className='checkout'>CHECKOUT</button>
-                                </Link>
+                                <button className='checkout'
+                                    onClick={() => {
+                                        const { size, delivery, product } = this.state
+                                        if (!size) {
+                                            this.setState({
+                                                isShow: true
+                                            })
+                                            return
+                                        }
+                                        if (!delivery) {
+                                            this.setState({
+                                                isShow: true
+                                            })
+                                            return
+                                        }
+
+                                        // const addSize = this.state.size !== "" ? this.state.size : null
+                                        // const addDeliv = this.state.delivery !== "" ? this.state.delivery : null
+                                        // const addProd = this.state.product !== "" ? this.state.product : null
+                                        // addSize !== null && addDeliv !== null ?
+                                        cart(product, size, delivery)
+                                        this.setState({
+                                            isShow: true
+                                        })
+                                        this.props.navigate("/payment")
+                                    }}
+                                >CHECKOUT</button>
                             </div>
                         </div>
                     </section>

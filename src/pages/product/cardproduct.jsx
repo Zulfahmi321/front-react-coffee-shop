@@ -9,7 +9,7 @@ function Cardproduct(props) {
     // console.log(roles);
     return (
         <React.Fragment>
-            <div className="col-lg-3 col-md-4 col-6">
+            <div className="col-lg-4 col-md-4 col-6">
                 {roles !== 'admin' ?
                     <div>
                         <Link to={`/product/${props.id}`} className='nav-link'>
@@ -18,7 +18,7 @@ function Cardproduct(props) {
                                     <img src={props.photo} className="card-img-top mb-4"
                                         alt="product" />
                                     <h5 className="card-title-custom">{props.name}</h5>
-                                    {/* <h5 className='card-title-custom'>{props.category_name}</h5> */}
+                                    <h5 className='card-title-custom'>{props.category}</h5>
                                     <h6 className="card-text-custom">{props.price}</h6>
                                 </div>
                             </div>
@@ -32,7 +32,7 @@ function Cardproduct(props) {
                                     <img src={props.photo} className="card-img-top mb-4"
                                         alt="product" />
                                     <h5 className="card-title-custom">{props.name}</h5>
-                                    {/* <h5 className='card-title-custom'>{props.category_name}</h5> */}
+                                    <h5 className='card-title-custom'>{props.category}</h5>
                                     <h6 className="card-text-custom">{props.price}</h6>
                                 </div>
                             </div>
