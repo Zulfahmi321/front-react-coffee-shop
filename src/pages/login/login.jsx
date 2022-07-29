@@ -26,7 +26,8 @@ class Login extends Component {
             // isSuccess: false,
             isLoggedIn: false,
             showPassword: false,
-            isShow: false
+            isShow: false,
+            errMsg: ''
         }
     }
     handlerChange = (e) => {
@@ -36,7 +37,23 @@ class Login extends Component {
         e.preventDefault()
         const { email, password } = this.state;
         const body = { email, password };
+        let emailFormat = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
+        if (!email.match(emailFormat)) {
+            this.setState({
+                errMsg: 'Email format should be mail@mail.com!'
+            })
+        } else if (password < 1) {
+            this.setState({
+                errMsg: 'Password should not be empty!'
+            })
+        }
         this.props.dispatch(loginAction(body))
+            .then((result) => {
+                console.log(result);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
         // axios
         //     .post("http://localhost:8080/auth", body)
         //     .then(result => {
@@ -68,7 +85,7 @@ class Login extends Component {
 
     }
     render() {
-        console.log("LOCATION", this.props.location);
+        console.log(this.state.errMsg);
         if (this.state.isLoggedIn === true) {
             return <Navigate to="/" />
         }

@@ -24,7 +24,9 @@ class Signup extends Component {
             registered: false,
             showPassword: false,
             successMsg: '',
-            errorMsg: ''
+            errorMsg: '',
+            fvMsg: 'Email Not Valid!',
+            isLoading: false
 
         };
     }
@@ -32,25 +34,57 @@ class Signup extends Component {
         this.setState({ [e.target.name]: e.target.value })
     }
 
-    handlerSubmit = (e) => {
-        e.preventDefault()
-        const { email, password, mobile_number } = this.state
-        const body = { email, password, mobile_number }
-        axios
-            .post(`${process.env.REACT_APP_BE_HOST}/auth/new`, body)
-            .then(result => {
-                console.log(result)
-                this.setState({
-                    isSuccess: true,
-                    successMsg: `${result.data.data.msg}`
-                })
+    handlerSubmit = async (e) => {
+        try {
+            e.preventDefault()
+            this.setState({
+                isLoading: true
             })
-            .catch(error => {
-                console.log(error)
+            const { email, password, mobile_number } = this.state
+            const body = { email, password, mobile_number }
+            let emailFormat = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
+            let phoneFormat = /^08[1-9][0-9]{7,10}$/
+
+            if (!email.match(emailFormat)) {
                 this.setState({
-                    errorMsg: `${error.response.data.err.msg}`
+                    isLoading: false,
+                    isSuccess: false,
+                    fvMsg: 'Email Not Valid!'
                 })
+                return
+            }
+            if (password.length < 1) {
+                this.setState({
+                    isLoading: false,
+                    isSuccess: false,
+                    fvMsg: 'Password should not be empty!'
+                })
+                return
+            }
+            if (!mobile_number.match(phoneFormat)) {
+                this.setState({
+                    isLoading: false,
+                    isSuccess: false,
+                    fvMsg: 'Invalid phone number!'
+                })
+                return
+            }
+            const response = await axios.post(`${process.env.REACT_APP_BE_HOST}/auth/new`, body)
+            console.log(response);
+            this.setState({
+                isLoading: false,
+                isSuccess: true,
+                fvMsg: response.data.data.msg
             })
+
+        } catch (error) {
+            console.log(error.response)
+            this.setState({
+                isLoading: false,
+                isSuccess: false,
+                fvMsg: error.response.data.err.msg
+            })
+        }
     }
     componentDidMount() {
         document.title = "Sign Up"
@@ -72,7 +106,7 @@ class Signup extends Component {
                         <section className="main-content">
                             <form action="" className="mx-5 px-5" onSubmit={this.handlerSubmit}>
                                 <div className="mb-3">
-                                    <label htmlFor="" className="form-label fw-bold">Email Addres:</label>
+                                    <label htmlFor="" className="form-label fw-bold">Email Address:</label>
                                     <input type="email" name="email" className="form-control fs-6"
                                         placeholder="Enter your email address"
                                         onChange={this.handlerChange}
@@ -169,7 +203,11 @@ class Signup extends Component {
                     <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content">
                             <div className="modal-body">
-                                {this.state.isSuccess ? <p>{this.state.successMsg}</p> : <p>{this.state.errorMsg}</p>}
+                                {this.state.isLoading ?
+                                    <p>Loading</p>
+                                    :
+                                    <p>{this.state.fvMsg}</p>
+                                }
                             </div>
                             <div className="modal-footer">
                                 {this.state.isSuccess ?
@@ -181,7 +219,7 @@ class Signup extends Component {
                                         }}
                                     >Go Login</button>
                                     :
-                                    <></>
+                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 }
 
                             </div>
